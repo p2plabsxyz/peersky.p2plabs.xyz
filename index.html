@@ -35,7 +35,8 @@
         <code class="text-blue-600 hover:text-blue-500 ml-2">Discord</code>
       </a>
     </div>
-    <span class="text-xs text-yellow-600 border border-yellow-500 bg-yellow-100 text-white p-1 rounded-full">v1.0.0-0 Beta
+    <span class="text-xs text-yellow-600 border border-yellow-500 bg-yellow-100 text-white p-1 rounded-full">v1.0.0-0
+      Beta
       Coming Soon for Mac, Windows, & Linux</span>
     <div class="mt-2">
       <p>
@@ -45,7 +46,8 @@
         like turning the entire web into a giant, global community project.
       </p>
       <p class="mt-2">
-        Peersky is your personal gatekeeper to a new way of accessing web content. Imagine a world where you can access
+        Peersky is your experimental personal gatekeeper to a new way of accessing web content. Imagine a world where
+        you can access
         web pages, communicate securely, and store or share files directly from a global network of peers, without
         relying on centralized servers. With Peersky, this vision becomes a reality.
       </p>
@@ -53,7 +55,10 @@
         It works by leveraging multiple protocols like IPFS, Hypercore, and Web3. Peersky offers a variety of local P2P
         applications optimized for specific tasks. For instance, peersky://chat facilitates secure, peer-to-peer
         messaging, while peersky://upload is used for decentralized file storage. With peersky://editor, users can
-        effortlessly build and publish websites. As Peersky continues to grow, new protocols and P2P apps will be added,
+        effortlessly build and publish websites. Additionally, the social reader, a peer-to-peer, offline ActivityPub
+        client, allows users to read and follow microblogs on the fediverse, functioning like a social media RSS feed
+        for the distributed web.
+        As Peersky continues to grow, new protocols and P2P apps will be added,
         expanding its capabilities and appeal.
       </p>
       <p class="mt-2">
@@ -88,12 +93,15 @@
           <strong>IPFS Protocol Handler:</strong>
           <ul class="list-disc list-inside ml-5">
             <li>✅ Run a local <a href="https://helia.io/" class="text-blue-600 hover:text-blue-500">Helia</a> node</li>
-            <li>✅ <code class="bg-gray-200 px-1 rounded">ipfs://</code> / <code class="bg-gray-200 px-1 rounded">ipns://</code> native URLs support</li>
+            <li>✅ <code class="bg-gray-200 px-1 rounded">ipfs://</code> / <code
+                class="bg-gray-200 px-1 rounded">ipns://</code> native URLs support</li>
             <li>✅ Directory listings support</li>
             <li>
               ✅ Native ENS domain resolution:
               <ul class="list-disc list-inside ml-5 space-y-1">
-                <li>Resolve <code class="bg-gray-200 px-1 rounded">.eth</code> domains directly to IPFS/IPNS content without centralized gateways (e.g., <code class="bg-gray-200 px-1 rounded">ipfs://vitalik.eth</code>).</li>
+                <li>Resolve <code class="bg-gray-200 px-1 rounded">.eth</code> domains directly to IPFS/IPNS content
+                  without centralized gateways (e.g., <code class="bg-gray-200 px-1 rounded">ipfs://vitalik.eth</code>).
+                </li>
                 <li>Local caching for resolved ENS content to enhance performance and reduce RPC calls.</li>
               </ul>
             </li>
@@ -102,7 +110,8 @@
         <li>
           <strong>Hypercore Protocol Handler:</strong>
           <ul class="list-disc list-inside ml-5">
-            <li>✅ Run a local <a href="https://holepunch.to/" class="text-blue-600 hover:text-blue-500">hyper</a> node</li>
+            <li>✅ Run a local <a href="https://holepunch.to/" class="text-blue-600 hover:text-blue-500">hyper</a> node
+            </li>
             <li>✅ <code class="bg-gray-200 px-1 rounded">hyper://</code> native URLs support</li>
           </ul>
         </li>
@@ -110,11 +119,13 @@
           <strong>Web3 Protocol Handler:</strong>
           <ul class="list-disc list-inside ml-5">
             <li>
-              ✅ Run a local <a href="https://docs.web3url.io/" class="text-blue-600 hover:text-blue-500">web3 protocol</a> node
+              ✅ Run a local <a href="https://docs.web3url.io/" class="text-blue-600 hover:text-blue-500">web3
+                protocol</a> node
               <ul class="list-disc list-inside ml-5 space-y-1">
                 <li>Access on-chain websites.</li>
                 <li>Fetch data from smart contracts using auto, manual, and resource request resolve modes.</li>
-                <li>Retrieve NFT metadata or content (e.g., <code class="bg-gray-200 px-1 rounded">web3://[contract]/tokenHTML/[tokenId]</code>).</li>
+                <li>Retrieve NFT metadata or content (e.g., <code
+                    class="bg-gray-200 px-1 rounded">web3://[contract]/tokenHTML/[tokenId]</code>).</li>
                 <li>Query account balances or other data directly from smart contracts.</li>
               </ul>
             </li>
@@ -126,7 +137,9 @@
             <li>✅ <code class="bg-gray-200 px-1 rounded">peersky://p2p/chat/</code> - Peer-to-peer messaging</li>
             <li>✅ <code class="bg-gray-200 px-1 rounded">peersky://p2p/upload/</code> - Decentralized file storage</li>
             <li>✅ <code class="bg-gray-200 px-1 rounded">peersky://p2p/editor/</code> - Build and publish websites</li>
-            <li>✅ <a href="https://reader.distributed.press/" class="text-blue-600 hover:text-blue-500">reader.p2plabs.xyz</a> - A p2p offline ActivityPub client for reading and following microblogs on the fediverse.</li>
+            <li>✅ <a href="https://reader.distributed.press/"
+                class="text-blue-600 hover:text-blue-500">reader.p2plabs.xyz</a> - A p2p offline ActivityPub client for
+              reading and following microblogs on the fediverse.</li>
           </ul>
         </li>
         <li>
@@ -190,8 +203,10 @@
             <li>☐ Ability to add extensions</li>
             <li>☐ Default extensions
               <ul class="list-disc list-inside ml-5 space-y-1">
-                <li><a href="https://github.com/gorhill/uBlock" class="text-blue-600 hover:text-blue-500">Ad-blocker</a></li>
-                <li><a href="https://github.com/p2plabsxyz/dscan" class="text-blue-600 hover:text-blue-500">DScan</a></li>
+                <li><a href="https://github.com/gorhill/uBlock" class="text-blue-600 hover:text-blue-500">Ad-blocker</a>
+                </li>
+                <li><a href="https://github.com/p2plabsxyz/dscan" class="text-blue-600 hover:text-blue-500">DScan</a>
+                </li>
                 <li>☐ ..</li>
               </ul>
             </li>
@@ -212,13 +227,15 @@
         <li>
           <strong>Bookmarks (<code class="bg-gray-200 px-1 rounded">peersky://bookmarks</code>):</strong>
           <ul class="list-disc list-inside ml-5">
-            <li>☐ Option to add favourite pages in the nav bar (<code class="bg-gray-200 px-1 rounded">peersky://bookmarks</code>)</li>
+            <li>☐ Option to add favourite pages in the nav bar (<code
+                class="bg-gray-200 px-1 rounded">peersky://bookmarks</code>)</li>
           </ul>
         </li>
         <li>
           <strong>Archive (<code class="bg-gray-200 px-1 rounded">peersky://archive</code>):</strong>
           <ul class="list-disc list-inside ml-5">
-            <li>☐ List and showcase published content from <code class="bg-gray-200 px-1 rounded">peersky://p2p/</code> apps for enhanced discoverability.</li>
+            <li>☐ List and showcase published content from <code class="bg-gray-200 px-1 rounded">peersky://p2p/</code>
+              apps for enhanced discoverability.</li>
             <li>☐ Provide metadata (e.g., creation date, content type) to improve navigation and usability.</li>
           </ul>
         </li>
