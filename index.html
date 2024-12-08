@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!--MetaTags-->
+  <meta name="author" content="Akhilesh Thite" />
+  <meta property="og:title" content="Peersky Browser" />
+  <meta property="og:description" content="A minimal p2p web browser." />
+  <meta name="keywords" content="peersky, peersky browser, p2plabs, dweb, ipfs" />
+  <meta property="og:url" content="https://peersky.p2plabs.xyz/" />
+  <meta property="og:type" content="Website" />
+  <!--Favicon-->
+  <link rel="shortcut icon" type="image/png" href="./images/favicon.ico" />
+  <!-- Tailwind -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet" />
+  <title>Peersky Browser</title>
+</head>
+
+<body style="background-color: #fffcf9">
+  <center>
+    <img class="mb-6 mt-12" src="./images/peersky-browser.png" width="230" alt="Peersky Browser Logo" />
+    <code class="text-3xl">Peersky Browser</code>
+  </center>
+  <div class="max-w-3xl mx-auto px-5 sm:px-10 md:px-20 mt-6">
+    <p class="mb-2">A Minimal P2P Web Browser: Access, Communicate, and Publish Offline</p>
+    <div class="flex mb-2">
+      Join our community on
+      <a href="https://matrix.to/#/#peersky:matrix.org">
+        <code class="text-blue-600 hover:text-blue-500 ml-2 mr-2">Matrix</code>
+      </a> &
+      <a href="https://discord.gg/4sQGarXp">
+        <code class="text-blue-600 hover:text-blue-500 ml-2">Discord</code>
+      </a>
+    </div>
+    <span class="text-xs text-yellow-600 border border-yellow-500 bg-yellow-100 text-white p-1 rounded-full">v1.0.0-0 Beta
+      Coming Soon for Mac, Windows, & Linux</span>
+    <div class="mt-2">
+      <p>
+        Have you ever wondered what it'd be like if the internet wasn't controlled by a handful of big companies? That's
+        what the distributed web, or DWeb, is all about. It's a new kind of internet that operates on a network of
+        computers where everyone shares and cooperates. This way, no single entity can control or shut it down. It's
+        like turning the entire web into a giant, global community project.
+      </p>
+      <p class="mt-2">
+        Peersky is your personal gatekeeper to a new way of accessing web content. Imagine a world where you can access
+        web pages, communicate securely, and store or share files directly from a global network of peers, without
+        relying on centralized servers. With Peersky, this vision becomes a reality.
+      </p>
+      <p class="mt-2">
+        It works by leveraging multiple protocols like IPFS, Hypercore, and Web3. Peersky offers a variety of local P2P
+        applications optimized for specific tasks. For instance, peersky://chat facilitates secure, peer-to-peer
+        messaging, while peersky://upload is used for decentralized file storage. With peersky://editor, users can
+        effortlessly build and publish websites. As Peersky continues to grow, new protocols and P2P apps will be added,
+        expanding its capabilities and appeal.
+      </p>
+      <p class="mt-2">
+        Peersky is designed for everyone, offering a user-friendly experience that enhances privacy and digital
+        autonomy, empowering users to explore the web without traditional internet infrastructure.
+      </p>
+    </div>
+
+    <!-- Roadmap Section -->
+    <section id="roadmap" class="mt-6">
+      <h2 class="text-2xl font-bold mb-4">🚧 Roadmap</h2>
+      <ul class="list-disc list-inside space-y-4">
+        <li>
+          <strong>Basic Browser Navigation:</strong>
+          <ul class="list-disc list-inside ml-5">
+            <li>✅ Back</li>
+            <li>✅ Forward</li>
+            <li>✅ Reload</li>
+            <li>✅ Browser protocol (<code class="bg-gray-200 px-1 rounded">peersky://</code>)</li>
+            <li>✅ Home page (<code class="bg-gray-200 px-1 rounded">peersky://home</code>)</li>
+            <li>
+              ✅ Search engine
+              <ul class="list-disc list-inside ml-5 space-y-1">
+                <li>DuckDuckGo (default)</li>
+                <li>Ecosia</li>
+              </ul>
+            </li>
+            <li>☐ Tabs? Maybe?</li>
+          </ul>
+        </li>
+        <li>
+          <strong>IPFS Protocol Handler:</strong>
+          <ul class="list-disc list-inside ml-5">
+            <li>✅ Run a local <a href="https://helia.io/" class="text-blue-600 hover:text-blue-500">Helia</a> node</li>
+            <li>✅ <code class="bg-gray-200 px-1 rounded">ipfs://</code> / <code class="bg-gray-200 px-1 rounded">ipns://</code> native URLs support</li>
+            <li>✅ Directory listings support</li>
+            <li>
+              ✅ Native ENS domain resolution:
+              <ul class="list-disc list-inside ml-5 space-y-1">
+                <li>Resolve <code class="bg-gray-200 px-1 rounded">.eth</code> domains directly to IPFS/IPNS content without centralized gateways (e.g., <code class="bg-gray-200 px-1 rounded">ipfs://vitalik.eth</code>).</li>
+                <li>Local caching for resolved ENS content to enhance performance and reduce RPC calls.</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <strong>Hypercore Protocol Handler:</strong>
+          <ul class="list-disc list-inside ml-5">
+            <li>✅ Run a local <a href="https://holepunch.to/" class="text-blue-600 hover:text-blue-500">hyper</a> node</li>
+            <li>✅ <code class="bg-gray-200 px-1 rounded">hyper://</code> native URLs support</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Web3 Protocol Handler:</strong>
+          <ul class="list-disc list-inside ml-5">
+            <li>
+              ✅ Run a local <a href="https://docs.web3url.io/" class="text-blue-600 hover:text-blue-500">web3 protocol</a> node
+              <ul class="list-disc list-inside ml-5 space-y-1">
+                <li>Access on-chain websites.</li>
+                <li>Fetch data from smart contracts using auto, manual, and resource request resolve modes.</li>
+                <li>Retrieve NFT metadata or content (e.g., <code class="bg-gray-200 px-1 rounded">web3://[contract]/tokenHTML/[tokenId]</code>).</li>
+                <li>Query account balances or other data directly from smart contracts.</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <strong>P2P Applications:</strong>
+          <ul class="list-disc list-inside ml-5">
+            <li>✅ <code class="bg-gray-200 px-1 rounded">peersky://p2p/chat/</code> - Peer-to-peer messaging</li>
+            <li>✅ <code class="bg-gray-200 px-1 rounded">peersky://p2p/upload/</code> - Decentralized file storage</li>
+            <li>✅ <code class="bg-gray-200 px-1 rounded">peersky://p2p/editor/</code> - Build and publish websites</li>
+            <li>✅ <a href="https://reader.distributed.press/" class="text-blue-600 hover:text-blue-500">reader.p2plabs.xyz</a> - A p2p offline ActivityPub client for reading and following microblogs on the fediverse.</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Electron’s Auto-updater:</strong>
+          <ul class="list-disc list-inside ml-5">
+            <li>✅ Download and install the latest release from Github automatically</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Context Menu:</strong>
+          <ul class="list-disc list-inside ml-5">
+            <li>✅ Back / Forward</li>
+            <li>✅ Reload</li>
+            <li>✅ Inspect</li>
+            <li>✅ Undo / Redo</li>
+            <li>✅ Cut / Copy / Paste</li>
+            <li>✅ Copy Link Address</li>
+            <li>✅ Open Link in New Tab</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Find in Page:</strong>
+          <ul class="list-disc list-inside ml-5">
+            <li>✅ Search for text within a document or web page</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Window State Persistence:</strong>
+          <ul class="list-disc list-inside ml-5">
+            <li>✅ Save and restore open windows on app launch</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Keyboard Shortcuts:</strong>
+          <ul class="list-disc list-inside ml-5">
+            <li>✅ New Window: <code class="bg-gray-200 px-1 rounded">CommandOrControl+N</code></li>
+            <li>✅ Back: <code class="bg-gray-200 px-1 rounded">CommandOrControl+[</code></li>
+            <li>✅ Forward: <code class="bg-gray-200 px-1 rounded">CommandOrControl+]</code></li>
+            <li>✅ Reload: <code class="bg-gray-200 px-1 rounded">CommandOrControl+R</code></li>
+            <li>✅ Find in Page: <code class="bg-gray-200 px-1 rounded">CommandOrControl+F</code></li>
+            <li>✅ Open Dev Tools: <code class="bg-gray-200 px-1 rounded">CommandOrControl+Shift+I</code></li>
+            <li>✅ Focus URL Bar: <code class="bg-gray-200 px-1 rounded">CommandOrControl+L</code></li>
+            <li>✅ Minimize: <code class="bg-gray-200 px-1 rounded">CommandOrControl+M</code></li>
+            <li>✅ Close: <code class="bg-gray-200 px-1 rounded">CommandOrControl+W</code></li>
+            <li>✅ Toggle Full Screen: <code class="bg-gray-200 px-1 rounded">F11</code></li>
+          </ul>
+        </li>
+        <li>
+          <strong>Settings (<code class="bg-gray-200 px-1 rounded">peersky://settings</code>):</strong>
+          <ul class="list-disc list-inside ml-5">
+            <li>☐ Switch search engines</li>
+            <li>☐ Set custom home page wallpapers</li>
+            <li>☐ Hide/show the home page clock</li>
+            <li>☐ Change themes</li>
+            <li>☐ Clear browser cache</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Web Extensions:</strong>
+          <ul class="list-disc list-inside ml-5">
+            <li>☐ Ability to add extensions</li>
+            <li>☐ Default extensions
+              <ul class="list-disc list-inside ml-5 space-y-1">
+                <li><a href="https://github.com/gorhill/uBlock" class="text-blue-600 hover:text-blue-500">Ad-blocker</a></li>
+                <li><a href="https://github.com/p2plabsxyz/dscan" class="text-blue-600 hover:text-blue-500">DScan</a></li>
+                <li>☐ ..</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <strong>History (<code class="bg-gray-200 px-1 rounded">peersky://history</code>):</strong>
+          <ul class="list-disc list-inside ml-5">
+            <li>☐ Suggestions based on the browser history when typing in URL prompt</li>
+          </ul>
+        </li>
+        <li>
+          <strong>QR Code Generator:</strong>
+          <ul class="list-disc list-inside ml-5">
+            <li>☐ Option to generate QR Code for every page in the URL prompt</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Bookmarks (<code class="bg-gray-200 px-1 rounded">peersky://bookmarks</code>):</strong>
+          <ul class="list-disc list-inside ml-5">
+            <li>☐ Option to add favourite pages in the nav bar (<code class="bg-gray-200 px-1 rounded">peersky://bookmarks</code>)</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Archive (<code class="bg-gray-200 px-1 rounded">peersky://archive</code>):</strong>
+          <ul class="list-disc list-inside ml-5">
+            <li>☐ List and showcase published content from <code class="bg-gray-200 px-1 rounded">peersky://p2p/</code> apps for enhanced discoverability.</li>
+            <li>☐ Provide metadata (e.g., creation date, content type) to improve navigation and usability.</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <footer class="text-sm mt-6 mb-12">
+      <a class="underline hover:text-gray-800 hover:no-underline"
+        href="https://github.com/p2plabsxyz/peersky-browser/tree/v1">Github</a>
+      <!-- <a class="underline hover:text-gray-800 hover:no-underline"
+        href="https://matrix.to/#/#peersky:matrix.org">Matrix</a>
+      <a class="underline hover:text-gray-800 hover:no-underline"
+        href="https://discord.gg/4sQGarXp">Discord</a> -->
+      <a class="underline hover:text-gray-800 hover:no-underline" href="https://twitter.com/PeerskyBrowser">Twitter</a>
+      Made with 💙 by
+      <a class="underline hover:text-gray-800 hover:no-underline" href="https://p2plabs.xyz/">p2plabs.xyz</a>
+    </footer>
+  </div>
+</body>
+
+</html>
