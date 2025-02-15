@@ -35,9 +35,23 @@
         <code class="text-blue-600 hover:text-blue-500 ml-2">Discord</code>
       </a>
     </div>
-    <span class="text-xs text-yellow-600 border border-yellow-500 bg-yellow-100 text-white p-1 rounded-full">v1.0.0-0
-      Beta
-      Coming Soon for Mac, Windows, & Linux</span>
+    <span id="latest-release"
+      class="text-xs text-yellow-600 border border-yellow-500 bg-yellow-100 text-white p-1 rounded-full"></span>
+    <!-- Download Releases Section -->
+    <div class="mt-6 mb-6">
+      <div class="download-buttons flex justify-center space-x-4">
+        <button id="btn-mac" class="focus:outline-none">
+          <img src="./images/macos.png" alt="Download for macOS" class="w-32 hover:opacity-75" />
+        </button>
+        <button id="btn-linux" class="focus:outline-none">
+          <img src="./images/linux.png" alt="Download for Linux" class="w-32 hover:opacity-75" />
+        </button>
+        <button id="btn-windows" class="focus:outline-none">
+          <img src="./images/windows.png" alt="Download for Windows" class="w-32 hover:opacity-75" />
+        </button>
+      </div>
+      <div id="download-options" class="mt-4"></div>
+    </div>
     <div class="mt-2">
       <p>
         Have you ever wondered what it'd be like if the internet wasn't controlled by a handful of big companies? That's
@@ -337,6 +351,7 @@
       </div>
     </footer>
   </div>
+  <script src="./script.js"></script>
 </body>
 
 </html>
