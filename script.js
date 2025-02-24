@@ -79,11 +79,12 @@ function renderAssets(os) {
 
     if (os === 'mac') {
         const note = document.createElement('p');
-        note.textContent =
-            'Note: open "Settings" -> "Security & Privacy" -> "Open Anyway" since it’s not yet on the App Store.';
+        note.innerHTML =
+            '⚠️ Open "Settings" → "Security & Privacy" → "Open Anyway" and then <br/>Open Terminal and run: <code>xattr -rd com.apple.quarantine "/Applications/Peersky Browser.app"</code> since we are not yet on the App Store.';
         note.classList.add('text-xs', 'text-gray-600', 'mt-2');
         details.appendChild(note);
     }
+
 
     container.appendChild(details);
     details.open = true;
