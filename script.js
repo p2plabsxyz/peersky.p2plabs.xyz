@@ -1,5 +1,5 @@
 // Use the releases endpoint to include pre-releases as needed
-const releaseUrl = 'https://api.github.com/repos/p2plabsxyz/peersky-test/releases';
+const releaseUrl = 'https://api.github.com/repos/p2plabsxyz/peersky-browser/releases';
 let releaseData = null;
 
 // Fetch and cache the latest release data (even if it's a pre-release)
