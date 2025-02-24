@@ -18,11 +18,18 @@
   <!-- Tailwind -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet" />
   <title>Peersky Browser</title>
+  <style>
+    .logo {
+      transition: transform 0.3s ease;
+    }
+    .logo:hover {
+      transform: scale(1.1);
+    }
+  </style>
 </head>
-
 <body style="background-color: #fffcf9">
   <center>
-    <img class="mb-6 mt-12" src="./images/peersky-browser.png" width="230" alt="Peersky Browser Logo" />
+    <a href="//peersky.p2plabs.xyz"><img class="logo mb-6 mt-12" src="./images/logo.png" width="230" alt="Peersky Browser Logo" /></a>
     <code class="text-3xl">Peersky Browser</code>
     <p class="mt-2">Rebuilding the Internet for a Better World.</p>
   </center>

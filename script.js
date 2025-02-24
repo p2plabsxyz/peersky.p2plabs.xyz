@@ -112,3 +112,15 @@ document.getElementById('btn-windows').addEventListener('click', async () => {
     const version = release ? release.tag_name : 'Release info unavailable';
     document.getElementById('latest-release').textContent = version;
 })();
+
+// Logo blink animation
+const logo = document.querySelector('.logo');
+const originalSrc = logo.getAttribute('src');
+const hoverSrc = './images/blink.png';
+
+logo.addEventListener('mouseenter', () => {
+    logo.setAttribute('src', hoverSrc);
+});
+logo.addEventListener('mouseleave', () => {
+    logo.setAttribute('src', originalSrc);
+});
