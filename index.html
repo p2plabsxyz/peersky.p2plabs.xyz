@@ -8,7 +8,8 @@
   <!--MetaTags-->
   <meta name="author" content="Akhilesh Thite" />
   <meta property="og:title" content="Peersky Browser" />
-  <meta property="og:description" content="A minimal p2p web browser." />
+  <meta property="og:description"
+    content="A Minimal Local-First P2P Web Browser: Access, Communicate, and Publish Offline" />
   <meta name="keywords" content="peersky, peersky browser, p2plabs, dweb, ipfs" />
   <meta property="og:url" content="https://peersky.p2plabs.xyz/" />
   <meta property="og:type" content="Website" />
@@ -17,33 +18,63 @@
   <!-- Tailwind -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet" />
   <title>Peersky Browser</title>
+  <style>
+    .logo {
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.1);
+    }
+  </style>
 </head>
 
 <body style="background-color: #fffcf9">
   <center>
-    <img class="mb-6 mt-12" src="./images/peersky-browser.png" width="230" alt="Peersky Browser Logo" />
+    <a href="//peersky.p2plabs.xyz"><img class="logo mb-6 mt-12" src="./images/logo.png" width="230"
+        alt="Peersky Browser Logo" /></a>
     <code class="text-3xl">Peersky Browser</code>
+    <p class="mt-2">Rebuilding the Internet for a Better World.</p>
   </center>
   <div class="max-w-3xl mx-auto px-5 sm:px-10 md:px-20 mt-6">
-    <p class="mb-2">A Minimal Local-First P2P Web Browser: Access, Communicate, and Publish Offline</p>
     <div class="flex mb-2">
       Join our community on
       <a href="https://matrix.to/#/#peersky:matrix.org">
         <code class="text-blue-600 hover:text-blue-500 ml-2 mr-2">Matrix</code>
       </a> &
-      <a href="https://discord.gg/jCUf5wv53C">
+      <a href="https://discord.gg/9kUqxjbEx6">
         <code class="text-blue-600 hover:text-blue-500 ml-2">Discord</code>
       </a>
     </div>
-    <span class="text-xs text-yellow-600 border border-yellow-500 bg-yellow-100 text-white p-1 rounded-full">v1.0.0-0
-      Beta
-      Coming Soon for Mac, Windows, & Linux</span>
+    <span id="latest-release"
+      class="text-xs text-yellow-600 border border-yellow-500 bg-yellow-100 text-white p-1 rounded-full">
+    </span>
+    <img src="./images/banner.png"
+      alt="Peersky, displaying multiple overlapping windows. The foreground window shows a search bar with DuckDuckGo, while the background contains a Wikipedia page on ipns:// about Earth and a private hyper:// chat. The central window features a scenic forest image with sunlight filtering through tall trees, and a clock"
+      class="mx-auto block my-4" />
+    <!-- Download Releases Section -->
+    <div class="mt-6 mb-6">
+      <div class="download-buttons flex justify-center space-x-4">
+        <button id="btn-mac" class="focus:outline-none">
+          <img src="./images/macos.png" alt="Download for macOS" class="w-32 hover:opacity-75" />
+        </button>
+        <button id="btn-linux" class="focus:outline-none">
+          <img src="./images/linux.png" alt="Download for Linux" class="w-32 hover:opacity-75" />
+        </button>
+        <button id="btn-windows" class="focus:outline-none">
+          <img src="./images/windows.png" alt="Download for Windows" class="w-32 hover:opacity-75" />
+        </button>
+      </div>
+      <div id="download-options" class="mt-4"></div>
+    </div>
     <div class="mt-2">
       <p>
-        Have you ever wondered what it'd be like if the internet wasn't controlled by a handful of big companies? That's
-        what the distributed web, or DWeb, is all about. It's a new kind of internet that operates on a network of
-        computers where everyone shares and cooperates. This way, no single entity can control or shut it down. It's
-        like turning the entire web into a giant, global community project.
+        Have you ever wondered what it would be like if the internet wasn't controlled by a handful of big companies?
+        That's
+        what the distributed web, or <a href="https://getdweb.net/" class="text-blue-600 hover:text-blue-500">DWeb</a>,
+        is all about. It’s a return to the internet’s original spirit, operating on a network of
+        computers where everyone shares and collaborates. This way, no single entity can control or shut it down. It's
+        like turning the entire web into a giant global community project.
       </p>
       <p class="mt-2">
         Peersky is your experimental personal gatekeeper to a new way of accessing web content. Imagine a world where
@@ -52,18 +83,29 @@
         relying on centralized servers. With Peersky, this vision becomes a reality.
       </p>
       <p class="mt-2">
-        It works by leveraging multiple protocols like IPFS, Hypercore, and Web3. Peersky offers a variety of local P2P
-        applications optimized for specific tasks. For instance, peersky://chat facilitates secure, peer-to-peer
-        messaging, while peersky://upload is used for decentralized file storage. With peersky://editor, users can
-        effortlessly build and publish websites. Additionally, the social reader, a peer-to-peer, offline ActivityPub
-        client, allows users to read and follow microblogs on the fediverse, functioning like a social media RSS feed
-        for the distributed web.
-        As Peersky continues to grow, new protocols such as BitTorrent and Tor, along with additional P2P apps, will be
+        It works by leveraging multiple protocols like <a href="https://ipfs.tech/"
+          class="text-blue-600 hover:text-blue-500">IPFS</a>, <a href="https://holepunch.to/"
+          class="text-blue-600 hover:text-blue-500">Hypercore</a>, and <a href="https://web3url.io/"
+          class="text-blue-600 hover:text-blue-500">Web3</a>. Peersky offers a variety of local P2P
+        applications optimized for specific tasks. For instance, <code>peersky://p2p/chat</code> facilitates secure,
+        peer-to-peer
+        messaging, while <code>peersky://p2p/upload</code> is used for decentralized file storage. With
+        <code>peersky://p2p/editor</code>, anyone can
+        effortlessly build and publish websites. For nerds, <code>peersky://p2p/wiki</code> provides a search interface
+        for browsing
+        Wikipedia over IPFS.
+        Additionally, the social reader, a peer-to-peer, offline ActivityPub
+        client, allows you to read and follow microblogs on the fediverse, functioning like a social
+        media RSS feed for the distributed web.
+        As Peersky continues to grow, new protocols such as <a href="https://veilid.com/"
+          class="text-blue-600 hover:text-blue-500">Veilid</a> and <a href="https://bittorrent.org/introduction.html"
+          class="text-blue-600 hover:text-blue-500">BitTorrent</a>, along with additional P2P apps, will be
         added, further expanding its capabilities and appeal.
       </p>
       <p class="mt-2">
-        Peersky is designed for everyone, offering a user-friendly experience that enhances privacy and digital
-        autonomy, empowering users to explore the web without traditional internet infrastructure.
+        Peersky is designed for everyone, making it easy for <del>users</del> owners to explore the web while enhancing
+        privacy and digital
+        autonomy—without relying on traditional internet infrastructure.
       </p>
     </div>
 
@@ -152,7 +194,8 @@
                 <li>Ecosia</li>
               </ul>
             </li>
-            <li>☐ Tabs? Maybe?</li>
+            <li>☐ <a href="https://github.com/p2plabsxyz/peersky-browser/issues/11"
+                class="text-blue-600 hover:text-blue-500">Tabs?</a></li>
           </ul>
         </li>
         <li>
@@ -190,8 +233,6 @@
               <ul class="list-disc list-inside ml-5">
                 <li>Access on-chain websites.</li>
                 <li>Fetch data from smart contracts using auto, manual, and resource request resolve modes.</li>
-                <li>Retrieve NFT metadata or content (e.g., <code
-                    class="bg-gray-200 px-1 rounded">web3://[contract]/tokenHTML/[tokenId]</code>).</li>
                 <li>Query account balances or other data directly from smart contracts.</li>
               </ul>
             </li>
@@ -200,9 +241,11 @@
         <li>
           <strong>P2P Applications:</strong>
           <ul class="list-disc list-inside ml-5">
-            <li>✅ <code class="bg-gray-200 px-1 rounded">peersky://p2p/chat/</code> - Peer-to-peer messaging</li>
+            <li>✅ <code class="bg-gray-200 px-1 rounded">peersky://p2p/chat/</code> - Peer-to-peer messaging over Hyper
+            </li>
             <li>✅ <code class="bg-gray-200 px-1 rounded">peersky://p2p/upload/</code> - Decentralized file storage</li>
             <li>✅ <code class="bg-gray-200 px-1 rounded">peersky://p2p/editor/</code> - Build and publish websites</li>
+            <li>✅ <code class="bg-gray-200 px-1 rounded">peersky://p2p/wiki/</code> - Browse Wikipedia over IPFS</li>
             <li>✅ <a href="https://reader.distributed.press/"
                 class="text-blue-600 hover:text-blue-500">reader.p2plabs.xyz</a> - A p2p offline ActivityPub client for
               reading and following microblogs on the fediverse.</li>
@@ -266,7 +309,7 @@
         <li>
           <strong>Web Extensions:</strong>
           <ul class="list-disc list-inside ml-5">
-            <li>☐ Ability to add extensions</li>
+            <li>☐ Ability to add and manage extensions</li>
             <li>☐ Default extensions
               <ul class="list-disc list-inside ml-5">
                 <li><a href="https://github.com/gorhill/uBlock" class="text-blue-600 hover:text-blue-500">Ad-blocker</a>
@@ -311,12 +354,15 @@
 
     <footer class="text-center text-sm mt-8 mb-8">
       <a class="underline hover:text-gray-800 hover:no-underline"
-        href="https://github.com/p2plabsxyz/peersky-browser/tree/v1">Github</a>
+        href="https://github.com/p2plabsxyz/peersky-browser/">Github</a>
       <!-- <a class="underline hover:text-gray-800 hover:no-underline"
         href="https://matrix.to/#/#peersky:matrix.org">Matrix</a>
       <a class="underline hover:text-gray-800 hover:no-underline"
         href="https://discord.gg/4sQGarXp">Discord</a> -->
+      <a class="underline hover:text-gray-800 hover:no-underline" href="mailto:peersky@p2plabs.xyz">Contact</a>
       <a class="underline hover:text-gray-800 hover:no-underline" href="https://mastodon.social/@peersky">Mastodon</a>
+      <a class="underline hover:text-gray-800 hover:no-underline"
+        href="https://bsky.app/profile/peersky.mastodon.social.ap.brid.gy">Bluesky</a>
       <a class="underline hover:text-gray-800 hover:no-underline" href="https://twitter.com/PeerskyBrowser">Twitter</a>
       Made with 💙 by
       <a class="underline hover:text-gray-800 hover:no-underline" href="https://p2plabs.xyz/">p2plabs.xyz</a><br />
@@ -340,6 +386,7 @@
       </div>
     </footer>
   </div>
+  <script src="./script.js"></script>
 </body>
 
 </html>
