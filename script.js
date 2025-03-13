@@ -118,6 +118,14 @@ const logo = document.querySelector('.logo');
 const originalSrc = logo.getAttribute('src');
 const hoverSrc = './images/blink.png';
 
+// Blink on page load
+setTimeout(() => {
+    logo.setAttribute('src', hoverSrc);
+    setTimeout(() => {
+        logo.setAttribute('src', originalSrc);
+    }, 300);
+}, 500);
+
 logo.addEventListener('mouseenter', () => {
     logo.setAttribute('src', hoverSrc);
 });
