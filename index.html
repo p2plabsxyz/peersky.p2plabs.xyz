@@ -27,6 +27,8 @@
       transform: scale(1.1);
     }
   </style>
+  <link rel="stylesheet" href="static/css/captcha.css">
+
 </head>
 
 <body style="background-color: #fffcf9">
@@ -421,7 +423,19 @@
       </div>
     </footer>
   </div>
-  <script src="./script.js"></script>
+  <script src="static/js/cap.min.js"></script>
+  <script src="static/js/script.js"></script>
+
+  <!-- CAPTCHA Modal -->
+  <div id="captchaModal" class="captcha-modal" style="display: none;">
+    <div class="captcha-content">
+      <h4>Verify you’re human 🤖➡️🧍‍♂️</h4>
+      <div id="cap-container"></div>
+      <button id="cancelCaptcha" class="cancel-btn">Cancel</button>
+    </div>
+  </div>
+
+
 </body>
 
 </html>
