@@ -53,6 +53,15 @@
   background-color: #45a049;
 }
 
+#verifyCaptchaBtn:hover {
+  background-color: #45a049 !important;
+}
+
+#captchaInput:focus {
+  outline: none;
+  border-color: #4caf50;
+}
+
 /* === Cancel Button === */
 .cancel-btn {
   padding: 8px 16px;
