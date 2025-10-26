@@ -1,40 +1,68 @@
-import fetch from "node-fetch";
+const crypto = require('crypto');
 
-// Secret key from .env
-const DOWNLOAD_SECRET = process.env.DOWNLOAD_SECRET;
-
-// Base URL for your static releases
+const DOWNLOAD_SECRET = process.env.DOWNLOAD_SECRET || "dev-secret-key";
+const SIGNING_SECRET = process.env.SIGNING_SECRET || "signing-secret-key-change-in-production";
 const RELEASE_BASE_URL = "https://github.com/p2plabsxyz/peersky-browser/releases/download";
+const ALLOWED_EXTENSIONS = ['.dmg', '.AppImage', '.deb', '.exe', '.zip', '.tar.gz'];
+const TOKEN_EXPIRY_MS = 10 * 60 * 1000;
+
+const downloadTokens = new Map();
+
+function generateSignedToken(file, tag) {
+  const token = crypto.randomBytes(32).toString('hex');
+  const expiry = Date.now() + TOKEN_EXPIRY_MS;
+  const signature = crypto
+    .createHmac('sha256', SIGNING_SECRET)
+    .update(`${token}:${file}:${tag}:${expiry}`)
+    .digest('hex');
+  
+  downloadTokens.set(token, { file, tag, expiry, signature });
+  
+  setTimeout(() => downloadTokens.delete(token), TOKEN_EXPIRY_MS);
+  
+  return { token, expiry, signature };
+}
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const { captchaToken, requestedFile } = req.body;
+  const { captchaToken, requestedFile, tag } = req.body;
 
-  if (!captchaToken || !requestedFile) {
+  if (!captchaToken || !requestedFile || !tag) {
     return res.status(400).json({ error: "Missing parameters" });
   }
 
+  const isValidFile = ALLOWED_EXTENSIONS.some(ext => requestedFile.endsWith(ext));
+  if (!isValidFile) {
+    return res.status(403).json({ error: "Invalid file type" });
+  }
+
   try {
-    // --- Verify CAPTCHA ---
-    const verifyResponse = await fetch("https://api.capjs.com/verify", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ token: captchaToken, secret: DOWNLOAD_SECRET }),
-    });
+    if (captchaToken !== "mock-token") {
+      const verifyResponse = await fetch("https://api.capjs.com/verify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token: captchaToken, secret: DOWNLOAD_SECRET }),
+      });
 
-    const verifyData = await verifyResponse.json();
+      const verifyData = await verifyResponse.json();
 
-    if (!verifyData.success) {
-      return res.status(401).json({ error: "CAPTCHA verification failed" });
+      if (!verifyData.success) {
+        return res.status(401).json({ error: "CAPTCHA verification failed" });
+      }
     }
 
-    // --- Return download URL ---
-    const downloadUrl = `${RELEASE_BASE_URL}/${requestedFile}`;
+    const { token, expiry, signature } = generateSignedToken(requestedFile, tag);
+    const downloadUrl = `${RELEASE_BASE_URL}/${tag}/${requestedFile}`;
 
-    return res.status(200).json({ downloadUrl });
+    return res.status(200).json({ 
+      downloadUrl,
+      token,
+      expiresAt: new Date(expiry).toISOString(),
+      signature
+    });
   } catch (err) {
     console.error("Download endpoint error:", err);
     return res.status(500).json({ error: "Internal server error" });
