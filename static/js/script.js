@@ -11,66 +11,128 @@ document.addEventListener('DOMContentLoaded', () => {
     const cancelCaptcha = document.getElementById("cancelCaptcha");
     const capContainer = document.getElementById("cap-container");
 
-    // --- CAPTCHA Functions ---
-    
-    // --- Mock CAP for local testing ---
-    /*function showCaptcha(url) {
-        pendingDownloadUrl = url;
-        captchaModal.style.display = "flex";
-
-        // If capInstance already exists, reset it
-        if (!capInstance) {
-            // Mock CAP object
-            capInstance = {
-                solve: () => {
-                    console.log("Mock CAPTCHA solved!");
-                    onVerified();
-                },
-                reset: () => {
-                    console.log("Mock CAPTCHA reset");
-                }
-            };
-
-            // Create a fake button in the modal to "solve" CAPTCHA
-            const mockBtn = document.createElement("button");
-            mockBtn.textContent = "I'm Human (Mock)";
-            mockBtn.style.padding = "8px 16px";
-            mockBtn.style.cursor = "pointer";
-            mockBtn.addEventListener("click", () => capInstance.solve());
-
-            // Clear container and add mock button
-            capContainer.innerHTML = "";
-            capContainer.appendChild(mockBtn);
-        } else {
-            capInstance.reset();
-        }
-    }*/
-
     function showCaptcha(url) {
         pendingDownloadUrl = url;
         if (captchaModal) captchaModal.style.display = "flex";
 
-        if (typeof Cap !== 'undefined') {
-            if (!capInstance) {
-                capInstance = new Cap({
-                    el: "#cap-container",
-                    theme: "light",
-                    verified: onVerified
-                });
+        const captchaText = generateCaptcha();
+        
+        capContainer.innerHTML = `
+            <div style="text-align: center;">
+                <canvas id="captchaCanvas" width="200" height="60" style="border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; margin-bottom: 10px;"></canvas>
+                <input type="text" id="captchaInput" placeholder="Enter captcha" style="width: 200px; padding: 8px; border: 2px solid #ddd; border-radius: 6px; font-size: 14px; margin-bottom: 10px;" />
+                <button id="verifyCaptchaBtn" style="width: 200px; padding: 10px; background: #4caf50; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;">Verify</button>
+            </div>
+        `;
+
+        drawCaptcha(captchaText);
+
+        document.getElementById("verifyCaptchaBtn").addEventListener("click", async () => {
+            const userInput = document.getElementById("captchaInput").value;
+            if (userInput === captchaText) {
+                await onVerified("mock-token");
             } else {
-                capInstance.reset();
+                alert("CAPTCHA verification failed! Please try again.");
+                showCaptcha(url);
             }
-        } else {
-            console.warn("Cap library not loaded!");
+        });
+
+        document.getElementById("captchaInput").addEventListener("keypress", async (e) => {
+            if (e.key === "Enter") {
+                const userInput = document.getElementById("captchaInput").value;
+                if (userInput === captchaText) {
+                    await onVerified("mock-token");
+                } else {
+                    alert("CAPTCHA verification failed! Please try again.");
+                    showCaptcha(url);
+                }
+            }
+        });
+    }
+
+    function generateCaptcha() {
+        const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789';
+        let captcha = '';
+        for (let i = 0; i < 6; i++) {
+            captcha += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        return captcha;
+    }
+
+    function drawCaptcha(text) {
+        const canvas = document.getElementById('captchaCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        ctx.fillStyle = '#f5f5f5';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        for (let i = 0; i < 5; i++) {
+            ctx.strokeStyle = `rgba(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255}, 0.3)`;
+            ctx.beginPath();
+            ctx.moveTo(Math.random() * canvas.width, Math.random() * canvas.height);
+            ctx.lineTo(Math.random() * canvas.width, Math.random() * canvas.height);
+            ctx.stroke();
+        }
+        
+        for (let i = 0; i < 50; i++) {
+            ctx.fillStyle = `rgba(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255}, 0.5)`;
+            ctx.beginPath();
+            ctx.arc(Math.random() * canvas.width, Math.random() * canvas.height, 1, 0, 2 * Math.PI);
+            ctx.fill();
+        }
+        
+        ctx.font = 'bold 32px Arial';
+        ctx.textBaseline = 'middle';
+        
+        for (let i = 0; i < text.length; i++) {
+            const char = text[i];
+            const x = 20 + i * 30;
+            const y = 30 + (Math.random() - 0.5) * 10;
+            const angle = (Math.random() - 0.5) * 0.4;
+            
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.rotate(angle);
+            ctx.fillStyle = `rgb(${Math.random() * 100}, ${Math.random() * 100}, ${Math.random() * 100})`;
+            ctx.fillText(char, 0, 0);
+            ctx.restore();
         }
     }
 
-    function onVerified() {
+    async function onVerified(captchaToken) {
         if (captchaModal) captchaModal.style.display = "none";
-        if (pendingDownloadUrl) {
-            window.open(pendingDownloadUrl, "_blank");
-            pendingDownloadUrl = null;
+        if (!pendingDownloadUrl) return;
+
+        try {
+            const urlParts = pendingDownloadUrl.split('/');
+            const requestedFile = urlParts[urlParts.length - 1];
+            const tag = urlParts[urlParts.length - 2];
+
+            const response = await fetch('/api/download', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    captchaToken,
+                    requestedFile,
+                    tag
+                })
+            });
+
+            const data = await response.json();
+
+            if (response.ok && data.downloadUrl) {
+                window.open(data.downloadUrl, '_blank');
+            } else {
+                alert('Download failed: ' + (data.error || 'Unknown error'));
+            }
+        } catch (err) {
+            console.error('Download request failed:', err);
+            alert('Download failed. Please try again.');
         }
+
+        pendingDownloadUrl = null;
     }
 
     if (cancelCaptcha) {
@@ -131,19 +193,17 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 filteredAssets.forEach(asset => {
                     const li = document.createElement('li');
-                    const a = document.createElement('a');
-                    a.href = asset.browser_download_url;
-                    a.textContent = asset.name;
-                    a.classList.add('text-blue-600', 'hover:underline');
-                    a.style.cursor = 'pointer';
+                    const btn = document.createElement('button');
+                    btn.textContent = asset.name;
+                    btn.classList.add('text-blue-600', 'hover:underline');
+                    btn.style.cursor = 'pointer';
 
                     // Show CAPTCHA on click
-                    a.addEventListener('click', e => {
-                        e.preventDefault();
+                    btn.addEventListener('click', () => {
                         showCaptcha(asset.browser_download_url);
                     });
 
-                    li.appendChild(a);
+                    li.appendChild(btn);
                     ul.appendChild(li);
                 });
             }
