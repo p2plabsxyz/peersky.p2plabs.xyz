@@ -12,65 +12,77 @@ document.addEventListener('DOMContentLoaded', () => {
     const capContainer = document.getElementById("cap-container");
 
     // --- CAPTCHA Functions ---
-    
-    // --- Mock CAP for local testing ---
-    /*function showCaptcha(url) {
-        pendingDownloadUrl = url;
-        captchaModal.style.display = "flex";
-
-        // If capInstance already exists, reset it
-        if (!capInstance) {
-            // Mock CAP object
-            capInstance = {
-                solve: () => {
-                    console.log("Mock CAPTCHA solved!");
-                    onVerified();
-                },
-                reset: () => {
-                    console.log("Mock CAPTCHA reset");
-                }
-            };
-
-            // Create a fake button in the modal to "solve" CAPTCHA
-            const mockBtn = document.createElement("button");
-            mockBtn.textContent = "I'm Human (Mock)";
-            mockBtn.style.padding = "8px 16px";
-            mockBtn.style.cursor = "pointer";
-            mockBtn.addEventListener("click", () => capInstance.solve());
-
-            // Clear container and add mock button
-            capContainer.innerHTML = "";
-            capContainer.appendChild(mockBtn);
-        } else {
-            capInstance.reset();
-        }
-    }*/
-
     function showCaptcha(url) {
         pendingDownloadUrl = url;
         if (captchaModal) captchaModal.style.display = "flex";
 
+        // Real Cap library
         if (typeof Cap !== 'undefined') {
             if (!capInstance) {
                 capInstance = new Cap({
                     el: "#cap-container",
                     theme: "light",
-                    verified: onVerified
+                    verified: async (captchaToken) => {
+                        await onVerified(captchaToken);
+                    }
                 });
             } else {
                 capInstance.reset();
             }
-        } else {
-            console.warn("Cap library not loaded!");
+        } 
+        // Mock button for local dev/testing
+        else {
+            capContainer.innerHTML = "";
+            const mockBtn = document.createElement("button");
+            mockBtn.textContent = "I'm Human (Mock)";
+            mockBtn.className = "mock-captcha-btn";
+            mockBtn.addEventListener("click", async () => {
+                await onVerified("mock-token"); // dummy token for testing
+            });
+            capContainer.appendChild(mockBtn);
         }
     }
 
-    function onVerified() {
+    async function onVerified(captchaToken) {
         if (captchaModal) captchaModal.style.display = "none";
-        if (pendingDownloadUrl) {
-            window.open(pendingDownloadUrl, "_blank");
-            pendingDownloadUrl = null;
+
+        if (!pendingDownloadUrl) return;
+
+        try {
+            // Extract file name
+            const urlParts = pendingDownloadUrl.split('/');
+            const requestedFile = urlParts[urlParts.length - 1];
+
+            const response = await fetch('/api/download', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    captchaToken,
+                    requestedFile
+                })
+            });
+
+            const data = await response.json();
+
+            if (response.ok && data.downloadUrl) {
+                // Trigger actual download
+                const a = document.createElement("a");
+                a.href = data.downloadUrl;
+                a.target = "_blank";
+                a.download = requestedFile;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            } else {
+                alert('Download failed: ' + (data.error || 'Unknown error'));
+            }
+
+        } catch (err) {
+            console.error('Download request failed:', err);
+            alert('Download failed. Please try again.');
         }
+
+        pendingDownloadUrl = null;
     }
 
     if (cancelCaptcha) {
@@ -131,19 +143,17 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 filteredAssets.forEach(asset => {
                     const li = document.createElement('li');
-                    const a = document.createElement('a');
-                    a.href = asset.browser_download_url;
-                    a.textContent = asset.name;
-                    a.classList.add('text-blue-600', 'hover:underline');
-                    a.style.cursor = 'pointer';
+                    const btn = document.createElement('button');
+                    btn.textContent = asset.name;
+                    btn.classList.add('text-blue-600', 'hover:underline');
+                    btn.style.cursor = 'pointer';
 
                     // Show CAPTCHA on click
-                    a.addEventListener('click', e => {
-                        e.preventDefault();
+                    btn.addEventListener('click', () => {
                         showCaptcha(asset.browser_download_url);
                     });
 
-                    li.appendChild(a);
+                    li.appendChild(btn);
                     ul.appendChild(li);
                 });
             }

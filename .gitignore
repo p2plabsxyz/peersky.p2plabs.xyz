@@ -1,2 +1,8 @@
 # macOS system files
 .DS_Store
+
+# Node / Vercel environment files
+.env
+node_modules/
+
+.vercel
