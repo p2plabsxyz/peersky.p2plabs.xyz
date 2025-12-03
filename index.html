@@ -114,6 +114,12 @@
         added, further expanding its capabilities and appeal.
       </p>
       <p class="mt-2">
+        Peersky also includes <a href="https://github.com/p2plabsxyz/peersky-browser/blob/main/docs/LLM.md" class="text-blue-600 hover:text-blue-500">local LLM</a> support. 
+        Instead of routing your prompts through cloud providers or surveillance-based “AI browsers,” Peersky lets apps talk to models running directly on your own device. 
+        This means you can generate code, text, or metadata privately, offline, and publish it straight to the distributed web from your P2P apps. 
+        The AI lives in your browser and on your hardware, not in a surveillance platform.
+      </p>
+      <p class="mt-2">
         Peersky is designed for everyone, making it easy for <del>users</del> owners to explore the web while enhancing
         privacy and digital
         autonomy—without relying on traditional internet infrastructure.
@@ -266,6 +272,20 @@
           </ul>
         </li>
         <li>
+          <strong>Local <code class="bg-gray-200 px-1 rounded">file://</code> browsing with P2P publishing:</strong>
+          <ul class="list-disc list-inside ml-5">
+            <li>✅ Custom <code class="bg-gray-200 px-1 rounded">file://</code> support with privileged access</li>
+            <li>✅ Chrome-style directory listings</li>
+            <li>
+              ✅ One-click P2P publishing to:
+              <ul class="list-disc list-inside ml-5">
+                <li>IPFS (<code class="bg-gray-200 px-1 rounded">ipfs://</code>)</li>
+                <li>Hypercore (<code class="bg-gray-200 px-1 rounded">hyper://</code>)</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
           <strong>Web3 Protocol Handler:</strong>
           <ul class="list-disc list-inside ml-5">
             <li>
@@ -345,6 +365,34 @@
             <li>✅ Hide/show the home page clock</li>
             <li>✅ Change themes</li>
             <li>✅ Clear browser cache</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Local LLM Integration (<code class="bg-gray-200 px-1 rounded">peersky://settings/llm/</code>):</strong>
+          <ul class="list-disc list-inside ml-5">
+            <li>✅ <code>window.llm</code> APIs (chat + streaming, complete)</li>
+            <li>
+              <strong> AI Chat app</strong>
+              <code class="bg-gray-200 px-1 rounded">peersky://p2p/ai-chat/</code>:
+              <ul class="list-disc list-inside ml-5 mt-1">
+                <li>✅ Ported from <a href="https://github.com/AgregoreWeb/website/blob/main/docs/examples/llm-chat.html" class="text-blue-600 hover:text-blue-500">Agregore examples</a> with PeerSky updates</li>
+              </ul>
+            </li>
+            <li>
+              <strong>P2P Editor Integration:</strong>
+              <ul class="list-disc list-inside ml-5 mt-1">
+                <li>✅ New AI generator (<code class="bg-gray-200 px-1 rounded">ai-generator.js</code>) to generate code with AI</li>
+              </ul>
+            </li>
+            <li>
+              <strong>🚧 <a href="https://github.com/p2plabsxyz/peersky-browser/issues/97" class="text-blue-600 hover:text-blue-500">LLM Memory</a>:</strong>
+              <ul class="list-disc list-inside ml-5 mt-1">
+                <li>☐ Optional AI memory that remembers prompts and responses across P2P apps</li>
+                <li>☐ Unified history view shared by the Editor and AI Chat</li>
+                <li>☐ Toggle in Settings to enable or disable memory at any time</li>
+                <li>☐ Clearing P2P data also clears stored AI memory</li>
+              </ul>
+            </li>
           </ul>
         </li>
         <li>
