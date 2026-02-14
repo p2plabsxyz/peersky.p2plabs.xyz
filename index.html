@@ -96,8 +96,8 @@
       <p class="mt-2">
         It works by leveraging multiple protocols like <a href="https://ipfs.tech/"
           class="text-blue-600 hover:text-blue-500">IPFS</a>, <a href="https://holepunch.to/"
-          class="text-blue-600 hover:text-blue-500">Hypercore</a>, and <a href="https://web3url.io/"
-          class="text-blue-600 hover:text-blue-500">Web3</a>. Peersky offers a variety of local P2P
+          class="text-blue-600 hover:text-blue-500">Hypercore</a>, and <a href="https://bittorrent.org/introduction.html"
+          class="text-blue-600 hover:text-blue-500">BitTorrent</a>. Peersky offers a variety of local P2P
         applications optimized for specific tasks. For instance, <code>peersky://p2p/chat</code> facilitates secure,
         peer-to-peer
         messaging, while <code>peersky://p2p/upload</code> is used for decentralized file storage. With
@@ -109,8 +109,7 @@
         client, allows you to read and follow microblogs on the fediverse, functioning like a social
         media RSS feed for the distributed web.
         As Peersky continues to grow, new protocols such as <a href="https://veilid.com/"
-          class="text-blue-600 hover:text-blue-500">Veilid</a> and <a href="https://bittorrent.org/introduction.html"
-          class="text-blue-600 hover:text-blue-500">BitTorrent</a>, along with additional P2P apps, will be
+          class="text-blue-600 hover:text-blue-500">Veilid</a>, along with additional P2P apps, will be
         added, further expanding its capabilities and appeal.
       </p>
       <p class="mt-2">
@@ -283,6 +282,19 @@
                 <li>Hypercore (<code class="bg-gray-200 px-1 rounded">hyper://</code>)</li>
               </ul>
             </li>
+          </ul>
+        </li>
+        <li>
+          <strong><a href="https://github.com/p2plabsxyz/peersky-browser/blob/main/docs/BitTorrent.md" class="text-blue-600 hover:text-blue-500">BitTorrent</a> Protocol Handler:</strong>
+          <ul class="list-disc list-inside ml-5">
+            <li>✅ <a href="https://webtorrent.io/" class="text-blue-600 hover:text-blue-500">WebTorrent</a> in isolated child process</li>
+            <li>✅ <code class="bg-gray-200 px-1 rounded">bittorrent://</code> /
+              <code class="bg-gray-200 px-1 rounded">bt://</code> /
+              <code class="bg-gray-200 px-1 rounded">magnet:</code> native URLs support
+            </li>
+            <li>✅ Real-time download progress UI with pause/resume</li>
+            <li>✅ Auto-destroy torrent on completion (no seeding)</li>
+            <li>🚧 <code class="bg-gray-200 px-1 rounded">bt://</code> website seeding and hosting</li>
           </ul>
         </li>
         <li>
