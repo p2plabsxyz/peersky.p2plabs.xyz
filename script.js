@@ -169,7 +169,7 @@ function renderAssets(os) {
         const label = document.createElement("li");
         label.textContent = title;
         label.classList.add(
-          "mt-4",
+          "mt-2",
           "font-semibold",
           "text-gray-700",
           "list-none",
