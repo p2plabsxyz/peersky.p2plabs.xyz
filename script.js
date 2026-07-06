@@ -2,41 +2,6 @@ const releaseUrl =
   "https://api.github.com/repos/p2plabsxyz/peersky-browser/releases";
 let releaseData = null;
 
-const MAC_QUARANTINE_CMD =
-  'xattr -rd com.apple.quarantine "/Applications/Peersky Browser.app"';
-
-async function writeTextToClipboard(text) {
-  if (typeof text !== "string") {
-    return false;
-  }
-  try {
-    if (navigator.clipboard?.writeText && window.isSecureContext) {
-      await navigator.clipboard.writeText(text);
-      return true;
-    }
-  } catch {
-    /* fall through */
-  }
-  try {
-    const ta = document.createElement("textarea");
-    ta.value = text;
-    ta.readOnly = true;
-    ta.setAttribute("aria-hidden", "true");
-    ta.tabIndex = -1;
-    ta.style.position = "fixed";
-    ta.style.left = "-9999px";
-    ta.style.top = "0";
-    document.body.appendChild(ta);
-    ta.select();
-    ta.setSelectionRange(0, text.length);
-    const ok = document.execCommand("copy");
-    ta.remove();
-    return ok;
-  } catch {
-    return false;
-  }
-}
-
 async function fetchRelease() {
   if (releaseData) return releaseData;
   try {
@@ -178,72 +143,14 @@ function renderAssets(os) {
         appendDownloadLinks(ul, assets);
       };
 
-      addMacSection("Apple Silicon (M series) – arm64", armAssets);
-      addMacSection("Intel Mac – x64", intelAssets);
+      addMacSection("Apple Silicon (M series)", armAssets);
+      addMacSection("Intel Mac", intelAssets);
       addMacSection("macOS", otherMac);
     } else {
       appendDownloadLinks(ul, filteredAssets);
     }
   }
   panel.appendChild(ul);
-
-  if (os === "mac") {
-    const note = document.createElement("p");
-    note.classList.add("text-xs", "text-gray-600", "mt-4");
-    note.appendChild(
-      document.createTextNode(
-        "❗️Important: Since we are not yet on the App Store till stable v1.0.0 release, before opening the app:",
-      ),
-    );
-    note.appendChild(document.createElement("br"));
-    note.appendChild(document.createTextNode("- Open Terminal and run: "));
-    const cmdCode = document.createElement("code");
-    cmdCode.textContent = MAC_QUARANTINE_CMD;
-    cmdCode.style.backgroundColor = "#FFF5D2";
-    note.appendChild(cmdCode);
-    const copyCmdBtn = document.createElement("button");
-    copyCmdBtn.type = "button";
-    copyCmdBtn.textContent = "Copy command";
-    copyCmdBtn.classList.add(
-      "ml-2",
-      "mb-1",
-      "px-2",
-      "py-1",
-      "text-xs",
-      "rounded",
-      "border",
-      "border-gray-400",
-      "bg-white",
-      "text-gray-800",
-      "shadow-sm",
-      "hover:bg-gray-50",
-      "align-middle",
-    );
-    copyCmdBtn.setAttribute(
-      "aria-label",
-      "Copy quarantine removal command to clipboard",
-    );
-    let copyLabelTimer = null;
-    copyCmdBtn.addEventListener("click", async () => {
-      const ok = await writeTextToClipboard(MAC_QUARANTINE_CMD);
-      if (copyLabelTimer) {
-        clearTimeout(copyLabelTimer);
-      }
-      copyCmdBtn.textContent = ok ? "Copied" : "Failed";
-      copyLabelTimer = setTimeout(() => {
-        copyCmdBtn.textContent = "Copy command";
-        copyLabelTimer = null;
-      }, 2000);
-    });
-    note.appendChild(copyCmdBtn);
-    note.appendChild(document.createElement("br"));
-    note.appendChild(
-      document.createTextNode(
-        "- Or on older macOS: System Preferences → Security & Privacy → Open Anyway",
-      ),
-    );
-    panel.appendChild(note);
-  }
 
   details.appendChild(panel);
 
