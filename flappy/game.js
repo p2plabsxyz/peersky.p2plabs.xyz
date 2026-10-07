@@ -39,6 +39,7 @@ window.onload = function() {
 			game.physics.arcade.enable(bird);
 			bird.body.gravity.y = birdGravity;
 			game.input.onDown.add(flap, this);
+			game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR).onDown.add(flap, this);
 			game.time.events.loop(pipeInterval, addPipe); 
 			addPipe();
 		},
