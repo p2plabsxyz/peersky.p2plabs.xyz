@@ -52,8 +52,37 @@ function pickLinuxAssets(assets) {
     const n = asset.name.toLowerCase();
     if (!n.includes("linux")) return false;
     if (n.endsWith(".yml") || n.endsWith(".yaml")) return false;
-    return /\.(deb|apk|pacman|appimage)$/i.test(asset.name);
+    return /\.(deb|apk|pacman|appimage|zsync)$/i.test(asset.name);
   });
+}
+
+function isArmLinux(asset) {
+  return /(arm64|aarch64)/.test(asset.name.toLowerCase());
+}
+
+function isZsync(asset) {
+  return asset.name.toLowerCase().endsWith(".zsync");
+}
+
+// What each Linux file is for, shown next to its link.
+function linuxHint(asset) {
+  const n = asset.name.toLowerCase();
+  if (n.endsWith(".zsync")) return "lets AppImage update tools fetch only what changed";
+  if (n.endsWith(".appimage")) return "runs on most distributions and updates itself";
+  if (n.endsWith(".deb")) {
+    return isArmLinux(asset) ? "Raspberry Pi OS, Ubuntu or Debian" : "Ubuntu, Debian, Mint";
+  }
+  if (n.endsWith(".pacman")) return "Arch Linux";
+  if (n.endsWith(".apk")) return "Alpine Linux";
+  return "";
+}
+
+// AppImage first, since it runs almost anywhere.
+function linuxOrder(asset) {
+  const order = [".appimage", ".deb", ".pacman", ".apk", ".zsync"];
+  const n = asset.name.toLowerCase();
+  const index = order.findIndex((ext) => n.endsWith(ext));
+  return index < 0 ? order.length : index;
 }
 
 function pickWindowsAssets(assets) {
@@ -63,7 +92,7 @@ function pickWindowsAssets(assets) {
   });
 }
 
-function appendDownloadLinks(ul, assets) {
+function appendDownloadLinks(ul, assets, hint) {
   assets.forEach((asset) => {
     const li = document.createElement("li");
     const a = document.createElement("a");
@@ -71,10 +100,26 @@ function appendDownloadLinks(ul, assets) {
     a.rel = "noopener noreferrer";
     a.textContent = asset.name;
     a.target = "_blank";
-    a.classList.add("text-blue-600", "hover:underline");
+    a.classList.add("text-blue-600", "hover:underline", "break-all");
     li.appendChild(a);
+    const text = hint ? hint(asset) : "";
+    if (text) {
+      const span = document.createElement("span");
+      span.classList.add("download-hint");
+      span.textContent = ` (${text})`;
+      li.appendChild(span);
+    }
     ul.appendChild(li);
   });
+}
+
+function addSection(ul, title, assets, hint) {
+  if (assets.length === 0) return;
+  const label = document.createElement("li");
+  label.textContent = title;
+  label.classList.add("mt-2", "font-semibold", "text-gray-700", "list-none");
+  ul.appendChild(label);
+  appendDownloadLinks(ul, assets, hint);
 }
 
 function renderAssets(os) {
@@ -86,8 +131,18 @@ function renderAssets(os) {
 
   const details = document.createElement("details");
   const summary = document.createElement("summary");
-  summary.textContent = `Download Options for ${os.charAt(0).toUpperCase() + os.slice(1)}`;
   summary.classList.add("cursor-pointer", "font-semibold", "mb-2");
+  // The version these files belong to, read from the same release.
+  if (releaseData && typeof releaseData.tag_name === "string") {
+    const tag = document.createElement("span");
+    tag.classList.add("release-tag");
+    tag.textContent = releaseData.tag_name;
+    summary.appendChild(tag);
+    summary.appendChild(document.createTextNode(" "));
+  }
+  summary.appendChild(
+    document.createTextNode(`Download Options for ${os.charAt(0).toUpperCase() + os.slice(1)}`),
+  );
   details.appendChild(summary);
 
   const panel = document.createElement("div");
@@ -129,23 +184,14 @@ function renderAssets(os) {
         return !n.includes("arm64") && !n.includes("x64");
       });
 
-      const addMacSection = (title, assets) => {
-        if (assets.length === 0) return;
-        const label = document.createElement("li");
-        label.textContent = title;
-        label.classList.add(
-          "mt-2",
-          "font-semibold",
-          "text-gray-700",
-          "list-none",
-        );
-        ul.appendChild(label);
-        appendDownloadLinks(ul, assets);
-      };
-
-      addMacSection("Apple Silicon (M series)", armAssets);
-      addMacSection("Intel Mac", intelAssets);
-      addMacSection("macOS", otherMac);
+      addSection(ul, "Apple Silicon (M series)", armAssets);
+      addSection(ul, "Intel Mac", intelAssets);
+      addSection(ul, "macOS", otherMac);
+    } else if (os === "linux") {
+      const sorted = [...filteredAssets].sort((a, b) => linuxOrder(a) - linuxOrder(b));
+      addSection(ul, "PCs and laptops (x64)", sorted.filter((a) => !isArmLinux(a) && !isZsync(a)), linuxHint);
+      addSection(ul, "Raspberry Pi and other ARM boards (arm64)", sorted.filter((a) => isArmLinux(a) && !isZsync(a)), linuxHint);
+      addSection(ul, "AppImage update file (.zsync)", sorted.filter(isZsync), linuxHint);
     } else {
       appendDownloadLinks(ul, filteredAssets);
     }
@@ -209,11 +255,8 @@ document.getElementById("btn-windows").addEventListener("click", async () => {
   renderAssets("windows");
 });
 
-(async function () {
-  const release = await fetchRelease();
-  const version = release ? release.tag_name : "Release info unavailable";
-  document.getElementById("latest-release").textContent = version;
-})();
+// Fetched once up front, so the first click on a download button opens at once.
+fetchRelease();
 
 const logo = document.querySelector(".logo");
 const originalSrc = logo.getAttribute("src");
