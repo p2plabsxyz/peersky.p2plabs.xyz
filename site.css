@@ -1046,21 +1046,24 @@ kbd {
   line-height: 1.5;
 }
 
+/* Auto margins split the free space above and below the bird, so it sits in
+   the middle between the text and the buttons; the padding is the least gap. */
 .invite-logo {
   width: 96px;
   height: auto;
-  margin: 10px 0 12px;
+  margin: auto 0;
+  padding: 12px 0;
+  box-sizing: content-box;
 }
 
 @media (min-width: 720px) {
-  .invite-logo { width: 150px; margin: 14px 0 10px; }
+  .invite-logo { width: 150px; padding: 16px 0; }
 }
 
 .invite-buttons {
   display: grid;
   gap: 8px;
   width: 100%;
-  margin-top: auto;
 }
 
 .invite-button,
