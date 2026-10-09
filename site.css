@@ -283,8 +283,15 @@ body {
   border-radius: 8px;
 }
 
+/* On phones the three desktop buttons share the row, up to 40px tall like
+   the store badges below them, which Apple keeps at least 40px on screen. */
+.dl-desktop {
+  width: calc((100% - 24px) / 3);
+  max-width: 110px;
+}
+
 .dl-desktop img {
-  width: 6rem;
+  width: 100%;
 }
 
 .dl-store img {
@@ -315,14 +322,17 @@ body {
 @media (min-width: 640px) {
   .download-grid {
     display: grid;
-    grid-template-columns: repeat(6, 72px);
+    grid-template-columns: repeat(6, 80px);
     justify-content: center;
     gap: 14px 0;
   }
 
   .dl-break { display: none; }
-  .dl-desktop { grid-column: span 2; justify-self: center; }
+  .dl-desktop { grid-column: span 2; justify-self: center; width: auto; max-width: none; }
   .dl-desktop img { width: 8rem; }
+  /* As tall as the desktop buttons above them (8rem wide, drawn 500 by 182).
+     Phones keep 40px, the smallest Apple allows for its badge on screen. */
+  .dl-store img { height: calc(8rem * 182 / 500); }
   .dl-ios { grid-column: 2 / 4; justify-self: center; }
   .dl-android { grid-column: 4 / 6; justify-self: center; }
 }
