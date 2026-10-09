@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Akhilesh Thite" />
+  <meta name="description" content="Link an old laptop or phone to your phone once, and it keeps your private files encrypted at home. Only your devices can open them." />
+  <meta property="og:title" content="Use any spare device as your private cloud with PeerSky" />
+  <meta property="og:description" content="Link an old laptop or phone to your phone once, and it keeps your private files encrypted at home. Only your devices can open them." />
+  <meta property="og:url" content="https://peersky.p2plabs.xyz/blog/spare-device-private-cloud/" />
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2026-10-08" />
+  <meta property="og:image" content="https://peersky.p2plabs.xyz/blog/spare-device-private-cloud/banner.jpg" />
+  <meta property="og:image:width" content="1600" />
+  <meta property="og:image:height" content="840" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Use any spare device as your private cloud with PeerSky" />
+  <meta name="twitter:image" content="https://peersky.p2plabs.xyz/blog/spare-device-private-cloud/banner.jpg" />
+  <link rel="shortcut icon" type="image/png" href="../../images/favicon.ico" />
+  <link href="../../lib/tailwind.min.css" rel="stylesheet" />
+  <link href="../../site.css" rel="stylesheet" />
+  <title>Use any spare device as your private cloud with PeerSky</title>
+</head>
+
+<body>
+  <header>
+    <div class="max-w-3xl mx-auto px-5 sm:px-10">
+      <nav class="page-nav" aria-label="Site">
+        <a class="back-link" href="../">
+          <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          Blog
+        </a>
+      </nav>
+      <div class="post-header">
+        <time class="post-date" datetime="2026-10-08">October 8, 2026</time>
+        <h1>Use any spare device as your private cloud with PeerSky</h1>
+      </div>
+      <img class="post-banner" src="./banner.jpg" width="1600" height="840" alt="A spare laptop opening a private PDF that a phone just saved with PeerSky" />
+    </div>
+  </header>
+
+  <main>
+    <article class="max-w-3xl mx-auto px-5 sm:px-10">
+      <div class="post-body">
+        <p>That old laptop in a drawer can be your own cloud. Link it to your phone with PeerSky once, and it keeps your private files encrypted at home. Only your devices can open them. There's no account, no server and no monthly plan, and your devices' free space is the only limit.</p>
+        <p>You need PeerSky on both devices. Get it for your computer and your phone at <a href="../../#downloads">peersky.p2plabs.xyz</a>.</p>
+
+        <h2>1. Link your devices</h2>
+        <p>On your phone, open Settings, then Link Device, then Sync with another device. It shows a code. On the spare laptop, open Backup &amp; Restore, scan that code under Identity transfer and press Upload Hyper. Scan the code the laptop shows back with your phone. When both screens show the same six digits, tap It matches.</p>
+        <figure>
+          <img src="./link.jpg" width="1600" height="917" loading="lazy" alt="PeerSky Desktop's Backup &amp; Restore page and a phone's Link Device screen, both showing the code 150053" />
+          <figcaption>Both screens show the same code before anything moves.</figcaption>
+        </figure>
+        <p>Now both devices hold the same key, and nobody else has it.</p>
+
+        <h2>2. Save a file as Private</h2>
+        <p>In Hyperdrive on your phone, tap Choose file and pick Private. The file is encrypted on your phone before it goes anywhere. There's no size limit: a two-page PDF or a whole movie, as long as your devices have room for it.</p>
+        <figure>
+          <img src="./upload.jpg" width="1200" height="1122" loading="lazy" alt="Hyperdrive on a phone: choosing Private for a file, then the Uploaded sheet with its hyper:// link" />
+          <figcaption>A private file gets a link too, and the link is safe to share.</figcaption>
+        </figure>
+        <p>Here Sam drops the link in the family chat on PeerChat, so it's easy to find later.</p>
+        <figure>
+          <img src="./chat.jpg" width="1600" height="917" loading="lazy" alt="The link sent in a PeerChat room called Family, on Alice's desktop and on Sam's phone" />
+          <figcaption>Everyone in the room gets the link. Only Sam's devices can open it.</figcaption>
+        </figure>
+
+        <h2>How it works</h2>
+        <figure class="diagram" role="img" aria-label="Your phone and your spare laptop hold the same key from Link Device and swap encrypted files directly, with no server. Anyone else with the link has no key, so there is nothing for them to read.">
+          <div class="dg-pair">
+            <div class="dg-node">
+              <svg aria-hidden="true" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="12" y="4" width="16" height="32" rx="4" /><path d="M18 31h4" /></svg>
+              <strong>Your phone</strong>
+              <span>Saves files as Private</span>
+            </div>
+            <div class="dg-arrow">
+              <svg aria-hidden="true" viewBox="0 0 80 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h72M12 2 4 8l8 6M68 2l8 6-8 6" /></svg>
+              <span>Encrypted, device to device</span>
+            </div>
+            <div class="dg-node">
+              <svg aria-hidden="true" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="8" width="26" height="18" rx="2.5" /><path d="M3 31h34" /></svg>
+              <strong>Your spare laptop</strong>
+              <span>Always on, keeps your files</span>
+            </div>
+          </div>
+          <p class="dg-key">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4" /><path d="m11 12 9-9M17 6l3 3M14 9l2 2" /></svg>
+            Both hold the same key, from Link Device. No server in between.
+          </p>
+          <div class="dg-outsider">
+            <svg aria-hidden="true" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="20" cy="13" r="6" /><path d="M8 34c1.5-7 6-10 12-10s10.5 3 12 10" /></svg>
+            <div>
+              <strong>Anyone else with the link</strong>
+              <span>No key, so there's nothing to read</span>
+            </div>
+          </div>
+        </figure>
+
+        <h2>Someone who isn't linked</h2>
+        <p>Alice is in the same chat, so she has the link too. When she opens it, her PeerSky can't read any of it.</p>
+        <figure>
+          <img src="./refused.jpg" width="1600" height="325" loading="lazy" alt="Alice's PeerSky opening the link: This drive is private. Only devices linked to the one that made it can open it." />
+          <figcaption>What anyone outside your devices sees.</figcaption>
+        </figure>
+
+        <h2>Leave it on</h2>
+        <p>Keep the spare device on, with PeerSky open, and it works like your own cloud. Sam's laptop opens the file from the link, and keeps a copy, so it still opens with PeerSky closed on the phone. It works the other way too: files you save as Private on the laptop open on your phone, on your home Wi-Fi or when you're out.</p>
+        <figure>
+          <img src="./linked.jpg" width="1600" height="935" loading="lazy" alt="Sam's spare laptop showing tax-return-2025.pdf from the private link" />
+          <figcaption>The same link on Sam's spare laptop.</figcaption>
+        </figure>
+        <p>Any computer you can leave on will do: an old laptop, a desktop or a Raspberry Pi. An old phone works too, plugged in with PeerSky open.</p>
+
+        <h2>What people use it for</h2>
+        <div class="use-cases">
+          <div class="use-case">
+            <svg aria-hidden="true" viewBox="0 0 48 48" fill="none" stroke="#2563eb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 5h15l9 9v29H13z" /><path d="M28 5v9h9M19 25h12M19 31h12M19 37h7" /></svg>
+            <div>
+              <h3>Papers you need anywhere</h3>
+              <p>Tax returns, a lease, a passport scan. They stay on the laptop at home, and your phone opens them when you need them.</p>
+            </div>
+          </div>
+          <div class="use-case">
+            <svg aria-hidden="true" viewBox="0 0 48 48" fill="none" stroke="#2563eb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="10" width="36" height="28" rx="4" /><circle cx="18" cy="20" r="3.5" /><path d="m6 33 11-10 9 8 6-5 10 9" /></svg>
+            <div>
+              <h3>Photos off your phone</h3>
+              <p>Save them as Private and open them on the laptop. It keeps a copy, so they're there even when the phone isn't.</p>
+            </div>
+          </div>
+          <div class="use-case">
+            <svg aria-hidden="true" viewBox="0 0 48 48" fill="none" stroke="#2563eb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="9" width="36" height="30" rx="4" /><path d="M6 17h36M6 31h36M14 9v8M24 9v8M34 9v8M14 31v8M24 31v8M34 31v8M21 21l6 3-6 3z" /></svg>
+            <div>
+              <h3>Big videos and archives</h3>
+              <p>No size limit besides free space. Save a long video as Private on your phone and play it on the laptop.</p>
+            </div>
+          </div>
+          <div class="use-case">
+            <svg aria-hidden="true" viewBox="0 0 48 48" fill="none" stroke="#2563eb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18a26 26 0 0 1 36 0M12 25a17 17 0 0 1 24 0M18 32a8 8 0 0 1 12 0" /><circle cx="24" cy="38" r="2" fill="#2563eb" /></svg>
+            <div>
+              <h3>Home Wi-Fi, no internet</h3>
+              <p>Your phone and laptop find each other on the same Wi-Fi, even with the internet down.</p>
+            </div>
+          </div>
+        </div>
+
+        <p class="post-end">Try it with a device you already have. Get PeerSky at <a href="../../#downloads">peersky.p2plabs.xyz</a>.</p>
+      </div>
+
+      <peersky-footer></peersky-footer>
+    </article>
+  </main>
+
+  <script src="../../components/footer.js"></script>
+</body>
+
+</html>
