@@ -84,6 +84,11 @@
       </div>
       <div class="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 mb-2 text-center">
         <span>Join our community on</span>
+        <!-- Opens the PeerChat popup; without scripts the link goes to /peerchat/. -->
+        <a href="./peerchat/" data-peerchat-invite>
+          <code class="text-blue-600 hover:text-blue-500">PeerChat</code>
+        </a>
+        <span>&</span>
         <a href="https://matrix.to/#/#peersky:matrix.org" target="_blank" rel="noopener noreferrer">
           <code class="text-blue-600 hover:text-blue-500">Matrix</code>
         </a>
@@ -92,10 +97,6 @@
           <code class="text-blue-600 hover:text-blue-500">Discord</code>
         </a>
         <span>- bridged)</span>
-        <span>&</span>
-        <a href="https://republic.p2plabs.xyz/" target="_blank" rel="noopener noreferrer">
-          <code class="text-blue-600 hover:text-blue-500">PeerChat</code>
-        </a>
       </div>
       <img src="./images/banner.jpg" width="2000" height="833"
         alt="PeerSky on a laptop and two phones: a P2PMD note on an iPhone, the home page and PeerChat on the desktop, and PeerTunes on an Android phone"
@@ -746,6 +747,24 @@
       <peersky-footer></peersky-footer>
     </div>
   </main>
+
+  <dialog class="invite-dialog" id="peerchat-dialog" aria-labelledby="peerchat-dialog-title">
+    <div class="invite-dialog-head">
+      <h2 id="peerchat-dialog-title">Join us on PeerChat</h2>
+      <button class="invite-close" type="button" aria-label="Close">
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="m4 4 10 10M14 4 4 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+      </button>
+    </div>
+    <peerchat-invite room="bc8f61ba9f96a181bb26e0221e5caefc48e5987c89ccd1292cefa3b4e544c845" name="P2P Republic"></peerchat-invite>
+    <p class="invite-dialog-foot">
+      <a href="https://republic.p2plabs.xyz/" target="_blank" rel="noopener noreferrer">About P2P Republic</a>
+      ·
+      <a href="./peerchat/">Make an invite for your own room</a>
+    </p>
+  </dialog>
+
+  <script src="./lib/toqr/toqr.js"></script>
+  <script src="./components/peerchat-invite.js"></script>
   <script src="./script.js"></script>
   <script src="./orbit.js"></script>
   <script src="./components/footer.js"></script>

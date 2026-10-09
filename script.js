@@ -289,3 +289,19 @@ if (docsMenu) {
     }
   });
 }
+
+// PeerChat in the community line opens the two steps for P2P Republic. The
+// dialog closes on its button, on Escape, or on a click outside it.
+const peerchatDialog = document.getElementById("peerchat-dialog");
+if (peerchatDialog && typeof peerchatDialog.showModal === "function") {
+  for (const link of document.querySelectorAll("[data-peerchat-invite]")) {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      peerchatDialog.showModal();
+    });
+  }
+  peerchatDialog.querySelector(".invite-close").addEventListener("click", () => peerchatDialog.close());
+  peerchatDialog.addEventListener("click", (event) => {
+    if (event.target === peerchatDialog) peerchatDialog.close();
+  });
+}
