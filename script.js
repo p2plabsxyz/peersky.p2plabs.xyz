@@ -275,3 +275,17 @@ logo.addEventListener("mouseenter", () => {
 logo.addEventListener("mouseleave", () => {
   logo.setAttribute("src", originalSrc);
 });
+
+// The Docs menu closes on a click anywhere else, or on Escape.
+const docsMenu = document.querySelector(".nav-menu");
+if (docsMenu) {
+  document.addEventListener("click", (event) => {
+    if (docsMenu.open && !docsMenu.contains(event.target)) docsMenu.open = false;
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && docsMenu.open) {
+      docsMenu.open = false;
+      docsMenu.querySelector("summary").focus();
+    }
+  });
+}
