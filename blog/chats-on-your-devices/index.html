@@ -6,9 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="author" content="Akhilesh Thite" />
-  <meta name="description" content="How PeerChat runs private chats with no server: devices find each other, pass messages on, sign every one, change keys every hour and keep rooms in order themselves." />
+  <meta name="description" content="How PeerChat runs private chats with no server: devices find each other over HyperDHT and the local network, pass messages on, sign every one, change keys every hour and moderate rooms themselves." />
   <meta property="og:title" content="Chats that live on your devices, not on a server" />
-  <meta property="og:description" content="How PeerChat runs private chats with no server: devices find each other, pass messages on, sign every one, change keys every hour and keep rooms in order themselves." />
+  <meta property="og:description" content="How PeerChat runs private chats with no server: devices find each other over HyperDHT and the local network, pass messages on, sign every one, change keys every hour and moderate rooms themselves." />
   <meta property="og:url" content="https://peersky.p2plabs.xyz/blog/chats-on-your-devices/" />
   <meta property="og:type" content="article" />
   <meta property="article:published_time" content="2026-10-09" />
@@ -44,17 +44,13 @@
   <main>
     <article class="max-w-3xl mx-auto px-5 sm:px-10">
       <div class="post-body">
-        <p>PeerChat is the chat app in PeerSky, on your computer and on your phone. There's no account, no phone number and no server. Pick a name, start a room and send the invite.</p>
+        <p>PeerChat is the chat app in PeerSky, on your computer and on your phone. There's no account, no phone number and no server. Pick a name, make a room and send its invite link in any app, or as a QR code from <a href="../../peerchat/#make-invite">peersky.p2plabs.xyz/peerchat</a>. The invite carries the room's key, so send it only to the people you want in the room.</p>
         <p>Most chat apps run through a server. It delivers every message, keeps the history, knows who's who and enforces the rules. PeerChat has no server, so the devices in a room do all of that between themselves.</p>
         <p>You need PeerSky on each device. Get it for your computer and your phone at <a href="../../#downloads">peersky.p2plabs.xyz</a>.</p>
-
-        <h2>Start a room</h2>
-        <p>Press New Room on your computer, or Create group on your phone. Copy the invite link from the room's info on your computer, or tap share on your phone, and send it in any app. You can also turn it into a QR code at <a href="../../peerchat/#make-invite">peersky.p2plabs.xyz/peerchat</a>. When Sam taps it, PeerSky asks first, because everyone in the room will see Sam's name and photo.</p>
         <figure>
           <img src="./invite.jpg" width="1600" height="876" loading="lazy" alt="The room's info on Alice's desktop with its invite link, rules and members, and Sam's phone asking Join this chat?" />
           <figcaption>The room's info has its invite link and its rules. PeerSky asks before it joins.</figcaption>
         </figure>
-        <p>The invite carries the room's key, so anyone with it can join. Send it only to the people you want in the room.</p>
 
         <h2>What a server does, and what PeerChat does instead</h2>
         <div class="vs">
@@ -62,7 +58,7 @@
             <h3>Finding each other</h3>
             <div class="vs-sides">
               <p class="vs-side vs-server"><span>With a server</span>It knows who's online and connects them.</p>
-              <p class="vs-side vs-p2p"><span>In PeerChat</span>Devices find each other on a public peer-to-peer network, by a code made from the room's key that opens nothing. On the same Wi-Fi, they find each other directly.</p>
+              <p class="vs-side vs-p2p"><span>In PeerChat</span>Devices find each other on HyperDHT, a public peer-to-peer network, by a code made from the room's key that opens nothing, then connect directly. On the same Wi-Fi, they find each other with mDNS, no internet needed.</p>
             </div>
           </div>
           <div class="vs-row">
@@ -94,7 +90,7 @@
             </div>
           </div>
           <div class="vs-row">
-            <h3>Keeping a room in order</h3>
+            <h3>Moderation</h3>
             <div class="vs-sides">
               <p class="vs-side vs-server"><span>With a server</span>It bans people and filters messages for everyone.</p>
               <p class="vs-side vs-p2p"><span>In PeerChat</span>Every device runs the room's filters and limits itself. A removal signed by the room's creator is passed on until it reaches everyone.</p>
@@ -186,13 +182,13 @@
         <p>So someone who joins later, or gets hold of a forwarded invite, can't read anything from the hours before they arrived. If a phone is lost, move to a new room, since a key still opens every hour after its own.</p>
         <p>New rooms are the ones made with PeerSky Mobile 0.1.2 and the desktop release that comes with it. Older versions can't open them, so update PeerSky on every device. Rooms made before, P2P Republic among them, keep one key, so every version can still read them.</p>
 
-        <h2>Keeping a room in order</h2>
+        <h2>Moderation</h2>
         <p>With no server to do it, every device enforces the room's rules itself. Whoever makes a room picks them: an abuse filter, a filter for profanity and slurs, and a spam limit. Links to adult sites are always blocked. The rules are fixed once the room is made, and they show in the room's info.</p>
         <p>Each device checks what it sends and what it receives. A message that breaks the rules is stopped before it's sent, and checked again on every device that receives it. Pictures are checked the same way, on the device that sends them and on every device that gets them. Someone who keeps breaking the rules gets a warning, then is shut out of the room for a while.</p>
         <p>The person who made the room can remove someone. The removal is signed with their key and passed on like a message, so it reaches every device in the room, even ones that never connected to them, and every device refuses that person's messages from then on. Anyone can also block someone, or report them.</p>
 
         <h2>No internet, same Wi-Fi</h2>
-        <p>PeerChat finds the other devices on your Wi-Fi by itself, so with the internet down, everyone on the same network keeps chatting.</p>
+        <p>Every room is joined twice: on <a href="https://github.com/holepunchto/hyperdht" target="_blank" rel="noopener noreferrer">HyperDHT</a> across the internet, and on a separate swarm on your local network that devices find with mDNS, using our <a href="https://github.com/p2plabsxyz/hyperdht-mdns" target="_blank" rel="noopener noreferrer">hyperdht-mdns</a>. The local one needs no public server to start from, so with the internet down, everyone on the same Wi-Fi keeps chatting. It needs a network, not an internet connection.</p>
 
         <p>For the technical details, read:</p>
         <ul>
