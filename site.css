@@ -842,7 +842,7 @@ kbd {
   text-align: center;
 }
 
-/* The private cloud diagram: side by side on wide screens, stacked on phones. */
+/* Diagrams in posts: side by side on wide screens, stacked on phones. */
 .post-body .diagram {
   padding: 20px;
   border: 1px solid #e5e7eb;
@@ -952,6 +952,148 @@ kbd {
   flex: none;
   width: 36px;
   height: 36px;
+}
+
+/* Three steps in a row, for a message on its way across a room. */
+.dg-trio {
+  display: grid;
+  gap: 10px;
+  align-items: center;
+}
+
+@media (min-width: 640px) {
+  .dg-trio { grid-template-columns: 1fr auto 1fr auto 1fr; }
+  .dg-trio .dg-arrow { max-width: 92px; }
+  .dg-trio .dg-arrow svg { width: 52px; }
+}
+
+/* What a server does next to what PeerChat does: side by side on wide
+   screens, stacked on phones. */
+.vs {
+  display: grid;
+  gap: 12px;
+}
+
+.vs-row {
+  padding: 14px 16px 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  background: #fff;
+}
+
+.vs-row h3 {
+  color: var(--ink);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.vs-sides {
+  display: grid;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+@media (min-width: 640px) {
+  .vs-sides { grid-template-columns: 1fr 1fr; }
+}
+
+.vs-side {
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.vs-side span {
+  display: block;
+  margin-bottom: 2px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.vs-server {
+  background: #f3f4f6;
+}
+
+.vs-server span {
+  color: var(--muted);
+}
+
+.vs-p2p {
+  background: var(--accent-soft);
+}
+
+.vs-p2p span {
+  color: var(--accent);
+}
+
+/* A key for each hour, each made from the one before. */
+.dg-hours {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.dg-hour {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 4px;
+  border-radius: 12px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.dg-hour svg {
+  width: 24px;
+  height: 24px;
+}
+
+.dg-hour + .dg-hour::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -13px;
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid var(--line);
+  border-right: 2px solid var(--line);
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.dg-hour.is-sealed {
+  background: #f3f4f6;
+  color: var(--muted);
+}
+
+.dg-hours-labels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-top: 10px;
+  font-size: 13px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.dg-hours-labels span {
+  padding-top: 6px;
+  border-top: 2px solid var(--accent);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.dg-hours-labels .is-sealed {
+  border-top-color: #d1d5db;
+  color: var(--muted);
 }
 
 .use-cases {
