@@ -17,6 +17,7 @@
   <link rel="shortcut icon" type="image/png" href="../images/favicon.ico" />
   <link href="../lib/tailwind.min.css" rel="stylesheet" />
   <link href="../site.css" rel="stylesheet" />
+  <link rel="alternate" type="application/rss+xml" title="PeerSky Blog" href="feed.xml" />
   <title>Blog · PeerSky</title>
 </head>
 
@@ -30,13 +31,13 @@
         </a>
       </nav>
       <h1 class="page-title">Blog</h1>
-      <p class="page-lede">Guides and stories about PeerSky.</p>
+      <p class="page-lede">Guides and stories about PeerSky. <a class="text-blue-600 hover:text-blue-500 underline" href="feed.xml">Subscribe with RSS</a>.</p>
     </div>
   </header>
 
   <main>
     <div class="max-w-3xl mx-auto px-5 sm:px-10">
-      <!-- Newest first. Each post is a folder here with its own index.html and images. -->
+      <!-- Newest first. Each post is a folder here with its own index.html and images, and an item in feed.xml. -->
       <ul class="post-list">
         <li>
           <a class="post-card" href="./chats-on-your-devices/">
