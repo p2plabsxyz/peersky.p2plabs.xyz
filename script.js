@@ -275,3 +275,33 @@ logo.addEventListener("mouseenter", () => {
 logo.addEventListener("mouseleave", () => {
   logo.setAttribute("src", originalSrc);
 });
+
+// The Docs menu closes on a click anywhere else, or on Escape.
+const docsMenu = document.querySelector(".nav-menu");
+if (docsMenu) {
+  document.addEventListener("click", (event) => {
+    if (docsMenu.open && !docsMenu.contains(event.target)) docsMenu.open = false;
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && docsMenu.open) {
+      docsMenu.open = false;
+      docsMenu.querySelector("summary").focus();
+    }
+  });
+}
+
+// PeerChat in the community line opens the two steps for P2P Republic. The
+// dialog closes on its button, on Escape, or on a click outside it.
+const peerchatDialog = document.getElementById("peerchat-dialog");
+if (peerchatDialog && typeof peerchatDialog.showModal === "function") {
+  for (const link of document.querySelectorAll("[data-peerchat-invite]")) {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      peerchatDialog.showModal();
+    });
+  }
+  peerchatDialog.querySelector(".invite-close").addEventListener("click", () => peerchatDialog.close());
+  peerchatDialog.addEventListener("click", (event) => {
+    if (event.target === peerchatDialog) peerchatDialog.close();
+  });
+}

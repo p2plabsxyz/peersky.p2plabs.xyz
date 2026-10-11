@@ -37,6 +37,17 @@
   <header class="hero">
     <div class="stage-grid" aria-hidden="true"></div>
     <div class="max-w-3xl mx-auto px-5 sm:px-10 md:px-20">
+      <nav class="top-nav" aria-label="Site">
+        <a href="./blog/">Blog</a>
+        <a href="./news/">News</a>
+        <details class="nav-menu">
+          <summary>Docs <svg class="nav-chevron" aria-hidden="true" width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></summary>
+          <div class="nav-menu-list">
+            <a href="https://github.com/p2plabsxyz/peersky-browser/tree/main/docs" target="_blank" rel="noopener noreferrer">Desktop</a>
+            <a href="https://github.com/p2plabsxyz/peersky-mobile/tree/main/docs" target="_blank" rel="noopener noreferrer">Mobile</a>
+          </div>
+        </details>
+      </nav>
       <section class="stage" id="orbit" aria-label="PeerSky's apps, on a ring of phones. Hover or tap a phone for its story.">
         <svg class="orbit-lines" aria-hidden="true" focusable="false"></svg>
         <div class="orbit-nodes"></div>
@@ -73,6 +84,11 @@
       </div>
       <div class="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 mb-2 text-center">
         <span>Join our community on</span>
+        <!-- Opens the PeerChat popup; without scripts the link goes to /peerchat/. -->
+        <a href="./peerchat/" data-peerchat-invite>
+          <code class="text-blue-600 hover:text-blue-500">PeerChat</code>
+        </a>
+        <span>&</span>
         <a href="https://matrix.to/#/#peersky:matrix.org" target="_blank" rel="noopener noreferrer">
           <code class="text-blue-600 hover:text-blue-500">Matrix</code>
         </a>
@@ -81,10 +97,6 @@
           <code class="text-blue-600 hover:text-blue-500">Discord</code>
         </a>
         <span>- bridged)</span>
-        <span>&</span>
-        <a href="https://republic.p2plabs.xyz/" target="_blank" rel="noopener noreferrer">
-          <code class="text-blue-600 hover:text-blue-500">PeerChat</code>
-        </a>
       </div>
       <img src="./images/banner.jpg" width="2000" height="833"
         alt="PeerSky on a laptop and two phones: a P2PMD note on an iPhone, the home page and PeerChat on the desktop, and PeerTunes on an Android phone"
@@ -465,45 +477,209 @@
               <li>
                 <strong>Browsing:</strong>
                 <ul class="list-disc list-inside ml-5">
-                  <li>✅ Tabs that come back after a restart, and incognito tabs</li>
-                  <li>✅ Bookmarks, favourites, history and downloads</li>
-                  <li>✅ Page zoom per tab, desktop view, sharing and printing</li>
-                  <li>✅ Search with DuckDuckGo (default), DuckDuckGo without AI, Startpage, Ecosia, Kagi or your own engine</li>
-                  <li>✅ Home screen widgets and quick actions on iPhone</li>
+                  <li>✅ Back, forward and reload, from the bar at the bottom
+                    <ul class="list-disc list-inside ml-5">
+                      <li>Swipe in from the left edge to go back and from the right edge to go forward</li>
+                      <li>Pull down at the top of a page to reload it</li>
+                    </ul>
+                  </li>
+                  <li>✅ Address bar at the top or the bottom, showing the site or the full address
+                    <ul class="list-disc list-inside ml-5">
+                      <li>A line along it fills as a page loads</li>
+                      <li>Suggestions from your history, the site first and the most used first</li>
+                      <li>Search suggestions from your search engine as you type, with an arrow to keep typing from one, never in incognito tabs or for addresses</li>
+                      <li>A button after reload that you choose: Share (default), Add Bookmark, Add Favourite, Reader View, Send to Your Devices, Zoom, Desktop View, Print, New Tab or none</li>
+                    </ul>
+                  </li>
+                  <li>✅ Search engine
+                    <ul class="list-disc list-inside ml-5">
+                      <li>DuckDuckGo (default)</li>
+                      <li>DuckDuckGo without AI</li>
+                      <li>Startpage</li>
+                      <li>Ecosia</li>
+                      <li>Kagi</li>
+                      <li>Your own engine, from a search address</li>
+                      <li>The other engines a tap away, for one search</li>
+                    </ul>
+                  </li>
+                  <li>✅ Tabs
+                    <ul class="list-disc list-inside ml-5">
+                      <li>Tabs come back after a restart</li>
+                      <li>Recently closed tabs, and Undo after closing one</li>
+                      <li>Tabs not opened for two weeks fold into an Inactive tabs group</li>
+                      <li>Pick several tabs to copy their links, share them or close them</li>
+                      <li>Press and hold a tab to drag it to another place</li>
+                      <li>Five live pages at once, the rest kept asleep until opened</li>
+                    </ul>
+                  </li>
+                  <li>✅ Incognito tabs
+                    <ul class="list-disc list-inside ml-5">
+                      <li>No history, no saved tab, no tab preview on disk and no cache</li>
+                      <li>Cookies and site data kept apart from normal tabs and gone when the last incognito tab closes</li>
+                      <li>Links opened from one stay incognito</li>
+                      <li>Sites cannot publish to your drives from one</li>
+                    </ul>
+                  </li>
+                  <li>✅ Bookmarks, in folders one level deep, with Undo after removing one</li>
+                  <li>✅ Favourites on the home screen</li>
+                  <li>✅ History, and clearing it</li>
+                  <li>✅ Downloads, with progress, pause and resume
+                    <ul class="list-disc list-inside ml-5">
+                      <li>A download a page starts asks first</li>
+                    </ul>
+                  </li>
+                  <li>✅ Reader View: a page's article on its own, in one column, at a text size you pick, with nothing from the page running</li>
+                  <li>✅ Page zoom per tab, website text size, and pinch zoom on sites that block it</li>
+                  <li>✅ Desktop view, printing and sharing a page</li>
+                  <li>✅ Send to Your Devices: puts the page in your PeerChat chat with yourself, for your desktop or another phone</li>
+                  <li>✅ Press and hold a link, a picture or a video: open it in a new or background tab, preview it, download it, copy or share it</li>
+                  <li>✅ Burn Tabs and Data: closes every tab and clears history and cached data in one press</li>
+                  <li>✅ Dark websites, for sites with no dark theme of their own</li>
+                  <li>✅ Sites ask before they get the camera, the microphone or the location, with their own address in the question</li>
+                  <li>✅ Android
+                    <ul class="list-disc list-inside ml-5">
+                      <li>PeerSky as the default browser</li>
+                      <li>PeerSky in the share sheet: a link shared from another app opens in it</li>
+                      <li>Add to Home Screen, which puts a page on the home screen with its own icon</li>
+                    </ul>
+                  </li>
+                  <li>✅ iPhone
+                    <ul class="list-disc list-inside ml-5">
+                      <li>Home screen widgets: PeerSky, with search, the P2P apps and your bookmarks, and PeerTunes, with what is playing</li>
+                      <li>Quick actions on the app icon: Paste and Go, New Tab, New Incognito Tab and App Icon</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <strong>Customization (Settings &gt; Appearance):</strong>
+                <ul class="list-disc list-inside ml-5">
+                  <li>✅ Theme: system default, light or dark</li>
+                  <li>✅ App icon in six colours</li>
+                  <li>✅ The button in the middle of the bottom bar: Burn Tabs and Data (default), Add Bookmark, Add Favourite, Bookmarks, Downloads, History, Home, New Incognito Tab, New Tab, Settings, Share or Zoom</li>
+                  <li>✅ The button after reload in the address bar, as above</li>
                 </ul>
               </li>
               <li>
                 <strong>Ads and trackers blocked inside the browser engine:</strong>
                 <ul class="list-disc list-inside ml-5">
                   <li>✅ EasyList and EasyPrivacy, kept up to date</li>
-                  <li>✅ A copy ships with the app, so blocking works from the first launch, offline too</li>
+                  <li>✅ YouTube ads blocked, and a switch to turn that off</li>
+                  <li>✅ A copy of the lists ships with the app, so blocking works from the first launch, offline too</li>
+                  <li>✅ A link to test the browser's protection</li>
                 </ul>
               </li>
               <li>
                 <strong>Hypercore protocol:</strong>
                 <ul class="list-disc list-inside ml-5">
-                  <li>✅ <code class="bg-gray-200 px-1 rounded">hyper://</code> sites work as on desktop, including names like <code class="bg-gray-200 px-1 rounded">hyper://agregore.mauve.moe/</code></li>
-                  <li>✅ Pages can use <code class="bg-gray-200 px-1 rounded">fetch()</code> and XMLHttpRequest with <code class="bg-gray-200 px-1 rounded">hyper://</code>, as on desktop, with their images, sound and video</li>
-                  <li>✅ Sites built on Hyper can publish from the phone, once you let them</li>
-                  <li>✅ Private drives, encrypted so only your own devices can open them</li>
+                  <li>✅ <code class="bg-gray-200 px-1 rounded">hyper://</code> pages, with their images, scripts and media</li>
+                  <li>✅ <code class="bg-gray-200 px-1 rounded">hyper://</code> sites with domain names, such as <code class="bg-gray-200 px-1 rounded">hyper://agregore.mauve.moe/</code></li>
+                  <li>✅ Pages on <code class="bg-gray-200 px-1 rounded">hyper://</code> and <code class="bg-gray-200 px-1 rounded">https://</code> can use <code class="bg-gray-200 px-1 rounded">fetch()</code> and <code class="bg-gray-200 px-1 rounded">XMLHttpRequest</code> with <code class="bg-gray-200 px-1 rounded">hyper://</code>, as on desktop
+                    <ul class="list-disc list-inside ml-5">
+                      <li>Publishing from a site asks first, and the answer can be changed in Settings &gt; Permissions</li>
+                      <li>A page's drives are its own, and it cannot read your private drives</li>
+                    </ul>
+                  </li>
+                  <li>✅ <code class="bg-gray-200 px-1 rounded">peersky://p2p</code> lists the <code class="bg-gray-200 px-1 rounded">hyper://</code> sites this phone has opened, with a search, so they open offline too</li>
                   <li>✅ Devices on the same Wi-Fi find each other directly, so it keeps working with the internet down</li>
                 </ul>
               </li>
               <li>
-                <strong>Built-in apps, each with its own address:</strong>
+                <strong>Hyperdrive (<code class="bg-gray-200 px-1 rounded">peersky://p2p/hyperdrive/</code>):</strong>
                 <ul class="list-disc list-inside ml-5">
-                  <li>✅ Hyperdrive, for sharing files (<code class="bg-gray-200 px-1 rounded">peersky://p2p/hyperdrive/</code>)</li>
-                  <li>✅ P2PMD, for notes and slides you write together (<code class="bg-gray-200 px-1 rounded">peersky://p2p/p2pmd/</code>)</li>
-                  <li>✅ PeerChat, for encrypted rooms and direct messages with no account and no server (<code class="bg-gray-200 px-1 rounded">peersky://p2p/peerchat/</code>)</li>
-                  <li>✅ PeerTunes, for music from your own drives (<code class="bg-gray-200 px-1 rounded">peersky://p2p/peertunes/</code>)</li>
+                  <li>✅ Upload files or a folder, as:
+                    <ul class="list-disc list-inside ml-5">
+                      <li>Public: anyone with the link can open it</li>
+                      <li>Private: encrypted, so only your own devices can open it</li>
+                      <li>This device only: never leaves the phone</li>
+                    </ul>
+                  </li>
+                  <li>✅ Copy or share the link of what you uploaded</li>
+                  <li>✅ Fetch a <code class="bg-gray-200 px-1 rounded">hyper://</code> address, pasted or scanned from a QR code</li>
+                  <li>✅ Browse a drive's folders and open its files</li>
+                  <li>✅ Keep a folder offline, with pause, resume and progress, and an option to download only on Wi-Fi</li>
+                  <li>✅ Recent, with what you uploaded and fetched</li>
+                  <li>✅ From your devices: private files from your other devices show up here on their own, and this phone's show up there, with a copy kept on your desktop</li>
+                </ul>
+              </li>
+              <li>
+                <strong>P2PMD (<code class="bg-gray-200 px-1 rounded">peersky://p2p/p2pmd/</code>):</strong>
+                <ul class="list-disc list-inside ml-5">
+                  <li>✅ Notes you write together, live, over a Holesail tunnel</li>
+                  <li>✅ Markdown preview, slides, math with KaTeX, and a two-column research paper preview</li>
+                  <li>✅ Templates for a research paper or a technical document</li>
+                  <li>✅ Publish a note to <code class="bg-gray-200 px-1 rounded">hyper://</code></li>
+                  <li>✅ The people in a note, who is editing, who wrote each line, and recent edits</li>
+                  <li>✅ Up to 100 people in a note</li>
+                  <li>✅ Recent notes, with a copy kept of each note the phone hosts, so it opens again with nobody else online</li>
+                </ul>
+              </li>
+              <li>
+                <strong>PeerChat (<code class="bg-gray-200 px-1 rounded">peersky://p2p/peerchat/</code>):</strong>
+                <ul class="list-disc list-inside ml-5">
+                  <li>✅ Group rooms and direct messages, with no account and no server</li>
+                  <li>✅ Every message is encrypted and signed by whoever wrote it, and passed on from device to device</li>
+                  <li>✅ Rooms and direct messages made on 0.1.2 or later change their key every hour</li>
+                  <li>✅ Replies, reactions, mentions and search</li>
+                  <li>✅ Files and pictures, encrypted with the room, and link previews</li>
+                  <li>✅ Message requests to accept or decline</li>
+                  <li>✅ Invite links and QR codes, and invites sent through any app</li>
+                  <li>✅ A profile with a name, a bio, a picture and a short ID</li>
+                  <li>✅ Pinned and muted chats, unread counts and mention bubbles</li>
+                  <li>✅ Online and away dots</li>
+                  <li>✅ Notifications and sounds</li>
+                  <li>✅ Moderation
+                    <ul class="list-disc list-inside ml-5">
+                      <li>Whoever made a room can remove anyone from it, and the removal reaches everyone in the room</li>
+                      <li>Block or report anyone, from a message or their profile</li>
+                      <li>Groups hold back threats, slurs and adult links, and refuse explicit pictures before they are sent</li>
+                    </ul>
+                  </li>
+                  <li>✅ Works on the same Wi-Fi with no internet</li>
+                  <li>✅ The same profile and rooms on your phone and desktops, each device named after you</li>
+                  <li>✅ A chat per browser tab</li>
+                </ul>
+              </li>
+              <li>
+                <strong>PeerTunes (<code class="bg-gray-200 px-1 rounded">peersky://p2p/peertunes/</code>):</strong>
+                <ul class="list-disc list-inside ml-5">
+                  <li>✅ The click-wheel music player, for music from <code class="bg-gray-200 px-1 rounded">hyper://</code> drives, <code class="bg-gray-200 px-1 rounded">https://</code> links and files on the phone</li>
+                  <li>✅ Plays in the background, with the track, artist and artwork on the lock screen</li>
+                  <li>✅ Shows when the sound goes to Bluetooth</li>
+                  <li>✅ Plays from drives on the same Wi-Fi with no internet</li>
+                </ul>
+              </li>
+              <li>
+                <strong>Link Device and backups (Settings &gt; Link Device):</strong>
+                <ul class="list-disc list-inside ml-5">
+                  <li>✅ My devices: your desktops and phones, shown as Desktop or Phone, online or when last seen</li>
+                  <li>✅ Move everything to a new phone, device to device</li>
+                  <li>✅ Bring private drives, notes, chats, tabs and bookmarks over from PeerSky Desktop, and send tabs, bookmarks, notes and chats to it</li>
+                  <li>✅ A backup file locked with a passphrase, to keep wherever you like</li>
+                  <li>✅ Remove your data from a phone you are handing on</li>
+                  <li>✅ PeerSky data stays out of iCloud, Google and computer backups, which would copy its keys to another phone</li>
                 </ul>
               </li>
               <li>
                 <strong>Your data stays on your devices:</strong>
                 <ul class="list-disc list-inside ml-5">
-                  <li>✅ P2P storage is listed per app, so you can see what is there and remove it</li>
-                  <li>✅ Link Device moves everything to another phone, device to device, or into a backup file locked with a passphrase</li>
-                  <li>✅ It brings private drives, notes, tabs and bookmarks over from PeerSky Desktop</li>
+                  <li>✅ Settings &gt; P2P Data
+                    <ul class="list-disc list-inside ml-5">
+                      <li>P2P sites you opened, and data per app, to see what is there and remove it</li>
+                      <li>Offline folders, to pause, resume or remove</li>
+                      <li>The Hyper archive: everything you published, with a search</li>
+                      <li>Downloaded cache, and all P2P data</li>
+                    </ul>
+                  </li>
+                  <li>✅ Settings &gt; Data Clearing
+                    <ul class="list-disc list-inside ml-5">
+                      <li>Cookies and site data, listed site by site, to remove one or all</li>
+                      <li>Cached website data, or tabs and cached data together</li>
+                    </ul>
+                  </li>
+                  <li>✅ Settings &gt; Permissions: camera, microphone and location per site, notifications, local network, links to other apps, and publishing from sites</li>
+                  <li>✅ Nearby devices, from the home screen: the devices found on the same Wi-Fi, and what to change when none show up</li>
+                  <li>✅ Nothing collected: no analytics, no accounts, and QR codes read on the phone</li>
                 </ul>
               </li>
             </ul>
@@ -522,7 +698,6 @@
                 <ul class="list-disc list-inside ml-5">
                   <li>Blind peers for messages, with notifications on iPhone when PeerSky is closed</li>
                   <li>Voice and video calls</li>
-                  <li>Rotate keys, so a stolen key can't read old messages</li>
                 </ul>
               </li>
               <li>P2PMD
@@ -735,6 +910,24 @@
       <peersky-footer></peersky-footer>
     </div>
   </main>
+
+  <dialog class="invite-dialog" id="peerchat-dialog" aria-labelledby="peerchat-dialog-title">
+    <div class="invite-dialog-head">
+      <h2 id="peerchat-dialog-title">Join us on PeerChat</h2>
+      <button class="invite-close" type="button" aria-label="Close">
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="m4 4 10 10M14 4 4 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+      </button>
+    </div>
+    <peerchat-invite room="bc8f61ba9f96a181bb26e0221e5caefc48e5987c89ccd1292cefa3b4e544c845" name="P2P Republic"></peerchat-invite>
+    <p class="invite-dialog-foot">
+      <a href="https://republic.p2plabs.xyz/" target="_blank" rel="noopener noreferrer">About P2P Republic</a>
+      ·
+      <a href="./peerchat/#make-invite">Make an invite for your own room</a>
+    </p>
+  </dialog>
+
+  <script src="./lib/toqr/toqr.js"></script>
+  <script src="./components/peerchat-invite.js"></script>
   <script src="./script.js"></script>
   <script src="./orbit.js"></script>
   <script src="./components/footer.js"></script>

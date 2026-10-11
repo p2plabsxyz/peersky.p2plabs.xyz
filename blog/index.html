@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Akhilesh Thite" />
+  <meta name="description" content="Guides and stories about PeerSky, the local-first P2P browser for desktop and mobile." />
+  <meta property="og:title" content="PeerSky Blog" />
+  <meta property="og:description" content="Guides and stories about PeerSky, the local-first P2P browser for desktop and mobile." />
+  <meta property="og:url" content="https://peersky.p2plabs.xyz/blog/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://peersky.p2plabs.xyz/images/link-card.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://peersky.p2plabs.xyz/images/link-card.png" />
+  <link rel="shortcut icon" type="image/png" href="../images/favicon.ico" />
+  <link href="../lib/tailwind.min.css" rel="stylesheet" />
+  <link href="../site.css" rel="stylesheet" />
+  <title>Blog · PeerSky</title>
+</head>
+
+<body>
+  <header>
+    <div class="max-w-3xl mx-auto px-5 sm:px-10">
+      <nav class="page-nav" aria-label="Site">
+        <a class="back-link" href="../">
+          <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          Back to PeerSky
+        </a>
+      </nav>
+      <h1 class="page-title">Blog</h1>
+      <p class="page-lede">Guides and stories about PeerSky.</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="max-w-3xl mx-auto px-5 sm:px-10">
+      <!-- Newest first. Each post is a folder here with its own index.html and images. -->
+      <ul class="post-list">
+        <li>
+          <a class="post-card" href="./chats-on-your-devices/">
+            <img src="./chats-on-your-devices/banner.jpg" width="1600" height="840" alt="A PeerChat room called Granite Lake trip on Alice's desktop and on Sam's phone, with replies, a mention and a photo of the lake" />
+            <div class="post-card-body">
+              <time class="post-date" datetime="2026-10-10">October 10, 2026</time>
+              <h2>Chats that live on your devices, not on a server</h2>
+              <p>How PeerChat runs private chats with no server: devices pass messages on, sign every one, change keys every hour and moderate rooms themselves.</p>
+            </div>
+          </a>
+        </li>
+      </ul>
+
+      <peersky-footer></peersky-footer>
+    </div>
+  </main>
+
+  <script src="../components/footer.js"></script>
+</body>
+
+</html>

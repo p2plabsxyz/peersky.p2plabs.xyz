@@ -15,9 +15,8 @@ class PeerskyFooter extends HTMLElement {
     const out = 'target="_blank" rel="noopener noreferrer"'
     this.innerHTML = `
       <footer class="text-center text-sm mt-8 mb-8">
-        <a class="${link}" href="https://github.com/p2plabsxyz/peersky-browser/" ${out}>Desktop</a>
-        <a class="${link}" href="https://github.com/p2plabsxyz/peersky-mobile/" ${out}>Mobile</a>
-        <a class="${link}" href="https://github.com/p2plabsxyz/peersky-browser/tree/main/docs" ${out}>Docs</a>
+        <a class="${link}" href="https://github.com/p2plabsxyz/peersky-browser/" ${out}>Desktop source</a>
+        <a class="${link}" href="https://github.com/p2plabsxyz/peersky-mobile/" ${out}>Mobile source</a>
         <a class="${link}" href="https://mastodon.social/@peersky" target="_blank" rel="me noopener noreferrer">Mastodon</a>
         <a class="${link}" href="https://bsky.app/profile/peersky.mastodon.social.ap.brid.gy" ${out}>Bluesky</a>
         <a class="${link}" href="https://twitter.com/PeerskyBrowser" ${out}><del>X/Twitter</del></a>

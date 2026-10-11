@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Akhilesh Thite" />
+  <meta name="description" content="Join a PeerChat room: get PeerSky, then scan the room's code or open its link. Make an invite like this for your own room." />
+  <meta property="og:title" content="Join a PeerChat room" />
+  <meta property="og:description" content="Get PeerSky, then scan the room's code or open its link. No account, no server." />
+  <meta property="og:url" content="https://peersky.p2plabs.xyz/peerchat/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://peersky.p2plabs.xyz/images/link-card.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://peersky.p2plabs.xyz/images/link-card.png" />
+  <link rel="shortcut icon" type="image/png" href="../images/favicon.ico" />
+  <link href="../lib/tailwind.min.css" rel="stylesheet" />
+  <link href="../site.css" rel="stylesheet" />
+  <title>PeerChat invite · PeerSky</title>
+</head>
+
+<body>
+  <header>
+    <div class="max-w-4xl mx-auto px-5 sm:px-10">
+      <nav class="page-nav" aria-label="Site">
+        <a class="back-link" href="../">
+          <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          Back to PeerSky
+        </a>
+      </nav>
+      <h1 class="page-title">Join a PeerChat room</h1>
+      <p class="page-lede">Two steps, and no account to make.</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="max-w-4xl mx-auto px-5 sm:px-10">
+      <peerchat-invite id="invite" class="invite-page-card" room="bc8f61ba9f96a181bb26e0221e5caefc48e5987c89ccd1292cefa3b4e544c845" name="P2P Republic"></peerchat-invite>
+
+      <section class="invite-maker" id="make-invite" aria-labelledby="maker-title">
+        <h2 id="maker-title">Make an invite for your room</h2>
+        <p>Paste your room's link from PeerChat, or its room key. You get a page like this one to send to anyone, even people who don't have PeerSky yet.</p>
+        <form id="maker" class="invite-form" novalidate>
+          <label for="maker-room">Room link or key</label>
+          <input id="maker-room" type="text" inputmode="url" autocomplete="off" spellcheck="false" placeholder="peersky://p2p/peerchat/#room=..." required />
+          <label for="maker-name">Room name <span>(optional)</span></label>
+          <input id="maker-name" type="text" autocomplete="off" maxlength="60" placeholder="Family" />
+          <button type="submit">Make invite</button>
+          <p class="invite-error" id="maker-error" role="alert" hidden>That isn't a PeerChat room link. It should end in #room= and 64 letters and numbers.</p>
+        </form>
+        <div class="invite-share" id="maker-share" hidden>
+          <p>Send people this page:</p>
+          <div class="invite-link">
+            <code id="maker-link"></code>
+            <button type="button" id="maker-copy">Copy</button>
+          </div>
+        </div>
+        <p class="invite-note">Anyone with a room's link can join it and read what is said there, so only send it to people you want in the room. The link stays in your browser: the code is made on this page, and the part of an address after # is never sent to a server.</p>
+      </section>
+
+      <peersky-footer></peersky-footer>
+    </div>
+  </main>
+
+  <script src="../lib/toqr/toqr.js"></script>
+  <script src="../components/peerchat-invite.js"></script>
+  <script>
+    // A link to this page carries its room after the #, with an optional name:
+    // /peerchat/#room=<key>&name=Family. Without one it shows P2P Republic.
+    (function () {
+      const invite = document.getElementById('invite')
+      const form = document.getElementById('maker')
+      const roomInput = document.getElementById('maker-room')
+      const nameInput = document.getElementById('maker-name')
+      const error = document.getElementById('maker-error')
+      const share = document.getElementById('maker-share')
+      const shareLink = document.getElementById('maker-link')
+      const { parseRoomKey, copyText } = self.PeerChatInvite
+
+      function pageLink (key, name) {
+        const params = new URLSearchParams({ room: key })
+        if (name) params.set('name', name)
+        return `https://peersky.p2plabs.xyz/peerchat/#${params}`
+      }
+
+      function show (key, name) {
+        invite.setAttribute('room', key)
+        if (name) invite.setAttribute('name', name)
+        else invite.removeAttribute('name')
+        shareLink.textContent = pageLink(key, name)
+        share.hidden = false
+      }
+
+      function fromAddress () {
+        const params = new URLSearchParams(location.hash.slice(1))
+        const key = parseRoomKey(location.hash)
+        if (!key) return
+        show(key, (params.get('name') || '').trim().slice(0, 60))
+      }
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault()
+        const key = parseRoomKey(roomInput.value)
+        error.hidden = Boolean(key)
+        if (!key) {
+          roomInput.focus()
+          return
+        }
+        const name = nameInput.value.trim().slice(0, 60)
+        show(key, name)
+        const params = new URLSearchParams({ room: key })
+        if (name) params.set('name', name)
+        history.replaceState(null, '', `#${params}`)
+        invite.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      })
+
+      document.getElementById('maker-copy').addEventListener('click', async (event) => {
+        const button = event.currentTarget
+        const label = button.textContent
+        button.textContent = await copyText(shareLink.textContent) ? 'Copied' : 'Copy failed'
+        setTimeout(() => { button.textContent = label }, 1800)
+      })
+
+      addEventListener('hashchange', fromAddress)
+      fromAddress()
+    })()
+  </script>
+  <script src="../components/footer.js"></script>
+</body>
+
+</html>
