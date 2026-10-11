@@ -1483,8 +1483,9 @@ kbd {
 
 /* ---------- Light and dark ---------- */
 
-/* Each page's <head> sets data-theme before anything is drawn: the theme
-   picked last time, or the system's. components/theme-toggle.js switches it. */
+/* The site starts light. Each page's <head> sets data-theme to dark before
+   anything is drawn when dark was picked before; components/theme-toggle.js
+   switches it. */
 html[data-theme="dark"] {
   color-scheme: dark;
   --page: #0e1014;

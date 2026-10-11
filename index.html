@@ -29,8 +29,8 @@
   <link rel="preload" as="image" href="./images/blink.png" />
   <!-- Tailwind (vendored) -->
   <script>
-    // The theme goes on before anything is drawn: the one picked last time, or the system's.
-    (function () { var t = null; try { t = localStorage.getItem('theme') } catch (e) {} if (t !== 'dark' && t !== 'light') t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; document.documentElement.dataset.theme = t })()
+    // The theme goes on before anything is drawn: light, unless dark was picked here before.
+    (function () { var t = null; try { t = localStorage.getItem('theme') } catch (e) {} document.documentElement.dataset.theme = t === 'dark' ? 'dark' : 'light' })()
   </script>
   <link href="./lib/tailwind.min.css" rel="stylesheet" />
   <link href="./site.css" rel="stylesheet" />
