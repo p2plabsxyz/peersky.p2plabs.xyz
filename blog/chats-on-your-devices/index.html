@@ -53,6 +53,7 @@
         </figure>
 
         <h2>What a server does, and what PeerChat does instead</h2>
+        <p>Take the server out of a chat app and its jobs don't go away. Someone still has to find people, let them in, carry the messages and keep the history. In PeerChat, the devices in the room share those jobs.</p>
         <div class="vs">
           <div class="vs-row">
             <h3>Finding each other</h3>
@@ -106,7 +107,7 @@
         </div>
 
         <h2>How a message crosses a big room</h2>
-        <p>Every message is sealed on the device that sends it, before it goes anywhere, and opened on the devices of the people in the room.</p>
+        <p>Say Sam writes to a room that Bob and Alice are in. The message is sealed on Sam's phone before it goes anywhere, and it's only opened on the devices of the people in the room.</p>
         <figure class="diagram" role="img" aria-label="Sam's phone seals a message with this hour's key and signs it. Bob's laptop, in the room too, passes it on but can't change it. Alice's laptop checks that Sam wrote it, then opens it. The room's key only travels in the invite, and anyone without it has nothing to read.">
           <div class="dg-trio">
             <div class="dg-node">
@@ -150,7 +151,7 @@
         <p>Limits count per writer, not per connection. Each person gets the room's spam limit wherever their messages come from, so a device passing on a busy room is never blamed for what others wrote.</p>
 
         <h2>A new key every hour</h2>
-        <p>New rooms seal each hour's messages with a new key. Each key is made from the one before it, and there's no way to work back to an earlier one.</p>
+        <p>New rooms change their lock every hour. Each hour's messages are sealed with a new key, made from the one before it, and there's no way to work back to an earlier one.</p>
         <figure class="diagram" role="img" aria-label="Keys for 9:00, 10:00, 11:00 and 12:00, each made from the one before. Sam joined at 11:00, so Sam gets the keys for 11:00 and 12:00 and can't work out the two before.">
           <div class="dg-hours">
             <div class="dg-hour is-sealed">
@@ -188,7 +189,7 @@
         <p>The person who made the room can remove someone. The removal is signed with their key and passed on like a message, so it reaches every device in the room, even ones that never connected to them, and every device refuses that person's messages from then on. Anyone can also block someone, or report them.</p>
 
         <h2>No internet, same Wi-Fi</h2>
-        <p>Every room is joined twice: on <a href="https://github.com/holepunchto/hyperdht" target="_blank" rel="noopener noreferrer">HyperDHT</a> across the internet, and on a separate swarm on your local network that devices find with mDNS, using our <a href="https://github.com/p2plabsxyz/hyperdht-mdns" target="_blank" rel="noopener noreferrer">hyperdht-mdns</a>. The local one needs no public server to start from, so with the internet down, everyone on the same Wi-Fi keeps chatting. It needs a network, not an internet connection.</p>
+        <p>Every room is joined twice: on <a href="https://github.com/holepunchto/hyperdht" target="_blank" rel="noopener noreferrer">HyperDHT</a> across the internet, and on a separate swarm on your local network that devices find with mDNS, using our <a href="https://github.com/p2plabsxyz/hyperdht-mdns" target="_blank" rel="noopener noreferrer">hyperdht-mdns</a>. The local one needs no public server to start from, so with the internet down, everyone on the same Wi-Fi keeps chatting. It needs a network, not an internet connection. We tried it by pulling the cable out of our modem, and the chat on our Wi-Fi kept going.</p>
 
         <p>For the technical details, read:</p>
         <ul>
@@ -198,7 +199,7 @@
           <li>the privacy policies for <a href="https://github.com/p2plabsxyz/peersky-browser/blob/main/PRIVACY.md" target="_blank" rel="noopener noreferrer">desktop</a> and <a href="https://github.com/p2plabsxyz/peersky-mobile/blob/main/PRIVACY.md" target="_blank" rel="noopener noreferrer">mobile</a></li>
         </ul>
 
-        <p class="post-end">Try it with the people you already talk to. Get PeerSky at <a href="../../#downloads">peersky.p2plabs.xyz</a>, then say hi in <a href="../../peerchat/">P2P Republic</a>, our public room.</p>
+        <p class="post-end">Try it with the people you already talk to. Get PeerSky at <a href="../../#downloads">peersky.p2plabs.xyz</a>, then come say hi in <a href="../../peerchat/">P2P Republic</a>, our public room.</p>
       </div>
 
       <peersky-footer></peersky-footer>
