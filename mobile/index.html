@@ -24,6 +24,10 @@
   <link rel="shortcut icon" type="image/png" href="../images/favicon.ico" />
   <link rel="preload" as="image" href="../images/blink.png" />
   <!-- Tailwind (vendored) -->
+  <script>
+    // The theme goes on before anything is drawn: the one picked last time, or the system's.
+    (function () { var t = null; try { t = localStorage.getItem('theme') } catch (e) {} if (t !== 'dark' && t !== 'light') t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; document.documentElement.dataset.theme = t })()
+  </script>
   <link href="../lib/tailwind.min.css" rel="stylesheet" />
   <link href="../site.css" rel="stylesheet" />
   <title>PeerSky Mobile</title>
@@ -38,6 +42,7 @@
           <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
           Back to PeerSky
         </a>
+        <theme-toggle></theme-toggle>
       </nav>
       <section class="stage" id="orbit" aria-label="PeerSky's apps, on a ring of phones. Hover or tap a phone for its story.">
         <svg class="orbit-lines" aria-hidden="true" focusable="false"></svg>
@@ -143,6 +148,7 @@
   <script src="../orbit.js"></script>
   <script src="../components/footer.js"></script>
   <script src="../coming-soon.js"></script>
+  <script src="../components/theme-toggle.js"></script>
 </body>
 
 </html>

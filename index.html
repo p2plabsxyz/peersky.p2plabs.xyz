@@ -28,8 +28,13 @@
   <link rel="shortcut icon" type="image/png" href="./images/favicon.ico" />
   <link rel="preload" as="image" href="./images/blink.png" />
   <!-- Tailwind (vendored) -->
+  <script>
+    // The theme goes on before anything is drawn: the one picked last time, or the system's.
+    (function () { var t = null; try { t = localStorage.getItem('theme') } catch (e) {} if (t !== 'dark' && t !== 'light') t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; document.documentElement.dataset.theme = t })()
+  </script>
   <link href="./lib/tailwind.min.css" rel="stylesheet" />
   <link href="./site.css" rel="stylesheet" />
+  <link rel="alternate" type="application/rss+xml" title="PeerSky Blog" href="./blog/feed.xml" />
   <title>PeerSky</title>
 </head>
 
@@ -47,6 +52,7 @@
             <a href="https://github.com/p2plabsxyz/peersky-mobile/tree/main/docs" target="_blank" rel="noopener noreferrer">Mobile</a>
           </div>
         </details>
+        <theme-toggle></theme-toggle>
       </nav>
       <section class="stage" id="orbit" aria-label="PeerSky's apps, on a ring of phones. Hover or tap a phone for its story.">
         <svg class="orbit-lines" aria-hidden="true" focusable="false"></svg>
@@ -888,12 +894,18 @@
             <p>The macOS and Windows apps and the Linux AppImage update themselves. A <code class="bg-gray-200 px-1 rounded">.deb</code>, <code class="bg-gray-200 px-1 rounded">.pacman</code> or <code class="bg-gray-200 px-1 rounded">.apk</code> updates when you install the newer one. On your phone it updates through the App Store or Google Play.</p>
           </div>
         </details>
+        <details class="fold">
+          <summary>Is there a difference between DWeb and Web3?</summary>
+          <div class="fold-body">
+            <p>They overlap, but they aren't the same thing. Web3 usually means blockchains and tokens. The DWeb, the decentralized web, is a movement to give people back their data, their tools and their connections, and it cares more about the digital commons than about markets. PeerSky is part of the DWeb: it runs on peer-to-peer protocols like Hypercore and IPFS, with no blockchain or token needed. Mai Ishikawa Sutton's article <a href="https://hypha.coop/dripline/debate-over-dweb-vs-web3/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-500">The Debate Over DWeb vs. Web3</a> goes into where they meet and where they differ.</p>
+          </div>
+        </details>
       </section>
 
       <!-- Supported by Section -->
       <section id="supported-by" class="mt-8 mb-6">
         <h2 class="text-2xl font-bold mb-4">Supported by</h2>
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 items-center justify-items-center">
+        <div class="supporters grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 items-center justify-items-center">
           <img src="./images/supporters/p2plabs.png" alt="P2P Labs" width="100" />
           <img src="./images/supporters/internet-archive.png" alt="Internet Archive" width="100" />
           <img src="./images/supporters/dweb.png" alt="DWeb" width="100" />
@@ -932,6 +944,7 @@
   <script src="./orbit.js"></script>
   <script src="./components/footer.js"></script>
   <script src="./coming-soon.js"></script>
+  <script src="./components/theme-toggle.js"></script>
 </body>
 
 </html>
