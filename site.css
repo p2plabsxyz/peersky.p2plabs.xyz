@@ -10,6 +10,26 @@
   --line-soft: #bfcddd;
   --accent: #2563eb;
   --accent-soft: #eff6ff;
+  /* Blue behind white text, the same in both themes. */
+  --accent-strong: #2563eb;
+  --accent-hover-bg: #dbeafe;
+  --page-rgb: 255, 252, 249;
+  --surface: #fff;
+  --surface-2: #f9fafb;
+  --hover: #f3f4f6;
+  --border: #e5e7eb;
+  --border-strong: #d1d5db;
+  --border-hover: #cbd5e1;
+  --grid-dot: rgba(120, 110, 100, 0.3);
+  --note-bg: #f0fdf4;
+  --note-border: #bbf7d0;
+  --note-ink: #14532d;
+  --release-bg: #fef9c3;
+  --release-border: #eab308;
+  --release-ink: #ca8a04;
+  --danger-bg: #fef2f2;
+  --danger-border: #fca5a5;
+  --danger-ink: #b91c1c;
 }
 
 body {
@@ -44,7 +64,7 @@ body {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background-image: radial-gradient(rgba(120, 110, 100, 0.3) 1px, transparent 1.3px);
+  background-image: radial-gradient(var(--grid-dot) 1px, transparent 1.3px);
   background-size: 22px 22px;
   -webkit-mask-image: radial-gradient(ellipse 72% 70% at 50% 45%, #000 35%, transparent 100%);
   mask-image: radial-gradient(ellipse 72% 70% at 50% 45%, #000 35%, transparent 100%);
@@ -83,7 +103,7 @@ body {
 
 .orbit-lines .packet {
   fill: var(--accent);
-  stroke: #fff;
+  stroke: var(--surface);
   stroke-width: 1.5;
 }
 
@@ -165,7 +185,7 @@ body {
   inset: -36%;
   z-index: -1;
   border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(255, 252, 249, 1) 45%, rgba(255, 252, 249, 0.8) 70%, rgba(255, 252, 249, 0));
+  background: radial-gradient(closest-side, rgba(var(--page-rgb), 1) 45%, rgba(var(--page-rgb), 0.8) 70%, rgba(var(--page-rgb), 0));
   pointer-events: none;
 }
 
@@ -190,7 +210,7 @@ body {
   padding: 14px 16px 16px;
   border: 1px solid rgba(31, 41, 55, 0.08);
   border-radius: 16px;
-  background: #fff;
+  background: var(--surface);
   box-shadow: 0 18px 50px rgba(31, 41, 55, 0.18), 0 2px 6px rgba(31, 41, 55, 0.08);
   text-align: left;
   opacity: 0;
@@ -243,7 +263,7 @@ body {
 
 .story-close:hover,
 .story-close:focus-visible {
-  background: #f3f4f6;
+  background: var(--hover);
   color: var(--ink);
   outline: none;
 }
@@ -342,10 +362,10 @@ body {
   display: inline-block;
   margin-right: 2px;
   padding: 0 8px;
-  border: 1px solid #eab308;
+  border: 1px solid var(--release-border);
   border-radius: 999px;
-  background: #fef9c3;
-  color: #ca8a04;
+  background: var(--release-bg);
+  color: var(--release-ink);
   font-size: 12px;
   font-weight: 600;
   line-height: 20px;
@@ -360,9 +380,9 @@ body {
 /* ---------- Collapsible lists ---------- */
 
 .fold {
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border);
   border-radius: 12px;
-  background: #fff;
+  background: var(--surface);
 }
 
 .fold + .fold {
@@ -412,10 +432,10 @@ body {
 
 kbd {
   padding: 1px 6px;
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--border-strong);
   border-bottom-width: 2px;
   border-radius: 6px;
-  background: #f9fafb;
+  background: var(--surface-2);
   font: 0.85em/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   white-space: nowrap;
 }
@@ -444,9 +464,9 @@ kbd {
 .top-nav a,
 .nav-menu summary {
   padding: 6px 14px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border);
   border-radius: 999px;
-  background: #fff;
+  background: var(--surface);
   color: var(--ink);
   font-size: 14px;
   font-weight: 600;
@@ -457,7 +477,7 @@ kbd {
 .top-nav a:hover,
 .nav-menu summary:hover,
 .nav-menu[open] summary {
-  background: #f3f4f6;
+  background: var(--hover);
 }
 
 .top-nav a:focus,
@@ -503,9 +523,9 @@ kbd {
   right: 0;
   min-width: 132px;
   padding: 6px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border);
   border-radius: 14px;
-  background: #fff;
+  background: var(--surface);
   box-shadow: 0 10px 30px rgba(17, 24, 39, 0.12);
   text-align: left;
 }
@@ -519,7 +539,7 @@ kbd {
 }
 
 .top-nav .nav-menu-list a:hover {
-  background: #f3f4f6;
+  background: var(--hover);
 }
 
 /* Positioned, so it paints above the hero's dot grid. */
@@ -529,9 +549,9 @@ kbd {
   align-items: center;
   gap: 6px;
   padding: 6px 14px 6px 10px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border);
   border-radius: 999px;
-  background: #fff;
+  background: var(--surface);
   color: var(--ink);
   font-size: 14px;
   font-weight: 600;
@@ -539,7 +559,7 @@ kbd {
 }
 
 .back-link:hover {
-  background: #f3f4f6;
+  background: var(--hover);
 }
 
 .back-link:focus {
@@ -554,9 +574,9 @@ kbd {
 .platform-card {
   margin-top: 28px;
   padding: 20px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border);
   border-radius: 16px;
-  background: #fff;
+  background: var(--surface);
 }
 
 @media (min-width: 640px) {
@@ -583,7 +603,7 @@ kbd {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background: var(--accent);
+  background: var(--accent-strong);
   color: #fff;
   font-weight: 700;
   line-height: 30px;
@@ -612,7 +632,7 @@ kbd {
 }
 
 .step-link:hover {
-  background: #dbeafe;
+  background: var(--accent-hover-bg);
 }
 
 .store-badge {
@@ -646,16 +666,16 @@ kbd {
 .note {
   margin-top: 20px;
   padding: 12px 14px;
-  border: 1px solid #bbf7d0;
+  border: 1px solid var(--note-border);
   border-radius: 12px;
-  background: #f0fdf4;
-  color: #14532d;
+  background: var(--note-bg);
+  color: var(--note-ink);
 }
 
 .apk-option {
   margin-top: 22px;
   padding-top: 18px;
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid var(--border);
 }
 
 .apk-option h3 {
@@ -693,14 +713,14 @@ kbd {
 .post-card {
   display: block;
   overflow: hidden;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border);
   border-radius: 16px;
-  background: #fff;
+  background: var(--surface);
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .post-card:hover {
-  border-color: #cbd5e1;
+  border-color: var(--border-hover);
   box-shadow: 0 6px 24px rgba(17, 24, 39, 0.06);
 }
 
@@ -845,9 +865,9 @@ kbd {
 /* Diagrams in posts: side by side on wide screens, stacked on phones. */
 .post-body .diagram {
   padding: 20px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border);
   border-radius: 16px;
-  background: #fff;
+  background: var(--surface);
 }
 
 .dg-pair {
@@ -942,10 +962,10 @@ kbd {
   gap: 12px;
   margin-top: 14px;
   padding: 14px 16px;
-  border: 1.5px dashed #fca5a5;
+  border: 1.5px dashed var(--danger-border);
   border-radius: 14px;
-  background: #fef2f2;
-  color: #b91c1c;
+  background: var(--danger-bg);
+  color: var(--danger-ink);
 }
 
 .dg-outsider svg {
@@ -976,9 +996,9 @@ kbd {
 
 .vs-row {
   padding: 14px 16px 16px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border);
   border-radius: 14px;
-  background: #fff;
+  background: var(--surface);
 }
 
 .vs-row h3 {
@@ -1015,7 +1035,7 @@ kbd {
 }
 
 .vs-server {
-  background: #f3f4f6;
+  background: var(--hover);
 }
 
 .vs-server span {
@@ -1070,7 +1090,7 @@ kbd {
 }
 
 .dg-hour.is-sealed {
-  background: #f3f4f6;
+  background: var(--hover);
   color: var(--muted);
 }
 
@@ -1092,7 +1112,7 @@ kbd {
 }
 
 .dg-hours-labels .is-sealed {
-  border-top-color: #d1d5db;
+  border-top-color: var(--border-strong);
   color: var(--muted);
 }
 
@@ -1109,9 +1129,9 @@ kbd {
   display: flex;
   gap: 14px;
   padding: 16px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border);
   border-radius: 14px;
-  background: #fff;
+  background: var(--surface);
 }
 
 .use-case svg {
@@ -1136,7 +1156,7 @@ kbd {
 .post-end {
   margin-top: 2.5em;
   padding-top: 1.25em;
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid var(--border);
 }
 
 /* ---------- PeerChat invite: the home page popup and /peerchat/ ---------- */
@@ -1158,9 +1178,9 @@ kbd {
   flex-direction: column;
   align-items: center;
   padding: 22px 20px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border);
   border-radius: 18px;
-  background: #fff;
+  background: var(--surface);
   text-align: center;
 }
 
@@ -1219,13 +1239,13 @@ kbd {
 }
 
 .invite-button {
-  border: 1px solid #e5e7eb;
-  background: #f9fafb;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
   color: var(--ink);
 }
 
 .invite-button:hover {
-  background: #f3f4f6;
+  background: var(--hover);
 }
 
 .invite-qr {
@@ -1233,7 +1253,7 @@ kbd {
   max-width: 100%;
   margin: 16px 0 12px;
   padding: 6px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border);
   border-radius: 14px;
   background: #fff;
 }
@@ -1250,9 +1270,9 @@ kbd {
   gap: 8px;
   width: 100%;
   padding: 6px 6px 6px 12px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border);
   border-radius: 12px;
-  background: #f9fafb;
+  background: var(--surface-2);
 }
 
 .invite-link code {
@@ -1271,7 +1291,7 @@ kbd {
   flex: none;
   padding: 6px 12px;
   border-radius: 9px;
-  background: var(--accent);
+  background: var(--accent-strong);
   color: #fff;
   font-size: 14px;
   font-weight: 600;
@@ -1290,7 +1310,7 @@ kbd {
 }
 
 .invite-open:hover {
-  background: #dbeafe;
+  background: var(--accent-hover-bg);
 }
 
 .invite-missing {
@@ -1323,9 +1343,9 @@ kbd {
 .invite-maker {
   margin-top: 36px;
   padding: 20px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border);
   border-radius: 18px;
-  background: #fff;
+  background: var(--surface);
 }
 
 .invite-maker h2 {
@@ -1360,9 +1380,9 @@ kbd {
 .invite-form input {
   width: 100%;
   padding: 10px 12px;
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--border-strong);
   border-radius: 10px;
-  background: #fff;
+  background: var(--surface);
   color: var(--ink);
   font-size: 15px;
 }
@@ -1379,7 +1399,7 @@ kbd {
 }
 
 .invite-error {
-  color: #b91c1c;
+  color: var(--danger-ink);
   font-size: 14px;
 }
 
@@ -1441,7 +1461,7 @@ kbd {
 }
 
 .invite-close:hover {
-  background: #f3f4f6;
+  background: var(--hover);
 }
 
 .invite-dialog-foot {
@@ -1460,3 +1480,117 @@ kbd {
   text-decoration: none;
 }
 
+
+/* ---------- Light and dark ---------- */
+
+/* Each page's <head> sets data-theme before anything is drawn: the theme
+   picked last time, or the system's. components/theme-toggle.js switches it. */
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0e1014;
+  --page-rgb: 14, 16, 20;
+  --ink: #f3f4f6;
+  --body: #d1d5db;
+  --muted: #9ca3af;
+  --line: #3d4f66;
+  --line-soft: #2b3646;
+  --accent: #60a5fa;
+  --accent-soft: #15233d;
+  --accent-hover-bg: #1c2f52;
+  --surface: #171a20;
+  --surface-2: #1b1f27;
+  --hover: #222731;
+  --border: #2a303b;
+  --border-strong: #39414e;
+  --border-hover: #475263;
+  --grid-dot: rgba(200, 205, 215, 0.14);
+  --note-bg: #0e2a19;
+  --note-border: #1d5a35;
+  --note-ink: #bbf7d0;
+  --release-bg: #2b2507;
+  --release-border: #a16207;
+  --release-ink: #fde047;
+  --danger-bg: #2b1111;
+  --danger-border: #7f1d1d;
+  --danger-ink: #fca5a5;
+}
+
+html[data-theme="dark"] body {
+  color: var(--body);
+}
+
+html[data-theme="dark"] h1,
+html[data-theme="dark"] h2,
+html[data-theme="dark"] h3 {
+  color: var(--ink);
+}
+
+/* The vendored Tailwind build has no dark variants, so the few colour classes
+   the pages use follow the theme here. */
+html[data-theme="dark"] .text-gray-900 { color: var(--ink); }
+html[data-theme="dark"] .text-gray-700,
+html[data-theme="dark"] .text-gray-600 { color: var(--body); }
+html[data-theme="dark"] .hover\:text-gray-800:hover { color: var(--ink); }
+html[data-theme="dark"] .text-blue-600 { color: var(--accent); }
+html[data-theme="dark"] .hover\:text-blue-500:hover { color: #93c5fd; }
+html[data-theme="dark"] .bg-gray-50 { background-color: var(--surface-2); }
+html[data-theme="dark"] .bg-gray-100,
+html[data-theme="dark"] .bg-gray-200 { background-color: var(--hover); }
+html[data-theme="dark"] .border-gray-300 { border-color: var(--border-strong); }
+
+/* The supporters' logos are drawn for a light page, so they keep one. */
+html[data-theme="dark"] .supporters img {
+  padding: 8px;
+  border-radius: 12px;
+  background: #f5f5f4;
+}
+
+/* Distributed Press's grey logo in the footer, lightened to show up. */
+html[data-theme="dark"] peersky-footer img[alt="Distributed Press"] {
+  filter: invert(1);
+}
+
+/* The switch sits with the other buttons at the top of each page: last in the
+   home page's row, across from the back button everywhere else. */
+.page-nav {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink);
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.theme-toggle:hover {
+  background: var(--hover);
+}
+
+.theme-toggle:focus {
+  outline: none;
+}
+
+.theme-toggle:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* The moon in the light theme and the sun in the dark one: each shows where
+   a click goes. */
+.theme-toggle .icon-sun,
+html[data-theme="dark"] .theme-toggle .icon-moon {
+  display: none;
+}
+
+html[data-theme="dark"] .theme-toggle .icon-sun {
+  display: block;
+}

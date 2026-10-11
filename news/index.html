@@ -15,6 +15,10 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content="https://peersky.p2plabs.xyz/images/link-card.png" />
   <link rel="shortcut icon" type="image/png" href="../images/favicon.ico" />
+  <script>
+    // The theme goes on before anything is drawn: the one picked last time, or the system's.
+    (function () { var t = null; try { t = localStorage.getItem('theme') } catch (e) {} if (t !== 'dark' && t !== 'light') t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; document.documentElement.dataset.theme = t })()
+  </script>
   <link href="../lib/tailwind.min.css" rel="stylesheet" />
   <link href="../site.css" rel="stylesheet" />
   <title>News · PeerSky</title>
@@ -28,6 +32,7 @@
           <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
           Back to PeerSky
         </a>
+        <theme-toggle></theme-toggle>
       </nav>
       <h1 class="page-title">News</h1>
       <p class="page-lede">Talks and news about PeerSky.</p>
@@ -114,6 +119,7 @@
   </main>
 
   <script src="../components/footer.js"></script>
+  <script src="../components/theme-toggle.js"></script>
 </body>
 
 </html>
