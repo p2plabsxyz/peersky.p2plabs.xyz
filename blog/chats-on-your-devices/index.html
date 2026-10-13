@@ -6,12 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="author" content="Akhilesh Thite" />
-  <meta name="description" content="How PeerChat runs private chats with no server: devices find each other, pass messages on, sign every one, change keys every hour and keep rooms in order themselves." />
+  <meta name="description" content="How PeerChat runs private chats with no server: devices find each other over HyperDHT and the local network, pass messages on, sign every one, change keys every hour and moderate rooms themselves." />
   <meta property="og:title" content="Chats that live on your devices, not on a server" />
-  <meta property="og:description" content="How PeerChat runs private chats with no server: devices find each other, pass messages on, sign every one, change keys every hour and keep rooms in order themselves." />
+  <meta property="og:description" content="How PeerChat runs private chats with no server: devices find each other over HyperDHT and the local network, pass messages on, sign every one, change keys every hour and moderate rooms themselves." />
   <meta property="og:url" content="https://peersky.p2plabs.xyz/blog/chats-on-your-devices/" />
   <meta property="og:type" content="article" />
-  <meta property="article:published_time" content="2026-10-09" />
+  <meta property="article:published_time" content="2026-10-10" />
   <meta property="og:image" content="https://peersky.p2plabs.xyz/blog/chats-on-your-devices/banner.jpg" />
   <meta property="og:image:width" content="1600" />
   <meta property="og:image:height" content="840" />
@@ -19,8 +19,13 @@
   <meta name="twitter:title" content="Chats that live on your devices, not on a server" />
   <meta name="twitter:image" content="https://peersky.p2plabs.xyz/blog/chats-on-your-devices/banner.jpg" />
   <link rel="shortcut icon" type="image/png" href="../../images/favicon.ico" />
+  <script>
+    // The theme goes on before anything is drawn: light, unless dark was picked here before.
+    (function () { var t = null; try { t = localStorage.getItem('theme') } catch (e) {} document.documentElement.dataset.theme = t === 'dark' ? 'dark' : 'light' })()
+  </script>
   <link href="../../lib/tailwind.min.css" rel="stylesheet" />
   <link href="../../site.css" rel="stylesheet" />
+  <link rel="alternate" type="application/rss+xml" title="PeerSky Blog" href="../feed.xml" />
   <title>Chats that live on your devices, not on a server</title>
 </head>
 
@@ -32,9 +37,10 @@
           <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
           Blog
         </a>
+        <theme-toggle></theme-toggle>
       </nav>
       <div class="post-header">
-        <time class="post-date" datetime="2026-10-09">October 9, 2026</time>
+        <time class="post-date" datetime="2026-10-10">October 10, 2026</time>
         <h1>Chats that live on your devices, not on a server</h1>
       </div>
       <img class="post-banner" src="./banner.jpg" width="1600" height="840" alt="A PeerChat room called Granite Lake trip on Alice's desktop and on Sam's phone, with replies, a mention and a photo of the lake" />
@@ -44,25 +50,24 @@
   <main>
     <article class="max-w-3xl mx-auto px-5 sm:px-10">
       <div class="post-body">
-        <p>PeerChat is the chat app in PeerSky, on your computer and on your phone. There's no account, no phone number and no server. Pick a name, start a room and send the invite.</p>
+        <p>PeerChat is the chat app in PeerSky, on your computer and on your phone. There's no account, no phone number and no server. Pick a name, make a room and send its invite link in any app, or as a QR code from <a href="../../peerchat/#make-invite">peersky.p2plabs.xyz/peerchat</a>. The invite carries the room's key, so send it only to the people you want in the room.</p>
+        <p>It's for anyone who'd rather their conversations didn't go through a company: friends planning a trip, families, communities, classrooms, journalists and organizers. You don't give a phone number, so nothing ties the chat to it. Messages travel encrypted and straight between devices, a bit like a private tunnel between you and the people in the room, and no company keeps a copy to leak, sell or hand over. When the internet goes down, people on the same Wi-Fi keep talking.</p>
+        <p>One thing to know: devices connect to each other directly, so people in a room can see your IP address, as in any peer-to-peer app. If you'd rather they didn't, turn on a VPN that allows peer-to-peer connections.</p>
         <p>Most chat apps run through a server. It delivers every message, keeps the history, knows who's who and enforces the rules. PeerChat has no server, so the devices in a room do all of that between themselves.</p>
         <p>You need PeerSky on each device. Get it for your computer and your phone at <a href="../../#downloads">peersky.p2plabs.xyz</a>.</p>
-
-        <h2>Start a room</h2>
-        <p>Press New Room on your computer, or Create group on your phone. Copy the invite link from the room's info on your computer, or tap share on your phone, and send it in any app. You can also turn it into a QR code at <a href="../../peerchat/#make-invite">peersky.p2plabs.xyz/peerchat</a>. When Sam taps it, PeerSky asks first, because everyone in the room will see Sam's name and photo.</p>
         <figure>
           <img src="./invite.jpg" width="1600" height="876" loading="lazy" alt="The room's info on Alice's desktop with its invite link, rules and members, and Sam's phone asking Join this chat?" />
           <figcaption>The room's info has its invite link and its rules. PeerSky asks before it joins.</figcaption>
         </figure>
-        <p>The invite carries the room's key, so anyone with it can join. Send it only to the people you want in the room.</p>
 
         <h2>What a server does, and what PeerChat does instead</h2>
+        <p>Take the server out of a chat app and its jobs don't go away. Someone still has to find people, let them in, carry the messages and keep the history. In PeerChat, the devices in the room share those jobs.</p>
         <div class="vs">
           <div class="vs-row">
             <h3>Finding each other</h3>
             <div class="vs-sides">
               <p class="vs-side vs-server"><span>With a server</span>It knows who's online and connects them.</p>
-              <p class="vs-side vs-p2p"><span>In PeerChat</span>Devices find each other on a public peer-to-peer network, by a code made from the room's key that opens nothing. On the same Wi-Fi, they find each other directly.</p>
+              <p class="vs-side vs-p2p"><span>In PeerChat</span>Devices find each other on HyperDHT, a public peer-to-peer network, by a code made from the room's key that opens nothing, then connect directly. On the same Wi-Fi, they find each other with mDNS, no internet needed.</p>
             </div>
           </div>
           <div class="vs-row">
@@ -94,7 +99,7 @@
             </div>
           </div>
           <div class="vs-row">
-            <h3>Keeping a room in order</h3>
+            <h3>Moderation</h3>
             <div class="vs-sides">
               <p class="vs-side vs-server"><span>With a server</span>It bans people and filters messages for everyone.</p>
               <p class="vs-side vs-p2p"><span>In PeerChat</span>Every device runs the room's filters and limits itself. A removal signed by the room's creator is passed on until it reaches everyone.</p>
@@ -110,7 +115,7 @@
         </div>
 
         <h2>How a message crosses a big room</h2>
-        <p>Every message is sealed on the device that sends it, before it goes anywhere, and opened on the devices of the people in the room.</p>
+        <p>Say Sam writes to a room that Bob and Alice are in. The message is sealed on Sam's phone before it goes anywhere, and it's only opened on the devices of the people in the room.</p>
         <figure class="diagram" role="img" aria-label="Sam's phone seals a message with this hour's key and signs it. Bob's laptop, in the room too, passes it on but can't change it. Alice's laptop checks that Sam wrote it, then opens it. The room's key only travels in the invite, and anyone without it has nothing to read.">
           <div class="dg-trio">
             <div class="dg-node">
@@ -149,12 +154,12 @@
             </div>
           </div>
         </figure>
-        <p>A device keeps up to 64 connections, so in a big room most people aren't connected to each other. Each device passes every new message on once, to the others it's connected to in the room. A copy it has already seen stops there, so a message crosses the whole room in a few steps.</p>
+        <p>A device opens up to 64 connections itself, and others can connect to it too, so in a big room it ends up with about a hundred. In a room of hundreds or thousands, most people still aren't connected to each other. Each device passes every new message on once, to the others it's connected to in the room. A copy it has already seen stops there, so a message crosses the whole room in a few steps.</p>
         <p>Every message carries its writer's signature. Alice's laptop checks it before it shows Sam's message, so it knows Sam wrote it and that nobody changed it on the way, whoever passed it on.</p>
         <p>Limits count per writer, not per connection. Each person gets the room's spam limit wherever their messages come from, so a device passing on a busy room is never blamed for what others wrote.</p>
 
         <h2>A new key every hour</h2>
-        <p>New rooms seal each hour's messages with a new key. Each key is made from the one before it, and there's no way to work back to an earlier one.</p>
+        <p>New rooms change their lock every hour. Each hour's messages are sealed with a new key, made from the one before it, and there's no way to work back to an earlier one.</p>
         <figure class="diagram" role="img" aria-label="Keys for 9:00, 10:00, 11:00 and 12:00, each made from the one before. Sam joined at 11:00, so Sam gets the keys for 11:00 and 12:00 and can't work out the two before.">
           <div class="dg-hours">
             <div class="dg-hour is-sealed">
@@ -186,13 +191,17 @@
         <p>So someone who joins later, or gets hold of a forwarded invite, can't read anything from the hours before they arrived. If a phone is lost, move to a new room, since a key still opens every hour after its own.</p>
         <p>New rooms are the ones made with PeerSky Mobile 0.1.2 and the desktop release that comes with it. Older versions can't open them, so update PeerSky on every device. Rooms made before, P2P Republic among them, keep one key, so every version can still read them.</p>
 
-        <h2>Keeping a room in order</h2>
+        <h2>Moderation</h2>
         <p>With no server to do it, every device enforces the room's rules itself. Whoever makes a room picks them: an abuse filter, a filter for profanity and slurs, and a spam limit. Links to adult sites are always blocked. The rules are fixed once the room is made, and they show in the room's info.</p>
         <p>Each device checks what it sends and what it receives. A message that breaks the rules is stopped before it's sent, and checked again on every device that receives it. Pictures are checked the same way, on the device that sends them and on every device that gets them. Someone who keeps breaking the rules gets a warning, then is shut out of the room for a while.</p>
         <p>The person who made the room can remove someone. The removal is signed with their key and passed on like a message, so it reaches every device in the room, even ones that never connected to them, and every device refuses that person's messages from then on. Anyone can also block someone, or report them.</p>
 
+        <h2>One person, several devices</h2>
+        <p>With Link Device, the same profile runs on your phone and your desktops. Each device keeps its own key and joins your rooms as itself, so each one gets every message straight from the room, with no device in the middle. On the device where you picked your name, it shows as just <em>ada</em>. Your other devices add a label, <em>ada@mobile</em> on your phone and <em>ada@desktop1</em>, <em>ada@desktop2</em> on more desktops, so people can tell which device a message came from.</p>
+        <p>Your devices know each other by a secret only they share, from Link Device. Rename yourself on one and the others follow. Join a room on one and it shows up on the rest. And there's a chat with yourself, called You, for sending a page or a note from your phone to your laptop.</p>
+
         <h2>No internet, same Wi-Fi</h2>
-        <p>PeerChat finds the other devices on your Wi-Fi by itself, so with the internet down, everyone on the same network keeps chatting.</p>
+        <p>Every room is joined twice: on <a href="https://github.com/holepunchto/hyperdht" target="_blank" rel="noopener noreferrer">HyperDHT</a> across the internet, and on a separate swarm on your local network that devices find with mDNS, using our <a href="https://github.com/p2plabsxyz/hyperdht-mdns" target="_blank" rel="noopener noreferrer">hyperdht-mdns</a>. The local one needs no public server to start from, so with the internet down, everyone on the same Wi-Fi keeps chatting. It needs a network, not an internet connection. We tried it by pulling the cable out of our modem, and the chat on our Wi-Fi kept going.</p>
 
         <p>For the technical details, read:</p>
         <ul>
@@ -202,7 +211,7 @@
           <li>the privacy policies for <a href="https://github.com/p2plabsxyz/peersky-browser/blob/main/PRIVACY.md" target="_blank" rel="noopener noreferrer">desktop</a> and <a href="https://github.com/p2plabsxyz/peersky-mobile/blob/main/PRIVACY.md" target="_blank" rel="noopener noreferrer">mobile</a></li>
         </ul>
 
-        <p class="post-end">Try it with the people you already talk to. Get PeerSky at <a href="../../#downloads">peersky.p2plabs.xyz</a>, then say hi in <a href="../../peerchat/">P2P Republic</a>, our public room.</p>
+        <p class="post-end">Try it with the people you already talk to. Get PeerSky at <a href="../../#downloads">peersky.p2plabs.xyz</a>, then come say hi in <a href="../../peerchat/">P2P Republic</a>, our public room.</p>
       </div>
 
       <peersky-footer></peersky-footer>
@@ -210,6 +219,7 @@
   </main>
 
   <script src="../../components/footer.js"></script>
+  <script src="../../components/theme-toggle.js"></script>
 </body>
 
 </html>
