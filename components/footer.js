@@ -6,6 +6,14 @@
 // It renders without a shadow root so the page's Tailwind classes apply.
 // Mastodon's rel="me" check does not run scripts, so a page that needs the
 // verification keeps its own static rel="me" link, like the badge on the home page.
+
+// The press kit is a page on this site, so its link is built from this
+// script's own address, the way orbit.js finds the phone shots. It then stays
+// on the copy of the site the page came from, hyper:// and ipns:// included.
+// currentScript is only set while the script first runs.
+const footerScript = document.currentScript && document.currentScript.src
+const pressKit = footerScript ? new URL('../press/', footerScript).href : 'https://peersky.p2plabs.xyz/press/'
+
 class PeerskyFooter extends HTMLElement {
   connectedCallback () {
     if (this.dataset.rendered) return
@@ -21,6 +29,7 @@ class PeerskyFooter extends HTMLElement {
         <a class="${link}" href="https://bsky.app/profile/peersky.mastodon.social.ap.brid.gy" ${out}>Bluesky</a>
         <a class="${link}" href="https://twitter.com/PeerskyBrowser" ${out}><del>X/Twitter</del></a>
         <a class="${link}" href="mailto:peersky@p2plabs.xyz">Email</a>
+        <a class="${link}" href="${pressKit}">Press kit</a>
         <br />
         Made with 💙 by
         <a class="${link}" href="https://p2plabs.xyz/" ${out}>p2plabs.xyz</a><br />

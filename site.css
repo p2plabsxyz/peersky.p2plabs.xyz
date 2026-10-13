@@ -760,6 +760,56 @@ kbd {
   font-size: 15px;
 }
 
+/* The press kit: a card for each file, with a preview above its name. Two
+   cards a row on wide screens, one on phones. */
+.press-list {
+  display: grid;
+  gap: 20px;
+  margin-top: 28px;
+}
+
+@media (min-width: 640px) {
+  .press-list { grid-template-columns: 1fr 1fr; }
+}
+
+.press-preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 180px;
+  padding: 20px;
+  background: var(--accent-soft);
+}
+
+.post-card .press-preview img {
+  width: auto;
+  max-width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Cards in a row are as tall as each other, with Download at the bottom. */
+.press-list .post-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.press-list .post-card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.press-list .post-card-body p {
+  margin-bottom: 8px;
+}
+
+.press-list .step-link {
+  margin-top: auto;
+}
+
 .post-header .post-date {
   display: block;
   margin-top: 28px;
