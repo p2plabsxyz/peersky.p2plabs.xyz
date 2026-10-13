@@ -261,6 +261,27 @@ body {
   }
 }
 
+/* ---------- Banner ---------- */
+
+/* The banner of the laptop and two phones is a JPEG on the light page colour.
+   In the dark theme a mask keeps the three devices and drops the light around
+   them. The shapes are traced from images/banner.jpg (2000 by 833), so trace
+   them again if it changes. */
+html[data-theme="dark"] .home-banner {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2000 833' preserveAspectRatio='none'%3E%3Crect x='471.5' y='93' width='1062' height='620.5' rx='10'/%3E%3Crect x='246' y='156' width='236' height='494.5' rx='38'/%3E%3Crect x='1519' y='154' width='237' height='497.5' rx='42'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2000 833' preserveAspectRatio='none'%3E%3Crect x='471.5' y='93' width='1062' height='620.5' rx='10'/%3E%3Crect x='246' y='156' width='236' height='494.5' rx='38'/%3E%3Crect x='1519' y='154' width='237' height='497.5' rx='42'/%3E%3C/svg%3E");
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+/* Blog figures are pictures on the light page colour too. In the dark theme
+   they sit on the page as rounded cards rather than hard light boxes. */
+html[data-theme="dark"] .post-body figure > img {
+  border-radius: 12px;
+}
+
 /* ---------- Downloads ---------- */
 
 .download-grid {
@@ -290,8 +311,14 @@ body {
   max-width: 110px;
 }
 
+/* The store badges come with a thin grey edge, so the desktop buttons get the
+   same one, in both themes. The radius matches the corners drawn in the
+   images, 26px of 500 by 182. */
 .dl-desktop img {
   width: 100%;
+  border-radius: 5.2% / 14.3%;
+  outline: 1px solid #a6a6a6;
+  outline-offset: -1px;
 }
 
 .dl-store img {
