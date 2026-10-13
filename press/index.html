@@ -40,30 +40,36 @@
 
   <main>
     <div class="max-w-3xl mx-auto px-5 sm:px-10">
-      <!-- Each card downloads a file from /images/, so the site keeps one copy of each. The app icon is kept here, since the site has no other use for it. -->
+      <!-- Most cards download a file from /images/, so the site keeps one copy of
+           each. The app icons and the home screen shot are kept here. -->
       <ul class="press-list">
+        <li class="press-wide">
+          <a class="post-card" href="peersky-app-icons.zip" download="peersky-app-icons.zip">
+            <div class="press-preview press-icons">
+              <img src="app-icons/cyan.png" width="192" height="192" alt="Cyan" />
+              <img src="app-icons/green.png" width="192" height="192" alt="Green" />
+              <img src="app-icons/violet.png" width="192" height="192" alt="Violet" />
+              <img src="app-icons/yellow.png" width="192" height="192" alt="Yellow" />
+              <img src="app-icons/light.png" width="192" height="192" alt="Light" />
+              <img src="app-icons/dark.png" width="192" height="192" alt="Dark" />
+            </div>
+            <div class="post-card-body">
+              <span class="post-date">ZIP &middot; 6 PNGs, 1024 &times; 1024</span>
+              <h2>App icons</h2>
+              <p>The bird in every colour the app comes in: cyan, green, violet, yellow, light and dark.</p>
+              <span class="step-link">Download</span>
+            </div>
+          </a>
+        </li>
         <li>
           <a class="post-card" href="../images/logo.png" download="peersky-logo.png">
             <div class="press-preview">
               <img src="../images/logo.png" width="480" height="480" alt="PeerSky's bird" />
             </div>
             <div class="post-card-body">
-              <span class="post-date">PNG · 480 &times; 480</span>
+              <span class="post-date">PNG &middot; 480 &times; 480</span>
               <h2>Logo</h2>
               <p>The bird on a clear background.</p>
-              <span class="step-link">Download</span>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a class="post-card" href="peersky-app-icon.png" download="peersky-app-icon.png">
-            <div class="press-preview">
-              <img src="peersky-app-icon.png" width="512" height="512" alt="PeerSky's app icon: the bird on a mint square" />
-            </div>
-            <div class="post-card-body">
-              <span class="post-date">PNG · 512 &times; 512</span>
-              <h2>App icon</h2>
-              <p>The bird on a mint square, as on the desktop.</p>
               <span class="step-link">Download</span>
             </div>
           </a>
@@ -75,7 +81,7 @@
               <img src="../images/favicon.ico" width="1000" height="1000" alt="PeerSky's bird on a mint circle" />
             </div>
             <div class="post-card-body">
-              <span class="post-date">PNG · 1000 &times; 1000</span>
+              <span class="post-date">PNG &middot; 1000 &times; 1000</span>
               <h2>Round icon</h2>
               <p>The bird on a mint circle.</p>
               <span class="step-link">Download</span>
@@ -88,7 +94,7 @@
               <img src="../images/link-card.png" width="1024" height="500" alt="PeerSky's app icon, name and tagline on blue" />
             </div>
             <div class="post-card-body">
-              <span class="post-date">PNG · 1024 &times; 500</span>
+              <span class="post-date">PNG &middot; 1024 &times; 500</span>
               <h2>Name and tagline</h2>
               <p>The app icon, the name and the tagline on blue.</p>
               <span class="step-link">Download</span>
@@ -96,26 +102,22 @@
           </a>
         </li>
         <li>
-          <a class="post-card" href="../images/banner.jpg" download="peersky-devices.jpg">
+          <a class="post-card" href="peersky-home-screen.jpg" download="peersky-home-screen.jpg">
             <div class="press-preview">
-              <img src="../images/banner.jpg" width="2000" height="833" alt="PeerSky on a laptop and two phones" />
+              <img src="peersky-home-screen.jpg" width="1124" height="599" alt="PeerSky in an iPhone's dock, next to Phone and Messages" />
             </div>
             <div class="post-card-body">
-              <span class="post-date">JPEG · 2000 &times; 833</span>
-              <h2>Laptop and phones</h2>
-              <p>P2PMD on an iPhone, PeerChat on the desktop and PeerTunes on an Android phone.</p>
+              <span class="post-date">JPEG &middot; 1124 &times; 599</span>
+              <h2>On the home screen</h2>
+              <p>PeerSky in an iPhone's dock, next to Phone and Messages.</p>
               <span class="step-link">Download</span>
             </div>
           </a>
         </li>
       </ul>
 
-      <section class="post-body">
-        <h2>About PeerSky</h2>
-        <p>PeerSky is a local-first P2P browser for desktop and mobile. Browse the web as usual, and share pages, files, chats and notes straight between devices, even offline.</p>
-      </section>
-
-      <p class="page-note">Need something that isn't here? Email <a class="text-blue-600 hover:text-blue-500 underline" href="mailto:peersky@p2plabs.xyz">peersky@p2plabs.xyz</a>.</p>
+      <!-- Spelled out, not linked, so no bot finds an address to collect. -->
+      <p class="page-note">Need something that isn't here? Email peersky [at] p2plabs [dot] xyz.</p>
 
       <peersky-footer></peersky-footer>
     </div>

@@ -14,6 +14,11 @@
 const footerScript = document.currentScript && document.currentScript.src
 const pressKit = footerScript ? new URL('../press/', footerScript).href : 'https://peersky.p2plabs.xyz/press/'
 
+// The address is never written out whole, in the page or in this script, so
+// a bot reading either finds no address to collect. Email shows it, spelled
+// out, when someone clicks it.
+const SPELLED_EMAIL = 'peersky [at] p2plabs [dot] xyz'
+
 class PeerskyFooter extends HTMLElement {
   connectedCallback () {
     if (this.dataset.rendered) return
@@ -28,7 +33,7 @@ class PeerskyFooter extends HTMLElement {
         <a class="${link}" href="https://mastodon.social/@peersky" target="_blank" rel="me noopener noreferrer">Mastodon</a>
         <a class="${link}" href="https://bsky.app/profile/peersky.mastodon.social.ap.brid.gy" ${out}>Bluesky</a>
         <a class="${link}" href="https://twitter.com/PeerskyBrowser" ${out}><del>X/Twitter</del></a>
-        <a class="${link}" href="mailto:peersky@p2plabs.xyz">Email</a>
+        <a class="${link}" href="#" data-email role="button">Email</a>
         <a class="${link}" href="${pressKit}">Press kit</a>
         <br />
         Made with 💙 by
@@ -47,6 +52,14 @@ class PeerskyFooter extends HTMLElement {
           </p>
         </div>
       </footer>`
+    const email = this.querySelector('[data-email]')
+    email.addEventListener('click', (event) => {
+      event.preventDefault()
+      const spelled = document.createElement('span')
+      spelled.className = 'select-all'
+      spelled.textContent = SPELLED_EMAIL
+      email.replaceWith(spelled)
+    })
   }
 }
 
