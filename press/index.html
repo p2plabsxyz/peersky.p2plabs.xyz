@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="PeerSky's logo, icon and images, for anyone writing or talking about PeerSky." />
+  <meta property="og:title" content="PeerSky press kit" />
+  <meta property="og:description" content="PeerSky's logo, icon and images, for anyone writing or talking about PeerSky." />
+  <meta property="og:url" content="https://peersky.p2plabs.xyz/press/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://peersky.p2plabs.xyz/images/link-card.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://peersky.p2plabs.xyz/images/link-card.png" />
+  <link rel="shortcut icon" type="image/png" href="../images/favicon.ico" />
+  <script>
+    // The theme goes on before anything is drawn: light, unless dark was picked here before.
+    (function () { var t = null; try { t = localStorage.getItem('theme') } catch (e) {} document.documentElement.dataset.theme = t === 'dark' ? 'dark' : 'light' })()
+  </script>
+  <link href="../lib/tailwind.min.css" rel="stylesheet" />
+  <link href="../site.css" rel="stylesheet" />
+  <title>Press kit · PeerSky</title>
+</head>
+
+<body>
+  <header>
+    <div class="max-w-3xl mx-auto px-5 sm:px-10">
+      <nav class="page-nav" aria-label="Site">
+        <a class="back-link" href="../">
+          <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          Back to PeerSky
+        </a>
+        <theme-toggle></theme-toggle>
+      </nav>
+      <h1 class="page-title">Press kit</h1>
+      <p class="page-lede">PeerSky's logo, icon and images, for anyone writing or talking about PeerSky.</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="max-w-3xl mx-auto px-5 sm:px-10">
+      <!-- Most cards download a file from /images/, so the site keeps one copy of
+           each. The app icons and the home screen shot are kept here. -->
+      <ul class="press-list">
+        <li class="press-wide">
+          <a class="post-card" href="peersky-app-icons.zip" download="peersky-app-icons.zip">
+            <div class="press-preview press-icons">
+              <img src="app-icons/cyan.png" width="192" height="192" alt="Cyan" />
+              <img src="app-icons/green.png" width="192" height="192" alt="Green" />
+              <img src="app-icons/violet.png" width="192" height="192" alt="Violet" />
+              <img src="app-icons/yellow.png" width="192" height="192" alt="Yellow" />
+              <img src="app-icons/light.png" width="192" height="192" alt="Light" />
+              <img src="app-icons/dark.png" width="192" height="192" alt="Dark" />
+            </div>
+            <div class="post-card-body">
+              <span class="post-date">ZIP &middot; 6 PNGs, 1024 &times; 1024</span>
+              <h2>App icons</h2>
+              <p>The bird in every colour the app comes in: cyan, green, violet, yellow, light and dark.</p>
+              <span class="step-link">Download</span>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a class="post-card" href="../images/logo.png" download="peersky-logo.png">
+            <div class="press-preview">
+              <img src="../images/logo.png" width="480" height="480" alt="PeerSky's bird" />
+            </div>
+            <div class="post-card-body">
+              <span class="post-date">PNG &middot; 480 &times; 480</span>
+              <h2>Logo</h2>
+              <p>The bird on a clear background.</p>
+              <span class="step-link">Download</span>
+            </div>
+          </a>
+        </li>
+        <li>
+          <!-- favicon.ico is a PNG inside, so it saves as one. -->
+          <a class="post-card" href="../images/favicon.ico" download="peersky-icon.png">
+            <div class="press-preview">
+              <img src="../images/favicon.ico" width="1000" height="1000" alt="PeerSky's bird on a mint circle" />
+            </div>
+            <div class="post-card-body">
+              <span class="post-date">PNG &middot; 1000 &times; 1000</span>
+              <h2>Round icon</h2>
+              <p>The bird on a mint circle.</p>
+              <span class="step-link">Download</span>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a class="post-card" href="../images/link-card.png" download="peersky-card.png">
+            <div class="press-preview">
+              <img src="../images/link-card.png" width="1024" height="500" alt="PeerSky's app icon, name and tagline on blue" />
+            </div>
+            <div class="post-card-body">
+              <span class="post-date">PNG &middot; 1024 &times; 500</span>
+              <h2>Name and tagline</h2>
+              <p>The app icon, the name and the tagline on blue.</p>
+              <span class="step-link">Download</span>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a class="post-card" href="peersky-home-screen.jpg" download="peersky-home-screen.jpg">
+            <div class="press-preview">
+              <img src="peersky-home-screen.jpg" width="1124" height="599" alt="PeerSky in an iPhone's dock, next to Phone and Messages" />
+            </div>
+            <div class="post-card-body">
+              <span class="post-date">JPEG &middot; 1124 &times; 599</span>
+              <h2>On the home screen</h2>
+              <p>PeerSky in an iPhone's dock, next to Phone and Messages.</p>
+              <span class="step-link">Download</span>
+            </div>
+          </a>
+        </li>
+      </ul>
+
+      <!-- Spelled out, not linked, so no bot finds an address to collect. -->
+      <p class="page-note">Need something that isn't here? Email peersky [at] p2plabs [dot] xyz.</p>
+
+      <peersky-footer></peersky-footer>
+    </div>
+  </main>
+
+  <script src="../components/footer.js"></script>
+  <script src="../components/theme-toggle.js"></script>
+</body>
+
+</html>
