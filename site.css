@@ -1520,6 +1520,14 @@ html[data-theme="dark"] body {
   color: var(--body);
 }
 
+/* The home page banner: one picture per theme, each drawn on that theme's
+   page colour, so neither shows a box. Only the one in use is fetched. */
+.hero-banner {
+  aspect-ratio: 2000 / 833;
+  background: url("images/banner.jpg") center / contain no-repeat;
+}
+html[data-theme="dark"] .hero-banner { background-image: url("images/banner-dark.jpg"); }
+
 html[data-theme="dark"] h1,
 html[data-theme="dark"] h2,
 html[data-theme="dark"] h3 {
