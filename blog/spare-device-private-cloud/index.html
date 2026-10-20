@@ -53,9 +53,9 @@
         <p>You need PeerSky on both devices. Get it for your computer and your phone at <a href="../../#downloads">peersky.p2plabs.xyz</a>.</p>
 
         <h2>1. Link your devices</h2>
-        <p>On your phone, open Settings, then Link Device, then Sync with another device. It shows a code. On the spare laptop, open Backup &amp; Restore, scan that code under Identity transfer and press Upload Hyper. Scan the code the laptop shows back with your phone. When both screens show the same six digits, tap It matches.</p>
+        <p>On your phone, open Settings, then Link Device, then Sync with another device. It shows a code. On the spare laptop, open Settings, then Link Device, then Sync with another device, and choose Send from here. Paste or scan the phone's code there and press Send. Scan the code the laptop shows back with your phone. When both screens show the same six characters, tap It matches.</p>
         <figure>
-          <img src="./link.jpg" width="1600" height="917" loading="lazy" alt="PeerSky Desktop's Backup &amp; Restore page and a phone's Link Device screen, both showing the code 150053" />
+          <img src="./link.jpg" width="1600" height="917" loading="lazy" alt="Link Device on PeerSky Desktop sending to a phone, and Link Device on the phone, both showing the code C34DD0" />
           <figcaption>Both screens show the same code before anything moves.</figcaption>
         </figure>
         <p>Now both devices hold the same key, and nobody else has it.</p>
@@ -119,7 +119,7 @@
         <h2>How safe is it?</h2>
         <p>Think of a safe that only opens with a key your devices made together, and that nobody else ever saw. Here's what keeps each part locked:</p>
         <ul>
-          <li><strong>Linking:</strong> the key moves once, when you link, over an encrypted connection, and only after both screens show the same six digits. That check stops anyone from slipping their own device in between.</li>
+          <li><strong>Linking:</strong> the key moves once, when you link, over an encrypted connection, and only after both screens show the same six characters. That check stops anyone from slipping their own device in between.</li>
           <li><strong>On the way:</strong> your devices talk over an encrypted connection, and the file inside it is encrypted as well, so anyone watching your Wi-Fi or the internet sees only scrambled data.</li>
           <li><strong>On each device:</strong> files are saved encrypted, and the key that opens them is locked by your system's own safe storage: the Keychain on a Mac or iPhone, the Android Keystore, Windows' own protection on a PC, and the keyring on Linux, when it has one. You're never asked for a password. It opens only for you, on that device, while you're logged in. Someone who copies PeerSky's folder off your laptop gets encrypted files and a key they can't open.</li>
           <li><strong>Your file names too:</strong> the list of your private files, and of what's on your other devices, is locked the same way, so nobody can read "passport-scan.jpg" off your disk either.</li>
