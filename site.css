@@ -1547,11 +1547,15 @@ html[data-theme="dark"] .bg-gray-100,
 html[data-theme="dark"] .bg-gray-200 { background-color: var(--hover); }
 html[data-theme="dark"] .border-gray-300 { border-color: var(--border-strong); }
 
-/* The supporters' logos are drawn for a light page, so they keep one. */
-html[data-theme="dark"] .supporters img {
-  padding: 8px;
-  border-radius: 12px;
-  background: #f5f5f4;
+/* The supporters' logos sit on the dark page as they are, with no white
+   behind them, as the banner does. Those drawn in black or dark ink, or on a
+   white disc of their own, are turned light with their colours kept. */
+html[data-theme="dark"] .supporters img[alt="Internet Archive"],
+html[data-theme="dark"] .supporters img[alt="Agregore"],
+html[data-theme="dark"] .supporters img[alt="Distributed Press"],
+html[data-theme="dark"] .supporters img[alt="ETHDenver"],
+html[data-theme="dark"] .supporters img[alt="UC Open Source Program Office"] {
+  filter: invert(1) hue-rotate(180deg);
 }
 
 /* Distributed Press's grey logo in the footer, lightened to show up. */
