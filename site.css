@@ -281,6 +281,12 @@ body {
   }
 }
 
+/* Blog figures are pictures on the light page colour too. In the dark theme
+   they sit on the page as rounded cards rather than hard light boxes. */
+html[data-theme="dark"] .post-body figure > img {
+  border-radius: 12px;
+}
+
 /* ---------- Downloads ---------- */
 
 .download-grid {
