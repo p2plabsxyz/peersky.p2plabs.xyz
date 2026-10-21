@@ -695,7 +695,7 @@ kbd {
   color: var(--body);
 }
 
-/* ---------- /install/ ---------- */
+/* ---------- Bird field (components/logo-field.js) ---------- */
 
 /* Birds in six colours drift behind the page, faint enough to read over. */
 .logo-field {
@@ -745,10 +745,13 @@ html[data-theme="dark"] .logo-field { opacity: 0.12; }
   .logo-grid .bird { animation: none; }
 }
 
-.install-content {
+/* Everything after the field sits above it. */
+.logo-field ~ * {
   position: relative;
   z-index: 1;
 }
+
+/* ---------- /install/ ---------- */
 
 .install-header {
   margin-top: 24px;

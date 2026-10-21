@@ -37,7 +37,7 @@
 <body class="install-page">
   <div class="logo-field" aria-hidden="true"></div>
 
-  <div class="install-content max-w-3xl mx-auto px-5 sm:px-10 md:px-20">
+  <div class="max-w-3xl mx-auto px-5 sm:px-10 md:px-20">
     <nav class="page-nav" aria-label="Site">
       <a class="back-link" href="../">
         <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
@@ -128,41 +128,7 @@
     </main>
   </div>
 
-  <script>
-    // The background: a grid of birds in six colours, drifting on a loop. The
-    // colours repeat every six birds along a row and down a column, so moving
-    // the grid by six birds both ways brings back the same picture, and the
-    // loop has no seam.
-    (function () {
-      const field = document.querySelector('.logo-field')
-      const COLOURS = 6
-      function build () {
-        const size = parseFloat(getComputedStyle(field).getPropertyValue('--bird')) || 96
-        const columns = Math.ceil(window.innerWidth / size) + COLOURS + 1
-        const rows = Math.ceil(window.innerHeight / size) + COLOURS + 1
-        const grid = document.createElement('div')
-        grid.className = 'logo-grid'
-        grid.style.gridTemplateColumns = `repeat(${columns}, ${size}px)`
-        for (let row = 0; row < rows; row++) {
-          for (let column = 0; column < columns; column++) {
-            const bird = document.createElement('img')
-            bird.src = '../images/logo.png'
-            bird.alt = ''
-            bird.className = `bird bird-${(row + column) % COLOURS}`
-            bird.style.animationDelay = `${-((row * 7 + column * 3) % 10) * 0.4}s`
-            grid.appendChild(bird)
-          }
-        }
-        field.replaceChildren(grid)
-      }
-      build()
-      let resizing = null
-      window.addEventListener('resize', () => {
-        clearTimeout(resizing)
-        resizing = setTimeout(build, 200)
-      })
-    })()
-  </script>
+  <script src="../components/logo-field.js"></script>
   <script src="../components/footer.js"></script>
   <script src="../components/theme-toggle.js"></script>
 </body>
