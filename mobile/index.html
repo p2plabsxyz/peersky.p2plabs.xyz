@@ -24,6 +24,10 @@
   <link rel="shortcut icon" type="image/png" href="../images/favicon.ico" />
   <link rel="preload" as="image" href="../images/blink.png" />
   <!-- Tailwind (vendored) -->
+  <script>
+    // The theme goes on before anything is drawn: light, unless dark was picked here before.
+    (function () { var t = null; try { t = localStorage.getItem('theme') } catch (e) {} document.documentElement.dataset.theme = t === 'dark' ? 'dark' : 'light' })()
+  </script>
   <link href="../lib/tailwind.min.css" rel="stylesheet" />
   <link href="../site.css" rel="stylesheet" />
   <title>PeerSky Mobile</title>
@@ -38,6 +42,7 @@
           <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
           Back to PeerSky
         </a>
+        <theme-toggle></theme-toggle>
       </nav>
       <section class="stage" id="orbit" aria-label="PeerSky's apps, on a ring of phones. Hover or tap a phone for its story.">
         <svg class="orbit-lines" aria-hidden="true" focusable="false"></svg>
@@ -69,8 +74,8 @@
     <section id="android" class="platform-card" aria-labelledby="android-title">
       <h2 id="android-title" class="text-2xl font-bold">Android</h2>
       <p class="mt-2 text-gray-700">
-        PeerSky is in testing on Google Play, which only lets people on our testers list install it.
-        Getting on the list takes three steps.
+        Sorry for the extra steps: PeerSky is still in testing on Google Play, which only lets people on
+        our testers list install it. Getting on the list takes three steps.
       </p>
       <ol class="steps">
         <li>
@@ -87,6 +92,7 @@
           <h3>Install the test build</h3>
           <p>Install PeerSky from Google Play like any other app. It can take a few minutes after you opt in
             before Google Play offers it.</p>
+          <p class="step-hint">Google Play says it can't find the app? Wait a few minutes and try again.</p>
           <a class="store-badge" href="https://play.google.com/store/apps/details?id=xyz.p2plabs.peersky" target="_blank" rel="noopener noreferrer">
             <img src="../images/google-play-badge.svg" width="239" height="71" alt="Get it on Google Play" />
           </a>
@@ -143,6 +149,7 @@
   <script src="../orbit.js"></script>
   <script src="../components/footer.js"></script>
   <script src="../coming-soon.js"></script>
+  <script src="../components/theme-toggle.js"></script>
 </body>
 
 </html>

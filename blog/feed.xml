@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>PeerSky Blog</title>
+    <link>https://peersky.p2plabs.xyz/blog/</link>
+    <atom:link href="https://peersky.p2plabs.xyz/blog/feed.xml" rel="self" type="application/rss+xml" />
+    <description>Guides and stories about PeerSky, the local-first P2P browser for desktop and mobile.</description>
+    <language>en</language>
+    <lastBuildDate>Sat, 10 Oct 2026 17:00:00 GMT</lastBuildDate>
+    <!-- Newest first. A new post goes here too, with the title, date and summary it has on the blog page. -->
+    <item>
+      <title>Chats that live on your devices, not on a server</title>
+      <link>https://peersky.p2plabs.xyz/blog/chats-on-your-devices/</link>
+      <guid isPermaLink="true">https://peersky.p2plabs.xyz/blog/chats-on-your-devices/</guid>
+      <pubDate>Sat, 10 Oct 2026 17:00:00 GMT</pubDate>
+      <description>How PeerChat runs private chats with no server: devices pass messages on, sign every one, change keys every hour and moderate rooms themselves.</description>
+      <content:encoded><![CDATA[<p><img src="https://peersky.p2plabs.xyz/blog/chats-on-your-devices/banner.jpg" width="1600" height="840" alt="A PeerChat room called Granite Lake trip on Alice's desktop and on Sam's phone" /></p><p>How PeerChat runs private chats with no server: devices pass messages on, sign every one, change keys every hour and moderate rooms themselves.</p><p><a href="https://peersky.p2plabs.xyz/blog/chats-on-your-devices/">Read the post</a></p>]]></content:encoded>
+    </item>
+  </channel>
+</rss>
