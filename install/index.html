@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!--MetaTags-->
+  <meta name="author" content="Akhilesh Thite" />
+  <meta name="description" content="Install PeerSky on your phone: browse the web, chat, share files and write notes straight between devices, even offline." />
+  <meta property="og:title" content="Install PeerSky" />
+  <meta property="og:description" content="Peer to peer in your pocket. Browse the web, chat, share files and write notes straight between devices, even offline." />
+  <meta property="og:url" content="https://peersky.p2plabs.xyz/install/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://peersky.p2plabs.xyz/images/link-card.png" />
+  <meta property="og:image:width" content="1024" />
+  <meta property="og:image:height" content="500" />
+  <meta property="og:image:alt" content="PeerSky: your peer-to-peer, local-first, surveillance-free browser" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Install PeerSky" />
+  <meta name="twitter:description" content="Peer to peer in your pocket. Browse the web, chat, share files and write notes straight between devices, even offline." />
+  <meta name="twitter:image" content="https://peersky.p2plabs.xyz/images/link-card.png" />
+  <!--Favicon-->
+  <link rel="shortcut icon" type="image/png" href="../images/favicon.ico" />
+  <!-- Tailwind (vendored) -->
+  <script>
+    // The theme goes on before anything is drawn: light, unless dark was picked here before.
+    (function () { var t = null; try { t = localStorage.getItem('theme') } catch (e) {} document.documentElement.dataset.theme = t === 'dark' ? 'dark' : 'light' })()
+  </script>
+  <link href="../lib/tailwind.min.css" rel="stylesheet" />
+  <link href="../site.css" rel="stylesheet" />
+  <title>Install PeerSky</title>
+</head>
+
+<!-- TODO: once PeerSky is on the App Store, send a phone straight to its store
+     from here: Google Play on Android, the App Store on an iPhone. -->
+<body class="install-page">
+  <div class="logo-field" aria-hidden="true"></div>
+
+  <div class="max-w-3xl mx-auto px-5 sm:px-10 md:px-20">
+    <nav class="page-nav" aria-label="Site">
+      <a class="back-link" href="../">
+        <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+        Back to PeerSky
+      </a>
+      <theme-toggle></theme-toggle>
+    </nav>
+
+    <header class="install-header">
+      <img class="install-logo" src="../images/logo.png" width="480" height="480" alt="PeerSky logo" />
+      <h1><code class="text-3xl sm:text-4xl">Install PeerSky</code></h1>
+      <p class="mt-2">Peer to peer in your pocket.</p>
+    </header>
+
+    <main>
+      <section id="ios" class="platform-card" aria-labelledby="ios-title">
+        <h2 id="ios-title" class="text-2xl font-bold">iOS</h2>
+        <p class="mt-2 text-gray-700">
+          PeerSky for iPhone is in review for Apple's App Store. It will be here as soon as Apple approves it.
+        </p>
+      </section>
+
+      <section id="android" class="platform-card" aria-labelledby="android-title">
+        <h2 id="android-title" class="text-2xl font-bold">Android</h2>
+        <p class="mt-2 text-gray-700">
+          Sorry for the extra steps: PeerSky is still in testing on Google Play, which only lets people on
+          our testers list install it. Getting on the list takes three steps.
+        </p>
+        <ol class="steps">
+          <li>
+            <h3>Join the Google Group</h3>
+            <p>Google Play lets testers in through a Google Group. Sign in with the Google account you use on your phone and tap <strong>Join group</strong>.</p>
+            <a class="step-link" href="https://groups.google.com/g/peersky-community/about" target="_blank" rel="noopener noreferrer">Join the group</a>
+          </li>
+          <li>
+            <h3>Become a tester</h3>
+            <p>Open the opt-in page with the same account and tap <strong>Become a tester</strong>.</p>
+            <a class="step-link" href="https://play.google.com/apps/testing/xyz.p2plabs.peersky" target="_blank" rel="noopener noreferrer">Opt in on Google Play</a>
+          </li>
+          <li>
+            <h3>Install the test build</h3>
+            <p>Install PeerSky from Google Play like any other app. It can take a few minutes after you opt in
+              before Google Play offers it.</p>
+            <p class="step-hint">Google Play says it can't find the app? Wait a few minutes and try again.</p>
+            <a class="store-badge" href="https://play.google.com/store/apps/details?id=xyz.p2plabs.peersky" target="_blank" rel="noopener noreferrer">
+              <img src="../images/google-play-badge.svg" width="239" height="71" alt="Get it on Google Play" />
+            </a>
+          </li>
+        </ol>
+        <p class="note">
+          When PeerSky is published for everyone, you don't have to install it again. Keep using the one you
+          have: it updates through Google Play like any other app.
+        </p>
+        <div class="apk-option">
+          <h3>Or install the APK</h3>
+          <p>
+            Download the <code class="bg-gray-200 px-1 rounded">.apk</code> from our GitHub releases and open it on your
+            phone, allowing installs from your browser if it asks. New versions come out on the same page.
+          </p>
+          <p>
+            To check the file, run <code class="bg-gray-200 px-1 rounded">openssl sha256 PeerSky-&lt;version&gt;.apk</code>
+            and compare what it prints with the checksum at the top of the release notes.
+          </p>
+          <p>
+            Google Play signs its copy with its own key, so the APK and the Google Play version can't update each
+            other. To switch, save a backup with Link Device, uninstall, then install the other one.
+          </p>
+          <a class="step-link" href="https://github.com/p2plabsxyz/peersky-mobile/releases/latest" target="_blank" rel="noopener noreferrer">Download the APK</a>
+        </div>
+      </section>
+
+      <section id="desktop" class="platform-card" aria-labelledby="desktop-title">
+        <h2 id="desktop-title" class="text-2xl font-bold">Desktop</h2>
+        <p class="mt-2 text-gray-700">PeerSky is on Mac, Linux and Windows too.</p>
+        <a class="step-link" href="../#downloads">Download PeerSky for desktop</a>
+      </section>
+
+      <section class="mt-8 text-gray-700">
+        <h2 class="text-xl font-bold text-gray-900">Found something broken?</h2>
+        <p class="mt-2">
+          Tell us in a <a href="https://github.com/p2plabsxyz/peersky-mobile/issues" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-500">GitHub issue</a>,
+          on <a href="https://matrix.to/#/#peersky:matrix.org" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-500">Matrix</a>, or in
+          <a href="https://republic.p2plabs.xyz/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-500">PeerChat</a>.
+        </p>
+      </section>
+
+      <peersky-footer></peersky-footer>
+    </main>
+  </div>
+
+  <script src="../components/logo-field.js"></script>
+  <script src="../components/footer.js"></script>
+  <script src="../components/theme-toggle.js"></script>
+</body>
+
+</html>

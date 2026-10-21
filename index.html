@@ -104,9 +104,10 @@
         </a>
         <span>- bridged)</span>
       </div>
-      <img src="./images/banner.jpg" width="2000" height="833"
-        alt="PeerSky on a laptop and two phones: a P2PMD note on an iPhone, the home page and PeerChat on the desktop, and PeerTunes on an Android phone"
-        class="home-banner mx-auto block my-4 w-full h-auto" />
+      <!-- One picture per theme, each on its page's own colour. As a CSS
+           background, only the one shown is fetched (site.css). -->
+      <div class="hero-banner mx-auto my-4 w-full" role="img"
+        aria-label="PeerSky on a laptop and two phones: a P2PMD note on an iPhone, a PeerChat room beside a Wikipedia article in split view on the desktop, and PeerTunes on an Android phone"></div>
 
       <!-- Download Releases Section -->
       <section id="downloads" class="mt-6 mb-6" aria-label="Downloads">
@@ -172,8 +173,9 @@
             class="text-blue-600 hover:text-blue-500">hyperdht mDNS</a> discovery, so chats, notes and files keep moving
           when the internet is down. Files can be shared openly or kept in a private drive, encrypted so only your own
           devices can open them.
-          As PeerSky continues to grow, new protocols such as <a href="https://veilid.com/" target="_blank" rel="noopener noreferrer"
-            class="text-blue-600 hover:text-blue-500">Veilid</a>, along with additional P2P apps, will be
+          As PeerSky continues to grow, new protocols such as <a href="https://reticulum.network/" target="_blank" rel="noopener noreferrer"
+            class="text-blue-600 hover:text-blue-500">Reticulum</a> and <a href="https://www.torproject.org/" target="_blank" rel="noopener noreferrer"
+            class="text-blue-600 hover:text-blue-500">Tor</a>, along with additional P2P apps, will be
           added, further expanding its capabilities and appeal.
         </p>
         <p class="mt-2">
@@ -192,12 +194,6 @@
       <!-- Features Section -->
       <section id="features" class="mt-8">
         <h2 class="text-2xl font-bold mb-2">✨ Features</h2>
-        <p class="mb-4 text-gray-700">
-          The full lists live in the docs for
-          <a href="https://github.com/p2plabsxyz/peersky-browser/tree/main/docs#features" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-500">desktop</a>
-          and
-          <a href="https://github.com/p2plabsxyz/peersky-mobile/tree/main/docs#features" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-500">mobile</a>.
-        </p>
 
         <details class="fold">
           <summary>💻 macOS, Windows and Linux</summary>
@@ -465,7 +461,7 @@
                 </ul>
               </li>
               <li>
-                <strong><a href="https://github.com/p2plabsxyz/peersky-browser/blob/main/docs/Backup.md" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-500">Backup &amp; Restore</a> (<code class="bg-gray-200 px-1 rounded">peersky://backup</code>):</strong>
+                <strong><a href="https://github.com/p2plabsxyz/peersky-browser/blob/main/docs/Backup.md" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-500">Link Device and backups</a> (<code class="bg-gray-200 px-1 rounded">peersky://backup</code>):</strong>
                 <ul class="list-disc list-inside ml-5">
                   <li>✅ Create offline <code class="bg-gray-200 px-1 rounded">.zip</code> backups containing tabs, window layout, ENS cache, and full IPFS/Hypercore data</li>
                   <li>✅ Upload backups to IPFS or Hypercore to share and restore via a P2P CID</li>
@@ -699,7 +695,6 @@
               <li>A global peer-to-peer AI computer: an AI mesh where devices split a large model between them and run it together, instead of renting a cloud</li>
               <li>Local private LLM search</li>
               <li>Web Monetization</li>
-              <li>Translations for the whole app</li>
               <li>PeerChat
                 <ul class="list-disc list-inside ml-5">
                   <li>Blind peers for messages, with notifications on iPhone when PeerSky is closed</li>
@@ -898,6 +893,12 @@
           <summary>Is there a difference between DWeb and Web3?</summary>
           <div class="fold-body">
             <p>They overlap, but they aren't the same thing. Web3 usually means blockchains and tokens. The DWeb, the decentralized web, is a movement to give people back their data, their tools and their connections, and it cares more about the digital commons than about markets. PeerSky is part of the DWeb: it runs on peer-to-peer protocols like Hypercore and IPFS, with no blockchain or token needed. Mai Ishikawa Sutton's article <a href="https://hypha.coop/dripline/debate-over-dweb-vs-web3/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-500">The Debate Over DWeb vs. Web3</a> goes into where they meet and where they differ.</p>
+          </div>
+        </details>
+        <details class="fold">
+          <summary>Do you use AI or LLMs to build PeerSky?</summary>
+          <div class="fold-body">
+            <p>Yes, as a tool, and a person stays responsible for every line. We use LLMs for research, drafts and refactoring, but nothing goes in that someone hasn't read, understood and can defend without the AI. No AI slop: no code nobody reviewed and no generated filler. Our <a href="https://github.com/p2plabsxyz/peersky-browser/blob/main/.github/CONTRIBUTING.md#ai-usage-policy" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-500">AI usage policy</a> sets this out for everyone who contributes. We also use LLMs for security audits: before a release they try to break into private drives, chats and notes like an attacker would, and a person checks every finding and every fix.</p>
           </div>
         </details>
       </section>
