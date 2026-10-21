@@ -695,6 +695,72 @@ kbd {
   color: var(--body);
 }
 
+/* ---------- /install/ ---------- */
+
+/* Birds in six colours drift behind the page, faint enough to read over. */
+.logo-field {
+  --bird: 96px;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0.16;
+}
+
+html[data-theme="dark"] .logo-field { opacity: 0.12; }
+
+.logo-grid {
+  display: grid;
+  animation: logo-drift 48s linear infinite;
+}
+
+/* Six birds across and six down: the colours line up again, so it loops. */
+@keyframes logo-drift {
+  from { transform: translate(0, 0); }
+  to { transform: translate(calc(var(--bird) * -6), calc(var(--bird) * -6)); }
+}
+
+.logo-grid .bird {
+  width: var(--bird);
+  height: var(--bird);
+  padding: 14px;
+  animation: bird-bob 4s ease-in-out infinite;
+}
+
+@keyframes bird-bob {
+  0%, 100% { transform: rotate(-8deg) translateY(0); }
+  50% { transform: rotate(8deg) translateY(-6px); }
+}
+
+.bird-0 { filter: none; }
+.bird-1 { filter: hue-rotate(70deg) saturate(1.4); }
+.bird-2 { filter: hue-rotate(140deg) saturate(1.3); }
+.bird-3 { filter: hue-rotate(200deg) saturate(1.5); }
+.bird-4 { filter: hue-rotate(260deg) saturate(1.4); }
+.bird-5 { filter: hue-rotate(320deg) saturate(1.3); }
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-grid,
+  .logo-grid .bird { animation: none; }
+}
+
+.install-content {
+  position: relative;
+  z-index: 1;
+}
+
+.install-header {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.install-logo {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 8px;
+}
+
 /* ---------- Blog and news ---------- */
 
 .page-title {
