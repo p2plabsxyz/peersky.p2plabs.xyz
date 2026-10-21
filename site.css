@@ -761,6 +761,23 @@ html[data-theme="dark"] .logo-field { opacity: 0.12; }
   margin: 0 auto 8px;
 }
 
+/* A short heads-up under a step, easy to spot. */
+.step-hint {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 4px 10px;
+  border: 1px solid var(--release-border);
+  border-radius: 8px;
+  background: var(--release-bg);
+  color: var(--ink);
+  font-size: 0.875rem;
+}
+
+.steps .step-hint { margin-top: 8px; color: var(--ink); }
+
+/* The APK is the way round, so it reads smaller than the steps. */
+.apk-option p { font-size: 0.875rem; }
+
 /* ---------- Blog and news ---------- */
 
 .page-title {
