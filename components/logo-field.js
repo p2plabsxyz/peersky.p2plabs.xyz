@@ -1,5 +1,5 @@
-// The background behind install/, blog/, news/ and peerchat/: a grid of birds
-// in six colours, drifting on a loop. A page puts
+// The background behind install/, mobile/, blog/, news/ and peerchat/: a grid
+// of birds in six colours, drifting on a loop. A page puts
 // <div class="logo-field" aria-hidden="true"></div> first in its body and this
 // script last. The colours repeat every six birds along a row and down a
 // column, so moving the grid by six birds both ways brings back the same

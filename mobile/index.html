@@ -22,7 +22,6 @@
   <meta name="twitter:image" content="https://peersky.p2plabs.xyz/images/link-card.png" />
   <!--Favicon-->
   <link rel="shortcut icon" type="image/png" href="../images/favicon.ico" />
-  <link rel="preload" as="image" href="../images/blink.png" />
   <!-- Tailwind (vendored) -->
   <script>
     // The theme goes on before anything is drawn: light, unless dark was picked here before.
@@ -34,8 +33,9 @@
 </head>
 
 <body>
-  <header class="hero">
-    <div class="stage-grid" aria-hidden="true"></div>
+  <div class="logo-field" aria-hidden="true"></div>
+
+  <header>
     <div class="max-w-3xl mx-auto px-5 sm:px-10 md:px-20">
       <nav class="page-nav" aria-label="Site">
         <a class="back-link" href="../">
@@ -44,22 +44,11 @@
         </a>
         <theme-toggle></theme-toggle>
       </nav>
-      <section class="stage" id="orbit" aria-label="PeerSky's apps, on a ring of phones. Hover or tap a phone for its story.">
-        <svg class="orbit-lines" aria-hidden="true" focusable="false"></svg>
-        <div class="orbit-nodes"></div>
-        <a class="stage-bird" href="../" aria-label="PeerSky home">
-          <img class="logo" src="../images/logo.png" width="480" height="480" alt="PeerSky logo" />
-        </a>
-        <div class="story-card" id="story-card" role="dialog" aria-labelledby="story-title" hidden>
-          <button class="story-close" type="button" aria-label="Close">&times;</button>
-          <span class="story-tag"></span>
-          <h3 id="story-title"></h3>
-          <p class="story-text"></p>
-        </div>
-      </section>
+      <div class="mt-6 text-center">
+        <h1><code class="text-3xl sm:text-4xl">PeerSky Mobile</code></h1>
+        <p class="mt-2">Peer to peer in your pocket.</p>
+      </div>
     </div>
-    <h1><code class="text-3xl sm:text-4xl">PeerSky Mobile</code></h1>
-    <p class="mt-2 px-5">Peer to peer in your pocket.</p>
   </header>
 
   <main class="max-w-3xl mx-auto px-5 sm:px-10 md:px-20">
@@ -132,21 +121,7 @@
     <peersky-footer></peersky-footer>
   </main>
 
-  <script>
-    // The bird blinks once on load, and while hovered, like on the home page.
-    (function () {
-      const logo = document.querySelector('.logo')
-      const open = logo.getAttribute('src')
-      const shut = '../images/blink.png'
-      setTimeout(() => {
-        logo.setAttribute('src', shut)
-        setTimeout(() => logo.setAttribute('src', open), 300)
-      }, 500)
-      logo.addEventListener('mouseenter', () => logo.setAttribute('src', shut))
-      logo.addEventListener('mouseleave', () => logo.setAttribute('src', open))
-    })()
-  </script>
-  <script src="../orbit.js"></script>
+  <script src="../components/logo-field.js"></script>
   <script src="../components/footer.js"></script>
   <script src="../coming-soon.js"></script>
   <script src="../components/theme-toggle.js"></script>
