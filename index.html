@@ -828,6 +828,14 @@
           </div>
         </details>
         <details class="fold">
+          <summary>Where does my data live?</summary>
+          <div class="fold-body">
+            <p>On your own devices. Your tabs, history, bookmarks, chats, notes and files stay on the computer or phone you made them on, and there is no PeerSky server keeping a copy. Private files are encrypted, and only your linked devices can open them.</p>
+            <p class="mt-2">When you share something, it goes straight from your device to the other person’s. Each drive, chat and note has an address made from a key, like <code class="bg-gray-200 px-1 rounded">hyper://…</code>. Your device announces that key on a DHT (distributed hash table), a phone book spread across many computers, so whoever has the key can find you and connect to you directly, over an encrypted connection. The DHT only says which devices are around for which key, never what they hold. Hyper, IPFS and BitTorrent all work this way, each with a DHT of its own.</p>
+            <p class="mt-2">Anyone who opens what you share keeps a copy of it and can pass it on while they are online, so it can still be reached when your device is off. Something only you have can only come from you, so keep PeerSky open while others fetch it. And since no server holds a spare copy, a backup from Link Device is how you keep your data if you lose a device.</p>
+          </div>
+        </details>
+        <details class="fold">
           <summary>Does it work without the internet?</summary>
           <div class="fold-body">
             <p>Between devices on the same Wi-Fi, yes. They find each other and talk directly, so there is nothing out on the internet to reach. Any local network will do, even a phone’s hotspot with no data behind it: during an internet shutdown, in a power cut, at a festival, or wherever the internet is down or blocked. Some public Wi-Fi keeps devices apart, and there a hotspot works instead. Regular websites still need the internet.</p>
