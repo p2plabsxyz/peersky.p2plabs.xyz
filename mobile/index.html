@@ -62,10 +62,23 @@
 
     <section id="android" class="platform-card" aria-labelledby="android-title">
       <h2 id="android-title" class="text-2xl font-bold">Android</h2>
-      <div class="store-badges">
-        <a class="store-badge" href="https://play.google.com/store/apps/details?id=xyz.p2plabs.peersky" target="_blank" rel="noopener noreferrer">
-          <img src="../images/google-play.svg" width="544" height="182" alt="Get it on Google Play" />
-        </a>
+      <a class="store-badge mt-4" href="https://play.google.com/store/apps/details?id=xyz.p2plabs.peersky" target="_blank" rel="noopener noreferrer">
+        <img src="../images/google-play.svg" width="544" height="182" alt="Get it on Google Play" />
+      </a>
+      <div class="apk-option">
+        <h3>Or install the APK</h3>
+        <p>
+          Download the <code class="bg-gray-200 px-1 rounded">.apk</code> from our GitHub releases and open it on your
+          phone, allowing installs from your browser if it asks. New versions come out on the same page.
+        </p>
+        <p>
+          To check the file, run <code class="bg-gray-200 px-1 rounded">openssl sha256 PeerSky-&lt;version&gt;.apk</code>
+          and compare what it prints with the checksum at the top of the release notes.
+        </p>
+        <p>
+          Google Play signs its copy with its own key, so the APK and the Google Play version can't update each
+          other. To switch, save a backup with Link Device, uninstall, then install the other one.
+        </p>
         <a class="store-badge" href="https://github.com/p2plabsxyz/peersky-mobile/releases/latest" target="_blank" rel="noopener noreferrer">
           <img src="../images/apk.png" width="544" height="182" alt="Download the APK for Android" />
         </a>

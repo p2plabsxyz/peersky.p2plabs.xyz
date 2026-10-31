@@ -652,15 +652,24 @@ kbd {
   outline-offset: 3px;
 }
 
-/* Badges side by side, a second line on a narrow phone. */
-.store-badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 10px;
+.apk-option {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
 }
 
-.store-badges .store-badge { margin-top: 0; }
+.apk-option h3 {
+  color: var(--ink);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+/* The APK is the way round, so it reads smaller. */
+.apk-option p {
+  margin-top: 4px;
+  color: var(--body);
+  font-size: 0.875rem;
+}
 
 /* ---------- Bird field (components/logo-field.js) ---------- */
 
