@@ -687,6 +687,16 @@ kbd {
   outline-offset: 3px;
 }
 
+/* Badges side by side, a second line on a narrow phone. */
+.store-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.store-badges .store-badge { margin-top: 0; }
+
 .note {
   margin-top: 20px;
   padding: 12px 14px;
