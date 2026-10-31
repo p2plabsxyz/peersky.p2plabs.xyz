@@ -1,9 +1,9 @@
-// The App Store, Google Play, tester group and opt-in links are not live yet.
-// Until they are, a link marked data-coming-soon says so instead of opening
-// its placeholder, in its own words when the attribute has some. Drop the
-// attribute once a real link is in place.
+// The App Store link is not live yet. Until it is, a link marked
+// data-coming-soon says so instead of opening its placeholder, in its own
+// words when the attribute has some. Drop the attribute once a real link is in
+// place.
 (function () {
-  const message = 'Coming soon! Join our community on Matrix, Discord or PeerChat to try PeerSky early on your phone.'
+  const message = "PeerSky for iPhone has been in review with Apple since early October. We'll announce it when it's out, and it will show up here too."
   document.addEventListener('click', (event) => {
     const link = event.target.closest('[data-coming-soon]')
     if (!link) return

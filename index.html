@@ -39,6 +39,13 @@
 </head>
 
 <body>
+  <!-- Until PeerSky is on the App Store. Take it off when the App Store badge
+       in the downloads is shown again. -->
+  <aside class="announcement" aria-label="Announcement">
+    PeerSky for iPhone has been in review with Apple since early October. We'll announce it when it's out, and it will
+    show up here too.
+  </aside>
+
   <header class="hero">
     <div class="stage-grid" aria-hidden="true"></div>
     <div class="max-w-3xl mx-auto px-5 sm:px-10 md:px-20">
@@ -121,15 +128,15 @@
           <button id="btn-windows" type="button">
             <img src="./images/windows.png" width="544" height="182" alt="Download for Windows" />
           </button>
-          <!-- TODO: put the App Store link here once PeerSky is published, and drop data-coming-soon -->
-          <a id="btn-ios" href="#todo-app-store" target="_blank" rel="noopener noreferrer" data-coming-soon="PeerSky for iPhone is in review for Apple's App Store. It will be here as soon as Apple approves it.">
+          <!-- TODO: once PeerSky is on the App Store, put its link here, drop hidden
+               and data-coming-soon, and take the announcement off the top -->
+          <a id="btn-ios" href="#todo-app-store" target="_blank" rel="noopener noreferrer" data-coming-soon hidden>
             <img src="./images/app-store-badge.svg" width="120" height="40" alt="Download on the App Store" />
           </a>
           <a id="btn-apk" href="https://github.com/p2plabsxyz/peersky-mobile/releases/latest" target="_blank" rel="noopener noreferrer">
             <img src="./images/apk.png" width="544" height="182" alt="Download the APK for Android" />
           </a>
-          <!-- TODO: put the Google Play link here once PeerSky is published, and drop data-coming-soon -->
-          <a id="btn-android" href="#todo-google-play" target="_blank" rel="noopener noreferrer" data-coming-soon>
+          <a id="btn-android" href="https://play.google.com/store/apps/details?id=xyz.p2plabs.peersky" target="_blank" rel="noopener noreferrer">
             <img src="./images/google-play-badge.svg" width="239" height="71" alt="Get it on Google Play" />
           </a>
         </div>
