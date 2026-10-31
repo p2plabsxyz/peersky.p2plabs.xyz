@@ -607,44 +607,6 @@ kbd {
   .platform-card { padding: 24px 28px; }
 }
 
-.steps {
-  margin-top: 8px;
-  counter-reset: step;
-}
-
-.steps > li {
-  position: relative;
-  margin-top: 18px;
-  padding-left: 44px;
-  counter-increment: step;
-}
-
-.steps > li::before {
-  content: counter(step);
-  position: absolute;
-  left: 0;
-  top: -2px;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: var(--accent-strong);
-  color: #fff;
-  font-weight: 700;
-  line-height: 30px;
-  text-align: center;
-}
-
-.steps h3 {
-  color: var(--ink);
-  font-size: 1.05rem;
-  font-weight: 700;
-}
-
-.steps p {
-  margin-top: 2px;
-  color: var(--body);
-}
-
 .step-link {
   display: inline-block;
   margin-top: 8px;
@@ -696,32 +658,6 @@ kbd {
 }
 
 .store-badges .store-badge { margin-top: 0; }
-
-.note {
-  margin-top: 20px;
-  padding: 12px 14px;
-  border: 1px solid var(--note-border);
-  border-radius: 12px;
-  background: var(--note-bg);
-  color: var(--note-ink);
-}
-
-.apk-option {
-  margin-top: 22px;
-  padding-top: 18px;
-  border-top: 1px solid var(--border);
-}
-
-.apk-option h3 {
-  color: var(--ink);
-  font-size: 1.05rem;
-  font-weight: 700;
-}
-
-.apk-option p {
-  margin-top: 4px;
-  color: var(--body);
-}
 
 /* ---------- Bird field (components/logo-field.js) ---------- */
 
@@ -791,23 +727,6 @@ html[data-theme="dark"] .logo-field { opacity: 0.12; }
   height: 120px;
   margin: 0 auto 8px;
 }
-
-/* A short heads-up under a step, easy to spot. */
-.step-hint {
-  display: inline-block;
-  margin-top: 8px;
-  padding: 4px 10px;
-  border: 1px solid var(--release-border);
-  border-radius: 8px;
-  background: var(--release-bg);
-  color: var(--ink);
-  font-size: 0.875rem;
-}
-
-.steps .step-hint { margin-top: 8px; color: var(--ink); }
-
-/* The APK is the way round, so it reads smaller than the steps. */
-.apk-option p { font-size: 0.875rem; }
 
 /* ---------- Blog and news ---------- */
 
