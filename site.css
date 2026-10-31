@@ -302,9 +302,9 @@ html[data-theme="dark"] .post-body figure > img {
 
 /* ---------- Downloads ---------- */
 
-/* Every button is the same height. The desktop and APK buttons are drawn in
-   the App Store badge's shape (544 by 182), so only the Google Play badge,
-   which Google draws wider, differs in width. On phones the desktop buttons
+/* Every button is the same size. The desktop, APK and Google Play buttons are
+   drawn in the App Store badge's shape (544 by 182), and the aspect ratio
+   holds Apple's own file to it to the pixel. On phones the desktop buttons
    and the phone ones stand in two columns: three in a row would be under
    40px tall, the smallest Apple allows for its badge on screen. */
 .download-grid {
@@ -326,6 +326,7 @@ html[data-theme="dark"] .post-body figure > img {
 .download-grid img {
   width: auto;
   height: 40px;
+  aspect-ratio: 544 / 182;
   transition: opacity 0.15s ease;
 }
 
@@ -628,9 +629,11 @@ kbd {
   border-radius: 10px;
 }
 
+/* The same size for every badge, as in the downloads on the home page. */
 .store-badge img {
   width: auto;
   height: 44px;
+  aspect-ratio: 544 / 182;
   transition: opacity 0.15s ease;
 }
 
