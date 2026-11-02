@@ -21,6 +21,7 @@ class PeerskyFooter extends HTMLElement {
         <a class="${link}" href="https://bsky.app/profile/peersky.mastodon.social.ap.brid.gy" ${out}>Bluesky</a>
         <a class="${link}" href="https://twitter.com/PeerskyBrowser" ${out}><del>X/Twitter</del></a>
         <a class="${link}" href="mailto:peersky@p2plabs.xyz">Email</a>
+        <a class="${link}" href="https://peersky.p2plabs.xyz/support/">Support</a>
         <br />
         Made with 💙 by
         <a class="${link}" href="https://p2plabs.xyz/" ${out}>p2plabs.xyz</a><br />
