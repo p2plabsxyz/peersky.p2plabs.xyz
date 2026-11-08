@@ -831,6 +831,91 @@ html[data-theme="dark"] .logo-field { opacity: 0.12; }
   font-size: 15px;
 }
 
+/* The press kit: a card for each file, with a preview above its name. Two
+   cards a row on wide screens, one on phones. */
+.press-list {
+  display: grid;
+  gap: 20px;
+  margin-top: 28px;
+}
+
+@media (min-width: 640px) {
+  .press-list { grid-template-columns: 1fr 1fr; }
+}
+
+.press-preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 180px;
+  padding: 20px;
+  background: var(--accent-soft);
+}
+
+.post-card .press-preview img {
+  width: auto;
+  max-width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Cards in a row are as tall as each other, with Download at the bottom. */
+.press-list .post-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.press-list .post-card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.press-list .post-card-body p {
+  margin-bottom: 8px;
+}
+
+.press-list .step-link {
+  margin-top: auto;
+}
+
+/* The app icons card runs across the page, so every colour shows in one row
+   on wide screens, and three to a row on phones. Each is rounded the way a
+   phone shows it, with a thin edge so the light and dark ones stand out on
+   either theme. */
+@media (min-width: 640px) {
+  .press-list .press-wide { grid-column: 1 / -1; }
+}
+
+.press-preview.press-icons {
+  flex-wrap: wrap;
+  align-content: center;
+  gap: 14px;
+  height: auto;
+  min-height: 180px;
+}
+
+.post-card .press-preview.press-icons img {
+  width: 72px;
+  height: 72px;
+  max-width: none;
+  border-radius: 22%;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.12);
+}
+
+html[data-theme="dark"] .post-card .press-preview.press-icons img {
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.18);
+}
+
+@media (min-width: 640px) {
+  .post-card .press-preview.press-icons img {
+    width: 88px;
+    height: 88px;
+  }
+}
+
 .post-header .post-date {
   display: block;
   margin-top: 28px;
@@ -1208,6 +1293,16 @@ html[data-theme="dark"] .logo-field { opacity: 0.12; }
   margin-top: 2.5em;
   padding-top: 1.25em;
   border-top: 1px solid var(--border);
+}
+
+/* components/post-author.js */
+post-author {
+  display: block;
+}
+
+.post-body .post-author {
+  margin-top: 1em;
+  color: var(--muted);
 }
 
 /* ---------- PeerChat invite: the home page popup and /peerchat/ ---------- */
