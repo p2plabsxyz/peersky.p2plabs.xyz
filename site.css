@@ -1342,6 +1342,16 @@ html[data-theme="dark"] .post-card .press-preview.press-icons img {
   border-top: 1px solid var(--border);
 }
 
+/* components/post-author.js */
+post-author {
+  display: block;
+}
+
+.post-body .post-author {
+  margin-top: 1em;
+  color: var(--muted);
+}
+
 /* ---------- PeerChat invite: the home page popup and /peerchat/ ---------- */
 
 .invite-steps {
