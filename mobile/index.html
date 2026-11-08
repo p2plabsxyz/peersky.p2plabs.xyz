@@ -22,7 +22,6 @@
   <meta name="twitter:image" content="https://peersky.p2plabs.xyz/images/link-card.png" />
   <!--Favicon-->
   <link rel="shortcut icon" type="image/png" href="../images/favicon.ico" />
-  <link rel="preload" as="image" href="../images/blink.png" />
   <!-- Tailwind (vendored) -->
   <script>
     // The theme goes on before anything is drawn: light, unless dark was picked here before.
@@ -34,8 +33,9 @@
 </head>
 
 <body>
-  <header class="hero">
-    <div class="stage-grid" aria-hidden="true"></div>
+  <div class="logo-field" aria-hidden="true"></div>
+
+  <header>
     <div class="max-w-3xl mx-auto px-5 sm:px-10 md:px-20">
       <nav class="page-nav" aria-label="Site">
         <a class="back-link" href="../">
@@ -44,22 +44,11 @@
         </a>
         <theme-toggle></theme-toggle>
       </nav>
-      <section class="stage" id="orbit" aria-label="PeerSky's apps, on a ring of phones. Hover or tap a phone for its story.">
-        <svg class="orbit-lines" aria-hidden="true" focusable="false"></svg>
-        <div class="orbit-nodes"></div>
-        <a class="stage-bird" href="../" aria-label="PeerSky home">
-          <img class="logo" src="../images/logo.png" width="480" height="480" alt="PeerSky logo" />
-        </a>
-        <div class="story-card" id="story-card" role="dialog" aria-labelledby="story-title" hidden>
-          <button class="story-close" type="button" aria-label="Close">&times;</button>
-          <span class="story-tag"></span>
-          <h3 id="story-title"></h3>
-          <p class="story-text"></p>
-        </div>
-      </section>
+      <div class="mt-6 text-center">
+        <h1><code class="text-3xl sm:text-4xl">PeerSky Mobile</code></h1>
+        <p class="mt-2">Peer to peer in your pocket.</p>
+      </div>
     </div>
-    <h1><code class="text-3xl sm:text-4xl">PeerSky Mobile</code></h1>
-    <p class="mt-2 px-5">Peer to peer in your pocket.</p>
   </header>
 
   <main class="max-w-3xl mx-auto px-5 sm:px-10 md:px-20">
@@ -73,35 +62,9 @@
 
     <section id="android" class="platform-card" aria-labelledby="android-title">
       <h2 id="android-title" class="text-2xl font-bold">Android</h2>
-      <p class="mt-2 text-gray-700">
-        Sorry for the extra steps: PeerSky is still in testing on Google Play, which only lets people on
-        our testers list install it. Getting on the list takes three steps.
-      </p>
-      <ol class="steps">
-        <li>
-          <h3>Join the Google Group</h3>
-          <p>Google Play lets testers in through a Google Group. Sign in with the Google account you use on your phone and tap <strong>Join group</strong>.</p>
-          <a class="step-link" href="https://groups.google.com/g/peersky-community/about" target="_blank" rel="noopener noreferrer">Join the group</a>
-        </li>
-        <li>
-          <h3>Become a tester</h3>
-          <p>Open the opt-in page with the same account and tap <strong>Become a tester</strong>.</p>
-          <a class="step-link" href="https://play.google.com/apps/testing/xyz.p2plabs.peersky" target="_blank" rel="noopener noreferrer">Opt in on Google Play</a>
-        </li>
-        <li>
-          <h3>Install the test build</h3>
-          <p>Install PeerSky from Google Play like any other app. It can take a few minutes after you opt in
-            before Google Play offers it.</p>
-          <p class="step-hint">Google Play says it can't find the app? Wait a few minutes and try again.</p>
-          <a class="store-badge" href="https://play.google.com/store/apps/details?id=xyz.p2plabs.peersky" target="_blank" rel="noopener noreferrer">
-            <img src="../images/google-play-badge.svg" width="239" height="71" alt="Get it on Google Play" />
-          </a>
-        </li>
-      </ol>
-      <p class="note">
-        When PeerSky is published for everyone, you don't have to install it again. Keep using the one you
-        have: it updates through Google Play like any other app.
-      </p>
+      <a class="store-badge mt-4" href="https://play.google.com/store/apps/details?id=xyz.p2plabs.peersky" target="_blank" rel="noopener noreferrer">
+        <img src="../images/google-play.svg" width="544" height="182" alt="Get it on Google Play" />
+      </a>
       <div class="apk-option">
         <h3>Or install the APK</h3>
         <p>
@@ -116,7 +79,9 @@
           Google Play signs its copy with its own key, so the APK and the Google Play version can't update each
           other. To switch, save a backup with Link Device, uninstall, then install the other one.
         </p>
-        <a class="step-link" href="https://github.com/p2plabsxyz/peersky-mobile/releases/latest" target="_blank" rel="noopener noreferrer">Download the APK</a>
+        <a class="store-badge" href="https://github.com/p2plabsxyz/peersky-mobile/releases/latest" target="_blank" rel="noopener noreferrer">
+          <img src="../images/apk.png" width="544" height="182" alt="Download the APK for Android" />
+        </a>
       </div>
     </section>
 
@@ -132,21 +97,7 @@
     <peersky-footer></peersky-footer>
   </main>
 
-  <script>
-    // The bird blinks once on load, and while hovered, like on the home page.
-    (function () {
-      const logo = document.querySelector('.logo')
-      const open = logo.getAttribute('src')
-      const shut = '../images/blink.png'
-      setTimeout(() => {
-        logo.setAttribute('src', shut)
-        setTimeout(() => logo.setAttribute('src', open), 300)
-      }, 500)
-      logo.addEventListener('mouseenter', () => logo.setAttribute('src', shut))
-      logo.addEventListener('mouseleave', () => logo.setAttribute('src', open))
-    })()
-  </script>
-  <script src="../orbit.js"></script>
+  <script src="../components/logo-field.js"></script>
   <script src="../components/footer.js"></script>
   <script src="../coming-soon.js"></script>
   <script src="../components/theme-toggle.js"></script>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Akhilesh Thite" />
+  <meta name="description" content="Get help with PeerSky on your phone, tablet or computer: how to reach us, report a problem, and answers to common questions." />
+  <meta property="og:title" content="PeerSky Support" />
+  <meta property="og:description" content="Get help with PeerSky on your phone, tablet or computer: how to reach us, report a problem, and answers to common questions." />
+  <meta property="og:url" content="https://peersky.p2plabs.xyz/support/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://peersky.p2plabs.xyz/images/link-card.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://peersky.p2plabs.xyz/images/link-card.png" />
+  <link rel="shortcut icon" type="image/png" href="../images/favicon.ico" />
+  <script>
+    // The theme goes on before anything is drawn: light, unless dark was picked here before.
+    (function () { var t = null; try { t = localStorage.getItem('theme') } catch (e) {} document.documentElement.dataset.theme = t === 'dark' ? 'dark' : 'light' })()
+  </script>
+  <link href="../lib/tailwind.min.css" rel="stylesheet" />
+  <link href="../site.css" rel="stylesheet" />
+  <title>Support · PeerSky</title>
+</head>
+
+<body>
+  <header>
+    <div class="max-w-3xl mx-auto px-5 sm:px-10">
+      <nav class="page-nav" aria-label="Site">
+        <a class="back-link" href="../">
+          <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          Back to PeerSky
+        </a>
+        <theme-toggle></theme-toggle>
+      </nav>
+      <h1 class="page-title">PeerSky Support</h1>
+      <p class="page-lede">Need help with PeerSky on your phone, tablet or computer? Here's how to reach us, and answers to the questions we get most.</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="max-w-3xl mx-auto px-5 sm:px-10">
+      <div class="post-body">
+        <h2>Contact us</h2>
+        <p>Email <a href="mailto:peersky@p2plabs.xyz">peersky@p2plabs.xyz</a> with your question. Tell us which device you use and what happened, and we'll help. We read every message.</p>
+        <ul>
+          <li>Found a bug? Open an issue on GitHub for <a href="https://github.com/p2plabsxyz/peersky-mobile/issues" target="_blank" rel="noopener noreferrer">PeerSky for iPhone, iPad and Android</a> or <a href="https://github.com/p2plabsxyz/peersky-browser/issues" target="_blank" rel="noopener noreferrer">PeerSky Desktop</a>.</li>
+          <li>Want to talk with us and other people who use PeerSky? Find us in <a href="../peerchat/">PeerChat</a> or on <a href="https://matrix.to/#/#peersky:matrix.org" target="_blank" rel="noopener noreferrer">Matrix</a>.</li>
+        </ul>
+
+        <h2>Report abuse</h2>
+        <p>In PeerChat, touch and hold a message and choose Report. It writes an email to <a href="mailto:contact@p2plabs.xyz">contact@p2plabs.xyz</a> with what we need to act on it. Block hides everything that person sends, right away. Copyright notices go to the same address.</p>
+
+        <h2>Common questions</h2>
+        <p><strong>Do I need an account?</strong> No. PeerSky has no accounts, no passwords and no sign in, and it collects nothing about you.</p>
+        <p><strong>How do I move to a new phone, or keep a backup?</strong> Open Settings, then Link Device. You can move everything to another device, or save an encrypted backup.</p>
+        <p><strong>How do I delete my data?</strong> In Settings, under P2P Data, Clear all P2P data removes your drives, chats, notes and this device's P2P identity. Delete PeerChat profile is at the bottom of PeerChat's settings, and the flame button clears your tabs and history. On a phone, uninstalling PeerSky removes everything it kept.</p>
+        <p><strong>A P2P link won't open.</strong> A hyper:// site, a shared note or a chat comes from the people who have it, not from a server, so someone who has it needs to be online. Ask them to keep PeerSky open, then try again.</p>
+        <p><strong>What leaves my device?</strong> The privacy statements for <a href="https://github.com/p2plabsxyz/peersky-mobile/blob/main/PRIVACY.md" target="_blank" rel="noopener noreferrer">iPhone, iPad and Android</a> and for <a href="https://github.com/p2plabsxyz/peersky-browser/blob/main/PRIVACY.md" target="_blank" rel="noopener noreferrer">desktop</a> say exactly what. The terms of use are <a href="https://github.com/p2plabsxyz/peersky-mobile/blob/main/TERMS.md" target="_blank" rel="noopener noreferrer">here</a>.</p>
+      </div>
+
+      <peersky-footer></peersky-footer>
+    </div>
+  </main>
+
+  <script src="../components/footer.js"></script>
+  <script src="../components/theme-toggle.js"></script>
+</body>
+
+</html>

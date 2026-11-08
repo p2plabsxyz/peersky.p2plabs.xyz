@@ -39,6 +39,12 @@
 </head>
 
 <body>
+  <!-- Until PeerSky is on the App Store. Take it off when the App Store badge
+       in the downloads is shown again. -->
+  <aside class="announcement" aria-label="Announcement">
+    PeerSky for iOS will be out soon. We'll announce it then, and it will show up here too.
+  </aside>
+
   <header class="hero">
     <div class="stage-grid" aria-hidden="true"></div>
     <div class="max-w-3xl mx-auto px-5 sm:px-10 md:px-20">
@@ -107,28 +113,30 @@
       <!-- One picture per theme, each on its page's own colour. As a CSS
            background, only the one shown is fetched (site.css). -->
       <div class="hero-banner mx-auto my-4 w-full" role="img"
-        aria-label="PeerSky on a laptop and two phones: a P2PMD note on an iPhone, a PeerChat room beside a Wikipedia article in split view on the desktop, and PeerTunes on an Android phone"></div>
+        aria-label="PeerSky on a laptop and two phones: a P2PMD note on an iPhone, a P2PMD note two people are writing together beside a Wikipedia article in split view on the desktop, and PeerTunes on an Android phone"></div>
 
       <!-- Download Releases Section -->
       <section id="downloads" class="mt-6 mb-6" aria-label="Downloads">
         <div class="download-grid">
-          <button id="btn-mac" class="dl-desktop" type="button">
-            <img src="./images/macos.png" width="500" height="182" alt="Download for macOS" />
+          <button id="btn-mac" type="button">
+            <img src="./images/macos.png" width="544" height="182" alt="Download for macOS" />
           </button>
-          <button id="btn-linux" class="dl-desktop" type="button">
-            <img src="./images/linux.png" width="500" height="182" alt="Download for Linux" />
+          <button id="btn-linux" type="button">
+            <img src="./images/linux.png" width="544" height="182" alt="Download for Linux" />
           </button>
-          <button id="btn-windows" class="dl-desktop" type="button">
-            <img src="./images/windows.png" width="500" height="182" alt="Download for Windows" />
+          <button id="btn-windows" type="button">
+            <img src="./images/windows.png" width="544" height="182" alt="Download for Windows" />
           </button>
-          <span class="dl-break" aria-hidden="true"></span>
-          <!-- TODO: put the App Store link here once PeerSky is published, and drop data-coming-soon -->
-          <a id="btn-ios" class="dl-store dl-ios" href="#todo-app-store" target="_blank" rel="noopener noreferrer" data-coming-soon>
+          <!-- TODO: once PeerSky is on the App Store, put its link here, drop hidden
+               and data-coming-soon, and take the announcement off the top -->
+          <a id="btn-ios" href="#todo-app-store" target="_blank" rel="noopener noreferrer" data-coming-soon hidden>
             <img src="./images/app-store-badge.svg" width="120" height="40" alt="Download on the App Store" />
           </a>
-          <!-- TODO: put the Google Play link here once PeerSky is published, and drop data-coming-soon -->
-          <a id="btn-android" class="dl-store dl-android" href="#todo-google-play" target="_blank" rel="noopener noreferrer" data-coming-soon>
-            <img src="./images/google-play-badge.svg" width="239" height="71" alt="Get it on Google Play" />
+          <a id="btn-apk" href="https://github.com/p2plabsxyz/peersky-mobile/releases/latest" target="_blank" rel="noopener noreferrer">
+            <img src="./images/apk.png" width="544" height="182" alt="Download the APK for Android" />
+          </a>
+          <a id="btn-android" href="https://play.google.com/store/apps/details?id=xyz.p2plabs.peersky" target="_blank" rel="noopener noreferrer">
+            <img src="./images/google-play.svg" width="544" height="182" alt="Get it on Google Play" />
           </a>
         </div>
         <div id="download-options" class="mt-4"></div>
@@ -144,9 +152,9 @@
           like turning the entire web into a giant global community project.
         </p>
         <p class="mt-2">
-          PeerSky is your personal gatekeeper to a new way of accessing web content, on your computer and on your phone.
+          PeerSky is your personal gateway to a new way of accessing web content, on your computer and on your phone.
           Imagine a world where you can access
-          web pages, communicate securely, and store or share files directly from a global network of peers, without
+          web pages, communicate securely, and store or share information directly from a global network of peers, without
           relying on centralized servers. With PeerSky, this vision becomes a reality.
         </p>
         <p class="mt-2">
@@ -828,6 +836,14 @@
           </div>
         </details>
         <details class="fold">
+          <summary>Where does my data live?</summary>
+          <div class="fold-body">
+            <p>On your own devices. Your tabs, history, bookmarks, chats, notes and files stay on the computer or phone you made them on, and there is no PeerSky server keeping a copy. Private files are encrypted, and only your linked devices can open them.</p>
+            <p class="mt-2">When you share something, it goes straight from your device to the other person’s. Each drive, chat and note has an address made from a key, like <code class="bg-gray-200 px-1 rounded">hyper://…</code>. Your device announces that key on a DHT (distributed hash table), a phone book spread across many computers, so whoever has the key can find you and connect to you directly, over an encrypted connection. The DHT only says which devices are around for which key, never what they hold. Hyper, IPFS and BitTorrent all work this way, each with a DHT of its own.</p>
+            <p class="mt-2">Anyone who opens what you share keeps a copy of it and can pass it on while they are online, so it can still be reached when your device is off. Something only you have can only come from you, so keep PeerSky open while others fetch it. And since no server holds a spare copy, a backup from Link Device is how you keep your data if you lose a device.</p>
+          </div>
+        </details>
+        <details class="fold">
           <summary>Does it work without the internet?</summary>
           <div class="fold-body">
             <p>Between devices on the same Wi-Fi, yes. They find each other and talk directly, so there is nothing out on the internet to reach. Any local network will do, even a phone’s hotspot with no data behind it: during an internet shutdown, in a power cut, at a festival, or wherever the internet is down or blocked. Some public Wi-Fi keeps devices apart, and there a hotspot works instead. Regular websites still need the internet.</p>
@@ -898,7 +914,7 @@
         <details class="fold">
           <summary>Do you use AI or LLMs to build PeerSky?</summary>
           <div class="fold-body">
-            <p>Yes, as a tool, and a person stays responsible for every line. We use LLMs for research, drafts and refactoring, but nothing goes in that someone hasn't read, understood and can defend without the AI. No AI slop: no code nobody reviewed and no generated filler. Our <a href="https://github.com/p2plabsxyz/peersky-browser/blob/main/.github/CONTRIBUTING.md#ai-usage-policy" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-500">AI usage policy</a> sets this out for everyone who contributes. We also use LLMs for security audits: before a release they try to break into private drives, chats and notes like an attacker would, and a person checks every finding and every fix.</p>
+            <p>Yes, as a tool, and a person stays responsible for every line. LLMs help us with research and code, but someone on the team reads every change before it goes in, and if we can't explain it or change it without the AI, it doesn't ship. Contributors work the same way, and our <a href="https://github.com/p2plabsxyz/peersky-browser/blob/main/.github/CONTRIBUTING.md#ai-usage-policy" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-500">AI usage policy</a> spells it out. We also use LLMs for security audits: before a release they try to break into private drives, chats and notes like an attacker would, and a person checks every finding and every fix.</p>
           </div>
         </details>
       </section>
@@ -907,16 +923,16 @@
       <section id="supported-by" class="mt-8 mb-6">
         <h2 class="text-2xl font-bold mb-4">Supported by</h2>
         <div class="supporters grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 items-center justify-items-center">
-          <img src="./images/supporters/p2plabs.png" alt="P2P Labs" width="100" />
-          <img src="./images/supporters/internet-archive.png" alt="Internet Archive" width="100" />
-          <img src="./images/supporters/dweb.png" alt="DWeb" width="100" />
-          <img src="./images/supporters/agregore.png" alt="Agregore" width="100" />
-          <img src="./images/supporters/distributed-press.png" alt="Distributed Press" width="100" />
-          <img src="./images/supporters/gitcoin.png" alt="Gitcoin" width="100" />
-          <img src="./images/supporters/eth-denver.png" alt="ETHDenver" width="100" />
-          <img src="./images/supporters/gsoc.png" alt="Google Summer of Code" width="100" />
-          <img src="./images/supporters/uc-ospo.png" alt="UC Open Source Program Office" width="100" />
-          <img src="./images/supporters/ucsc-cross.png" alt="UCSC CROSS" width="100" />
+          <a href="https://p2plabs.xyz/" target="_blank" rel="noopener noreferrer"><img src="./images/supporters/p2plabs.png" alt="P2P Labs" width="100" /></a>
+          <a href="https://archive.org/" target="_blank" rel="noopener noreferrer"><img src="./images/supporters/internet-archive.png" alt="Internet Archive" width="100" /></a>
+          <a href="https://getdweb.net/" target="_blank" rel="noopener noreferrer"><img src="./images/supporters/dweb.png" alt="DWeb" width="100" /></a>
+          <a href="https://distributed.press/" target="_blank" rel="noopener noreferrer"><img src="./images/supporters/distributed-press.png" alt="Distributed Press" width="100" /></a>
+          <a href="https://dat-ecosystem.org/" target="_blank" rel="noopener noreferrer"><img src="./images/supporters/dat-ecosystem.png" alt="Dat Ecosystem" width="100" /></a>
+          <a href="https://agregore.mauve.moe/" target="_blank" rel="noopener noreferrer"><img src="./images/supporters/agregore.png" alt="Agregore" width="100" /></a>
+          <a href="https://ucsc-ospo.github.io/" target="_blank" rel="noopener noreferrer"><img src="./images/supporters/uc-ospo.png" alt="UC Open Source Program Office" width="100" /></a>
+          <a href="https://summerofcode.withgoogle.com/" target="_blank" rel="noopener noreferrer"><img src="./images/supporters/gsoc.png" alt="Google Summer of Code" width="100" /></a>
+          <a href="https://gitcoin.co/" target="_blank" rel="noopener noreferrer"><img src="./images/supporters/gitcoin.png" alt="Gitcoin" width="100" /></a>
+          <a href="https://ethdenver.com/" target="_blank" rel="noopener noreferrer"><img src="./images/supporters/eth-denver.png" alt="ETHDenver" width="100" /></a>
         </div>
       </section>
 

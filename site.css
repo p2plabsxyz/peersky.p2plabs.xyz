@@ -36,6 +36,19 @@ body {
   background-color: var(--page);
 }
 
+/* ---------- Announcement ---------- */
+
+/* A line of news across the top of the home page. */
+.announcement {
+  padding: 10px 20px;
+  border-bottom: 1px solid var(--accent-hover-bg);
+  background: var(--accent-soft);
+  color: var(--ink);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
 /* ---------- Hero ---------- */
 
 .hero {
@@ -289,17 +302,18 @@ html[data-theme="dark"] .post-body figure > img {
 
 /* ---------- Downloads ---------- */
 
+/* Every button is the same size. The desktop, APK and Google Play buttons are
+   drawn in the App Store badge's shape (544 by 182), and the aspect ratio
+   holds Apple's own file to it to the pixel. On phones the desktop buttons
+   and the phone ones stand in two columns: three in a row would be under
+   40px tall, the smallest Apple allows for its badge on screen. */
 .download-grid {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-rows: repeat(3, auto);
+  grid-auto-flow: column;
   justify-content: center;
-  align-items: center;
-  gap: 12px;
-}
-
-.dl-break {
-  flex-basis: 100%;
-  height: 0;
+  justify-items: start;
+  gap: 10px 12px;
 }
 
 .download-grid a,
@@ -309,30 +323,16 @@ html[data-theme="dark"] .post-body figure > img {
   border-radius: 8px;
 }
 
-/* On phones the three desktop buttons share the row, up to 40px tall like
-   the store badges below them, which Apple keeps at least 40px on screen. */
-.dl-desktop {
-  width: calc((100% - 24px) / 3);
-  max-width: 110px;
-}
-
-/* The store badges come with a thin grey edge, so the desktop buttons get the
-   same one, in both themes. The radius matches the corners drawn in the
-   images, 26px of 500 by 182. */
-.dl-desktop img {
-  width: 100%;
-  border-radius: 5.2% / 14.3%;
-  outline: 1px solid #a6a6a6;
-  outline-offset: -1px;
-}
-
-.dl-store img {
+.download-grid img {
   width: auto;
   height: 40px;
+  aspect-ratio: 544 / 182;
+  transition: opacity 0.15s ease;
 }
 
-.download-grid img {
-  transition: opacity 0.15s ease;
+/* A hidden button takes no place in the grid. */
+.download-grid [hidden] {
+  display: none;
 }
 
 .download-grid a:hover img,
@@ -353,20 +353,33 @@ html[data-theme="dark"] .post-body figure > img {
 
 @media (min-width: 640px) {
   .download-grid {
-    display: grid;
-    grid-template-columns: repeat(6, 80px);
-    justify-content: center;
-    gap: 14px 0;
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: none;
+    grid-auto-flow: row;
+    gap: 14px;
   }
 
-  .dl-break { display: none; }
-  .dl-desktop { grid-column: span 2; justify-self: center; width: auto; max-width: none; }
-  .dl-desktop img { width: 8rem; }
-  /* As tall as the desktop buttons above them (8rem wide, drawn 500 by 182).
-     Phones keep 40px, the smallest Apple allows for its badge on screen. */
-  .dl-store img { height: calc(8rem * 182 / 500); }
-  .dl-ios { grid-column: 2 / 4; justify-self: center; }
-  .dl-android { grid-column: 4 / 6; justify-self: center; }
+  .download-grid img { height: 46px; }
+
+  /* While the App Store badge is hidden, the two Android buttons sit centred
+     on a line of their own under the three desktop ones. */
+  .download-grid:has(> #btn-ios[hidden]) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 0;
+  }
+
+  .download-grid:has(> #btn-ios[hidden])::after {
+    content: "";
+    flex-basis: 100%;
+    order: 1;
+  }
+
+  .download-grid:has(> #btn-ios[hidden]) > a {
+    order: 2;
+    margin-top: 14px;
+  }
 }
 
 /* The release version, at the start of each download list. */
@@ -595,44 +608,6 @@ kbd {
   .platform-card { padding: 24px 28px; }
 }
 
-.steps {
-  margin-top: 8px;
-  counter-reset: step;
-}
-
-.steps > li {
-  position: relative;
-  margin-top: 18px;
-  padding-left: 44px;
-  counter-increment: step;
-}
-
-.steps > li::before {
-  content: counter(step);
-  position: absolute;
-  left: 0;
-  top: -2px;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: var(--accent-strong);
-  color: #fff;
-  font-weight: 700;
-  line-height: 30px;
-  text-align: center;
-}
-
-.steps h3 {
-  color: var(--ink);
-  font-size: 1.05rem;
-  font-weight: 700;
-}
-
-.steps p {
-  margin-top: 2px;
-  color: var(--body);
-}
-
 .step-link {
   display: inline-block;
   margin-top: 8px;
@@ -654,9 +629,11 @@ kbd {
   border-radius: 10px;
 }
 
+/* The same size for every badge, as in the downloads on the home page. */
 .store-badge img {
   width: auto;
   height: 44px;
+  aspect-ratio: 544 / 182;
   transition: opacity 0.15s ease;
 }
 
@@ -675,15 +652,6 @@ kbd {
   outline-offset: 3px;
 }
 
-.note {
-  margin-top: 20px;
-  padding: 12px 14px;
-  border: 1px solid var(--note-border);
-  border-radius: 12px;
-  background: var(--note-bg);
-  color: var(--note-ink);
-}
-
 .apk-option {
   margin-top: 22px;
   padding-top: 18px;
@@ -696,9 +664,11 @@ kbd {
   font-weight: 700;
 }
 
+/* The APK is the way round, so it reads smaller. */
 .apk-option p {
   margin-top: 4px;
   color: var(--body);
+  font-size: 0.875rem;
 }
 
 /* ---------- Bird field (components/logo-field.js) ---------- */
@@ -769,23 +739,6 @@ html[data-theme="dark"] .logo-field { opacity: 0.12; }
   height: 120px;
   margin: 0 auto 8px;
 }
-
-/* A short heads-up under a step, easy to spot. */
-.step-hint {
-  display: inline-block;
-  margin-top: 8px;
-  padding: 4px 10px;
-  border: 1px solid var(--release-border);
-  border-radius: 8px;
-  background: var(--release-bg);
-  color: var(--ink);
-  font-size: 0.875rem;
-}
-
-.steps .step-hint { margin-top: 8px; color: var(--ink); }
-
-/* The APK is the way round, so it reads smaller than the steps. */
-.apk-option p { font-size: 0.875rem; }
 
 /* ---------- Blog and news ---------- */
 
