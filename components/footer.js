@@ -32,7 +32,6 @@ class PeerskyFooter extends HTMLElement {
         <a class="${link}" href="https://github.com/p2plabsxyz/peersky-mobile/" ${out}>Mobile source</a>
         <a class="${link}" href="https://mastodon.social/@peersky" target="_blank" rel="me noopener noreferrer">Mastodon</a>
         <a class="${link}" href="https://bsky.app/profile/peersky.mastodon.social.ap.brid.gy" ${out}>Bluesky</a>
-        <a class="${link}" href="https://twitter.com/PeerskyBrowser" ${out}><del>X/Twitter</del></a>
         <a class="${link}" href="#" data-email role="button">Email</a>
         <a class="${link}" href="https://peersky.p2plabs.xyz/support/">Support</a>
         <a class="${link}" href="${pressKit}">Press kit</a>
