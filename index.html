@@ -228,6 +228,7 @@
                     </ul>
                   </li>
                   <li>✅ Page zoom, per tab, with a percentage readout</li>
+                  <li>✅ Trackpad zoom: a two finger pinch zooms the tab under the fingers, and Ctrl with the scroll wheel zooms the page (Windows and Linux)</li>
                   <li>✅ Address bar suggestions drawn from browsing history</li>
                   <li>✅ Downloads, with progress in the toolbar (<code class="bg-gray-200 px-1 rounded">peersky://downloads</code>)
                     <ul class="list-disc list-inside ml-5">
@@ -247,12 +248,13 @@
                       <li>Memory saver: sleeps inactive tabs, with an exclusion list</li>
                     </ul>
                   </li>
-                  <li>✅ Incognito windows (<kbd>Cmd/Ctrl+Shift+N</kbd>)
+                  <li>✅ Incognito windows, from the File menu (<kbd>Cmd/Ctrl+Shift+N</kbd>), the Dock or the Windows taskbar
                     <ul class="list-disc list-inside ml-5">
                       <li>No history, saved tabs, download records or AI memory</li>
                       <li>Cookies, cache and site permissions live in memory and go when the last incognito window closes</li>
                       <li>Extensions stay out, and sites cannot publish to your drives from one</li>
-                      <li><code class="bg-gray-200 px-1 rounded">hyper://</code> and <code class="bg-gray-200 px-1 rounded">ipfs://</code> content still goes through the same local nodes</li>
+                      <li>Their downloads show only in incognito windows, and their tabs cannot be dragged into a normal window</li>
+                      <li><code class="bg-gray-200 px-1 rounded">hyper://</code> and <code class="bg-gray-200 px-1 rounded">ipfs://</code> content still goes through the same local nodes as normal windows</li>
                     </ul>
                   </li>
                 </ul>
@@ -262,6 +264,7 @@
                 <ul class="list-disc list-inside ml-5">
                   <li>✅ Run a local <a href="https://holepunch.to/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-500">hyper</a> node</li>
                   <li>✅ <code class="bg-gray-200 px-1 rounded">hyper://</code> native URLs support</li>
+                  <li>✅ Folders open in Files, Photos or Videos views, with a readme under the list (<code class="bg-gray-200 px-1 rounded">?raw</code> skips them)</li>
                 </ul>
               </li>
               <li>
@@ -270,7 +273,8 @@
                   <li>✅ <a href="https://webtorrent.io/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-500">WebTorrent</a> in isolated child process</li>
                   <li>✅ <code class="bg-gray-200 px-1 rounded">bittorrent://</code> /
                     <code class="bg-gray-200 px-1 rounded">bt://</code> /
-                    <code class="bg-gray-200 px-1 rounded">magnet:</code> native URLs support
+                    <code class="bg-gray-200 px-1 rounded">magnet:</code> /
+                    <code class="bg-gray-200 px-1 rounded">webtorrent:</code> native URLs support
                   </li>
                   <li>✅ Real-time download progress UI with pause/resume</li>
                   <li>✅ Auto-destroy torrent on completion (no seeding)</li>
@@ -364,6 +368,8 @@
                   <li>✅ <code class="bg-gray-200 px-1 rounded">peersky://p2p/hyperdrive/</code>
                     <ul class="list-disc list-inside ml-5">
                       <li>Decentralized file storage, published as a public or private drive</li>
+                      <li>Private files from your phone show up on their own, with a copy kept on this computer, and yours show up on the phone</li>
+                      <li>Your own private uploads stay listed after a restart, newest first</li>
                     </ul>
                   </li>
                   <li>✅ And several others, including a website builder, a Wikipedia reader over IPFS, and the
@@ -450,7 +456,7 @@
               <li>
                 <strong>Bookmarks (<code class="bg-gray-200 px-1 rounded">peersky://bookmarks</code>):</strong>
                 <ul class="list-disc list-inside ml-5">
-                  <li>✅ Option to add favourite pages in the nav bar</li>
+                  <li>✅ Option to add favourite pages in the nav bar (<code class="bg-gray-200 px-1 rounded">peersky://bookmarks</code>)</li>
                 </ul>
               </li>
               <li>
@@ -462,6 +468,7 @@
               <li>
                 <strong>P2P data (<code class="bg-gray-200 px-1 rounded">peersky://settings/p2p-data</code>):</strong>
                 <ul class="list-disc list-inside ml-5">
+                  <li>✅ How much space P2P data takes on this computer in total, with public and private Hyper drives, PeerChat, IPFS and P2P apps each on a line, and Reset P2P Data beside it.</li>
                   <li>✅ List and showcase published content from <code class="bg-gray-200 px-1 rounded">peersky://p2p/</code>
                     apps for enhanced discoverability.</li>
                   <li>✅ Provide metadata (e.g., creation date, content type) to improve navigation and usability.</li>
@@ -597,7 +604,7 @@
               <li>
                 <strong>Hyperdrive (<code class="bg-gray-200 px-1 rounded">peersky://p2p/hyperdrive/</code>):</strong>
                 <ul class="list-disc list-inside ml-5">
-                  <li>✅ Upload files or a folder, as:
+                  <li>✅ Upload files or a folder, as (a folder keeps its subfolders and gets a link of its own):
                     <ul class="list-disc list-inside ml-5">
                       <li>Public: anyone with the link can open it</li>
                       <li>Private: encrypted, so only your own devices can open it</li>
@@ -607,6 +614,7 @@
                   <li>✅ Copy or share the link of what you uploaded</li>
                   <li>✅ Fetch a <code class="bg-gray-200 px-1 rounded">hyper://</code> address, pasted or scanned from a QR code</li>
                   <li>✅ Browse a drive's folders and open its files</li>
+                  <li>✅ A <code class="bg-gray-200 px-1 rounded">hyper://</code> folder that is not a website opens as Files, Photos or Videos, made for what it holds, at <code class="bg-gray-200 px-1 rounded">peersky://p2p/hyperdrive/&lt;view&gt;/...</code></li>
                   <li>✅ Keep a folder offline, with pause, resume and progress, and an option to download only on Wi-Fi</li>
                   <li>✅ Recent, with what you uploaded and fetched</li>
                   <li>✅ From your devices: private files from your other devices show up here on their own, and this phone's show up there, with a copy kept on your desktop</li>
@@ -628,10 +636,12 @@
                 <strong>PeerChat (<code class="bg-gray-200 px-1 rounded">peersky://p2p/peerchat/</code>):</strong>
                 <ul class="list-disc list-inside ml-5">
                   <li>✅ Group rooms and direct messages, with no account and no server</li>
-                  <li>✅ Every message is encrypted and signed by whoever wrote it, and passed on from device to device</li>
+                  <li>✅ Every message is encrypted and signed by whoever wrote it, and passed on from device to device, as an ID first so each device takes it in once</li>
                   <li>✅ Rooms and direct messages made on 0.1.2 or later change their key every hour</li>
-                  <li>✅ Replies, reactions, mentions and search</li>
-                  <li>✅ Files and pictures, encrypted with the room, and link previews</li>
+                  <li>✅ Replies, reactions, mentions, and search in a chat or across every chat</li>
+                  <li>✅ Files and pictures, encrypted with the room, saved to the phone, and link previews</li>
+                  <li>✅ Forwarding messages, pictures, videos and files, paced under the chat's spam limit</li>
+                  <li>✅ Rooms their creator can edit, and messages grouped by sender</li>
                   <li>✅ Message requests to accept or decline</li>
                   <li>✅ Invite links and QR codes, and invites sent through any app</li>
                   <li>✅ A profile with a name, a bio, a picture and a short ID</li>
@@ -641,8 +651,9 @@
                   <li>✅ Moderation
                     <ul class="list-disc list-inside ml-5">
                       <li>Whoever made a room can remove anyone from it, and the removal reaches everyone in the room</li>
+                      <li>Removing somebody moves the room to a new key that everyone else follows on their own, so the person removed cannot read on</li>
                       <li>Block or report anyone, from a message or their profile</li>
-                      <li>Groups hold back threats, slurs and adult links, and refuse explicit pictures before they are sent</li>
+                      <li>Groups hold back threats, slurs and adult links, and refuse explicit, violent or graphic pictures before they are sent</li>
                     </ul>
                   </li>
                   <li>✅ Works on the same Wi-Fi with no internet</li>
