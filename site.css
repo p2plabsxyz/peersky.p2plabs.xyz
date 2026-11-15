@@ -24,9 +24,9 @@
   --note-bg: #f0fdf4;
   --note-border: #bbf7d0;
   --note-ink: #14532d;
-  --release-bg: #fef9c3;
-  --release-border: #eab308;
-  --release-ink: #ca8a04;
+  --release-bg: #dcfce7;
+  --release-border: #22c55e;
+  --release-ink: #15803d;
   --danger-bg: #fef2f2;
   --danger-border: #fca5a5;
   --danger-ink: #b91c1c;
@@ -1654,9 +1654,9 @@ html[data-theme="dark"] {
   --note-bg: #0e2a19;
   --note-border: #1d5a35;
   --note-ink: #bbf7d0;
-  --release-bg: #2b2507;
-  --release-border: #a16207;
-  --release-ink: #fde047;
+  --release-bg: #0e2a19;
+  --release-border: #15803d;
+  --release-ink: #86efac;
   --danger-bg: #2b1111;
   --danger-border: #7f1d1d;
   --danger-ink: #fca5a5;
