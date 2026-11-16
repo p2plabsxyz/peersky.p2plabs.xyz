@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Akhilesh Thite" />
+  <meta name="description" content="How P2PMD lets people write one Markdown note at the same time from their phones and computers: the note lives on the device that hosts it, edits go straight between devices, and every new note starts private." />
+  <meta property="og:title" content="Notes you write together in P2PMD, with no server in between" />
+  <meta property="og:description" content="How P2PMD lets people write one Markdown note at the same time from their phones and computers: the note lives on the device that hosts it, edits go straight between devices, and every new note starts private." />
+  <meta property="og:url" content="https://peersky.p2plabs.xyz/blog/notes-you-write-together/" />
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2026-11-16" />
+  <meta property="og:image" content="https://peersky.p2plabs.xyz/blog/notes-you-write-together/banner.jpg" />
+  <meta property="og:image:width" content="1600" />
+  <meta property="og:image:height" content="840" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Notes you write together in P2PMD, with no server in between" />
+  <meta name="twitter:image" content="https://peersky.p2plabs.xyz/blog/notes-you-write-together/banner.jpg" />
+  <link rel="shortcut icon" type="image/png" href="../../images/favicon.ico" />
+  <script>
+    // The theme goes on before anything is drawn: light, unless dark was picked here before.
+    (function () { var t = null; try { t = localStorage.getItem('theme') } catch (e) {} document.documentElement.dataset.theme = t === 'dark' ? 'dark' : 'light' })()
+  </script>
+  <link href="../../lib/tailwind.min.css" rel="stylesheet" />
+  <link href="../../site.css" rel="stylesheet" />
+  <link rel="alternate" type="application/rss+xml" title="PeerSky Blog" href="../feed.xml" />
+  <title>Notes you write together in P2PMD, with no server in between</title>
+</head>
+
+<body>
+  <header>
+    <div class="max-w-3xl mx-auto px-5 sm:px-10">
+      <nav class="page-nav" aria-label="Site">
+        <a class="back-link" href="../">
+          <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          Blog
+        </a>
+        <theme-toggle></theme-toggle>
+      </nav>
+      <div class="post-header">
+        <time class="post-date" datetime="2026-11-16">November 16, 2026</time>
+        <h1>Notes you write together in P2PMD, with no server in between</h1>
+      </div>
+      <img class="post-banner" src="./banner.jpg" width="1600" height="840" alt="One P2PMD note open on a laptop and on a phone, with the name of whoever wrote each line next to it" />
+    </div>
+  </header>
+
+  <main>
+    <article class="max-w-3xl mx-auto px-5 sm:px-10">
+      <div class="post-body">
+        <p><a href="https://github.com/p2plabsxyz/p2pmd" target="_blank" rel="noopener noreferrer">P2PMD</a> (Peer-to-Peer Markdown) is the note app in PeerSky, on your computer and on your phone. Many people can write in the same note at once and watch each other's words show up as they're typed. There's no account and no server. The note lives on the device of whoever started it, and everyone else connects straight to that device.</p>
+        <p>It's for anyone who writes with other people: a study group, a class, a meeting taking minutes, a team writing docs or the slides for a talk, or two researchers on one paper. We built it because notes like these have no reason to sit on a company's computer. Nothing goes through one, so there's no copy of your note out there to leak or sell. And when the internet goes down, people on the same Wi-Fi keep writing.</p>
+        <p>You need PeerSky on each device. Get it for your computer and your phone at <a href="../../#downloads">peersky.p2plabs.xyz</a>.</p>
+
+        <h2>1. Start a note</h2>
+        <p>Open P2PMD from the PeerSky home screen. It gives you a name to start with, something like Zany Seal or Fluffy Kiwi, which people in a note see next to your edits. Keep it, shuffle for another, or type your own. Then tap Create Note.</p>
+        <p>P2PMD asks just one thing: private or public. Every note starts private. Only the people you send its key to can open it, and your other devices can host it too. A public note opens for anyone with its key, and the computers that help peers find each other on the network see that key as well, so keep public for notes you don't mind being found.</p>
+        <figure>
+          <img src="./start.jpg" width="1200" height="1106" loading="lazy" alt="P2PMD on a phone: choosing the name Sam, then the New note sheet with Private picked and Public below it" />
+          <figcaption>Pick a name once. Every new note starts private.</figcaption>
+        </figure>
+
+        <h2>2. Write in Markdown</h2>
+        <p>Notes in P2PMD are Markdown: plain text with a few marks for headings, bold, lists and tables. You don't have to learn them first. The bar above the keyboard has buttons for bold, italic, headings, lists, links and pictures. Tap Preview to read the note the way it looks, and Edit to go back to writing.</p>
+        <figure>
+          <img src="./markdown.jpg" width="1200" height="1106" loading="lazy" alt="A note on a phone in Markdown, with a heading, a packing list and a small table, and the same note in Preview" />
+          <figcaption>The note as you write it, and in Preview.</figcaption>
+        </figure>
+
+        <h2>3. Invite people</h2>
+        <p>Tap the share button and choose Share invite. It sends the note's key, which starts with hs://, in whatever app you like: Messages, Signal, email. The key is what lets someone in, so send it only to the people you want writing with you.</p>
+        <p>On the other device, open P2PMD, paste the key under Join existing note and press Join Note. On a phone, Scan QR reads a key from a QR code too. P2PMD looks for the device hosting the note, connects to it, and the note opens with everything written so far.</p>
+        <figure>
+          <img src="./invite.jpg" width="1600" height="880" loading="lazy" alt="A laptop with the note's key pasted under Join existing note, and the phone that hosts the note sharing the invite with Join my P2PMD note" />
+          <figcaption>The phone sends the key. The laptop pastes it and joins.</figcaption>
+        </figure>
+
+        <h2>4. Write together</h2>
+        <p>Now everyone writes in the same note at once, each in their own color. You see everyone's cursor with their name on it, and a colored mark beside each line shows who wrote it. Two people typing on the same line at the same moment? P2PMD merges their edits with <a href="https://github.com/yjs/yjs" target="_blank" rel="noopener noreferrer">Yjs</a>, so both make it in, and nothing gets lost.</p>
+        <p>Tap the Peers count to see who's in the note: who's hosting and who joined, where each cursor is, who's typing right now, and a history of who changed what.</p>
+        <figure>
+          <img src="./together.jpg" width="1600" height="880" loading="lazy" alt="A new line typed on the laptop, and Room peers on the phone listing the phone as host and the laptop as client" />
+          <figcaption>A line typed on the laptop, and who's in the note, on the phone.</figcaption>
+        </figure>
+
+        <h2>How it works</h2>
+        <p>Most writing apps keep your document on a company's server. Everyone's edits go up to it, it puts them together, and it sends the result back down to everyone. In P2PMD, the device that starts a note does that job, and everyone else connects straight to it.</p>
+        <div class="vs">
+          <div class="vs-row">
+            <h3>Where the note lives</h3>
+            <div class="vs-sides">
+              <p class="vs-side vs-server"><span>With a server</span>On the company's computers.</p>
+              <p class="vs-side vs-p2p"><span>In P2PMD</span>On the device that hosts it: your phone or your computer.</p>
+            </div>
+          </div>
+          <div class="vs-row">
+            <h3>Finding each other</h3>
+            <div class="vs-sides">
+              <p class="vs-side vs-server"><span>With a server</span>Everyone goes to the same web address.</p>
+              <p class="vs-side vs-p2p"><span>In P2PMD</span>The host announces the note on HyperDHT, a public peer-to-peer network, and people with the key find it there and connect directly. On the same Wi-Fi, they look on the local network first.</p>
+            </div>
+          </div>
+          <div class="vs-row">
+            <h3>Letting people in</h3>
+            <div class="vs-sides">
+              <p class="vs-side vs-server"><span>With a server</span>It checks your password.</p>
+              <p class="vs-side vs-p2p"><span>In P2PMD</span>The key is the way in. A private note's address on the network is made from its key, so finding the address isn't enough to open it.</p>
+            </div>
+          </div>
+          <div class="vs-row">
+            <h3>Putting edits together</h3>
+            <div class="vs-sides">
+              <p class="vs-side vs-server"><span>With a server</span>It decides the order of everyone's changes.</p>
+              <p class="vs-side vs-p2p"><span>In P2PMD</span>Each edit travels as the small change it made, a Yjs update, and every device puts the changes together the same way, so edits typed at the same moment never wipe each other out.</p>
+            </div>
+          </div>
+          <div class="vs-row">
+            <h3>Staying up</h3>
+            <div class="vs-sides">
+              <p class="vs-side vs-server"><span>With a server</span>When it goes down, nobody can write.</p>
+              <p class="vs-side vs-p2p"><span>In P2PMD</span>The note is live while its host has it open. If the host steps away, everyone can still read it, and writing comes back when the host does. A private note on your own devices can be hosted by any of them.</p>
+            </div>
+          </div>
+          <div class="vs-row">
+            <h3>No internet</h3>
+            <div class="vs-sides">
+              <p class="vs-side vs-server"><span>With a server</span>Nothing works.</p>
+              <p class="vs-side vs-p2p"><span>In P2PMD</span>On the same Wi-Fi, a note opens and stays in sync with no internet at all.</p>
+            </div>
+          </div>
+        </div>
+
+        <figure class="diagram" role="img" aria-label="A phone hosts the note and a laptop joins it with the key, over an encrypted connection with no server in between. The key only travels in the invite. Anyone without it can't open a private note, even if they find it on the network.">
+          <div class="dg-pair">
+            <div class="dg-node">
+              <svg aria-hidden="true" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="12" y="4" width="16" height="32" rx="4" /><path d="M18 31h4" /></svg>
+              <strong>Your phone</strong>
+              <span>Hosts the note</span>
+            </div>
+            <div class="dg-arrow">
+              <svg aria-hidden="true" viewBox="0 0 80 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h72M12 2 4 8l8 6M68 2l8 6-8 6" /></svg>
+              <span>Every edit, encrypted, device to device</span>
+            </div>
+            <div class="dg-node">
+              <svg aria-hidden="true" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="8" width="26" height="18" rx="2.5" /><path d="M3 31h34" /></svg>
+              <strong>A friend's laptop</strong>
+              <span>Joins with the key</span>
+            </div>
+          </div>
+          <p class="dg-key">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4" /><path d="m11 12 9-9M17 6l3 3M14 9l2 2" /></svg>
+            The note's key only travels in the invite you send. No server in between.
+          </p>
+          <div class="dg-outsider">
+            <svg aria-hidden="true" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="20" cy="13" r="6" /><path d="M8 34c1.5-7 6-10 12-10s10.5 3 12 10" /></svg>
+            <div>
+              <strong>Anyone without the key</strong>
+              <span>Can't open a private note, even if they find it on the network</span>
+            </div>
+          </div>
+        </figure>
+
+        <p>A note is meant for a class or a team, up to about 100 people. Everyone connects to the host, so the host's upload speed is what sets the limit. Each edit goes out as just the change it made, never the whole note again, which keeps that small even when many people type at once. In our load test, 100 simulated people shared one note, 10 of them typing nonstop for a minute. Every edit made it in, with a phone or a computer hosting, and everyone ended up with the same note.</p>
+        <p>On an iPhone, iOS pauses PeerSky about 15 seconds after you leave it, and a note the phone hosts goes quiet until you come back. For a long session or a big group, host the note from a computer.</p>
+        <p>Devices connect straight to the note's host, so the host and the people joining can see each other's IP address, as in any peer-to-peer app. If you'd rather they didn't, turn on a VPN that allows peer-to-peer connections.</p>
+
+        <h2>Slides and papers</h2>
+        <p>Put three dashes (---) on a line between the parts of a note, and P2PMD shows it as slides you can flip through. It's still the same note, so you can write a talk together and present it from your phone or your laptop. On the desktop, notes for the speaker go in as comments, and the slides leave them out.</p>
+        <p>For papers, the Research Paper template starts you off with a title, authors, an abstract and sections, and Preview lays it out in two columns, the way journals print it. You write math in LaTeX, and it's drawn right in the note, with no internet needed. There's a Technical Documentation template too.</p>
+        <figure>
+          <img src="./slides.jpg" width="1200" height="1106" loading="lazy" alt="The Yosemite weekend note shown as the first of three slides, and the Research Paper template in two columns with an equation" />
+          <figcaption>A note as slides, and the Research Paper template in Preview.</figcaption>
+        </figure>
+
+        <h2>Share what you wrote</h2>
+        <p>When it's ready, Export PDF saves the note as a PDF to send or print, with a paper kept in its two columns. Or tap Publish to put it on the peer-to-peer web as a hyper:// link. Publish asks who can open it: anyone with the link, or only your own linked devices, encrypted. A link published from your phone loads straight from it, so keep PeerSky open while people open it. On the desktop, Export also saves HTML and slides, and Publish can use IPFS too.</p>
+        <figure>
+          <img src="./share.jpg" width="1600" height="1029" loading="lazy" alt="Three phones: a paper exported as a 158 KB PDF, Publish asking Who can open it? with Private and Public, and Your note is live with its hyper:// link" />
+          <figcaption>Export a PDF, or publish the note and pick who can open it.</figcaption>
+        </figure>
+
+        <h2>Your notes on all your devices</h2>
+        <p>With Link Device, your phone and your computers share one profile. Your name and your five most recent notes come along, so a private note you started on your phone opens on your laptop too, and either one can host it. If one of them already has it open, the other joins it there, and both edit the same note live.</p>
+        <p>The desktop has a few extras. Open a text file with P2PMD from Finder, Explorer or your Linux file manager and it becomes a new private note, ready to share. On a Mac, right-click the file and pick Peersky Browser under Open With. On Windows, pick Open with P2PMD, and on Linux with the .deb, open it with P2PMD.</p>
+        <figure>
+          <img src="./open-file.jpg" width="1600" height="1040" loading="lazy" alt="A Markdown file with a trip plan opened with P2PMD on the desktop: a new private note showing the plan in Markdown and in Preview" />
+          <figcaption>A Markdown file opened with P2PMD becomes a private note.</figcaption>
+        </figure>
+        <p>And Create with AI can draft a note or a set of slides for you with a <a href="https://github.com/p2plabsxyz/peersky-browser/blob/main/docs/LLM.md" target="_blank" rel="noopener noreferrer">local LLM</a> running on your own computer, once you turn it on in Settings.</p>
+
+        <h2>What people use it for</h2>
+        <div class="use-cases">
+          <div class="use-case">
+            <svg aria-hidden="true" viewBox="0 0 48 48" fill="none" stroke="#2563eb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M24 12c-5-4-11-5-18-4v28c7-1 13 0 18 4 5-4 11-5 18-4V8c-7-1-13 0-18 4z" /><path d="M24 12v28" /></svg>
+            <div>
+              <h3>Class and study notes</h3>
+              <p>Take notes together during a lecture, even when the campus Wi-Fi has no internet, and everyone walks out with the same copy.</p>
+            </div>
+          </div>
+          <div class="use-case">
+            <svg aria-hidden="true" viewBox="0 0 48 48" fill="none" stroke="#2563eb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="10" y="8" width="28" height="34" rx="3" /><path d="M18 8V5h12v3M16 19h16M16 26h16M16 33h10" /></svg>
+            <div>
+              <h3>Meeting notes</h3>
+              <p>Everyone writes the minutes while the meeting happens, so they're finished when it ends.</p>
+            </div>
+          </div>
+          <div class="use-case">
+            <svg aria-hidden="true" viewBox="0 0 48 48" fill="none" stroke="#2563eb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="8" width="36" height="24" rx="3" /><path d="M24 32v8M16 42h16M15 24l6-6 5 4 7-8" /></svg>
+            <div>
+              <h3>Talks and slides</h3>
+              <p>Write the slides together, then present them from your laptop or your phone.</p>
+            </div>
+          </div>
+          <div class="use-case">
+            <svg aria-hidden="true" viewBox="0 0 48 48" fill="none" stroke="#2563eb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 5h15l9 9v29H13z" /><path d="M28 5v9h9M28 22h-9l5 6-5 6h9" /></svg>
+            <div>
+              <h3>Papers with math</h3>
+              <p>Start from the Research Paper template, write the math in LaTeX, and export a two-column PDF.</p>
+            </div>
+          </div>
+        </div>
+
+        <p>For the technical details, read the <a href="https://github.com/p2plabsxyz/p2pmd" target="_blank" rel="noopener noreferrer">P2PMD README</a>, <a href="https://github.com/p2plabsxyz/peersky-mobile/blob/main/docs/p2pmd.md" target="_blank" rel="noopener noreferrer">P2PMD on mobile</a>, how notes open <a href="https://github.com/p2plabsxyz/peersky-mobile/blob/main/docs/holesail.md#with-no-internet" target="_blank" rel="noopener noreferrer">with no internet</a>, and <a href="https://github.com/p2plabsxyz/peersky-mobile/blob/main/docs/link-device.md" target="_blank" rel="noopener noreferrer">Link Device</a>.</p>
+
+        <p class="post-end">Bring it to your next class or meeting, and let everyone write. Get PeerSky at <a href="../../#downloads">peersky.p2plabs.xyz</a>.</p>
+        <post-author name="akhilesh"></post-author>
+      </div>
+
+      <peersky-footer></peersky-footer>
+    </article>
+  </main>
+
+  <script src="../../components/footer.js"></script>
+  <script src="../../components/theme-toggle.js"></script>
+  <script src="../../components/post-author.js"></script>
+</body>
+
+</html>
