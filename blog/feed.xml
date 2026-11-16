@@ -6,8 +6,16 @@
     <atom:link href="https://peersky.p2plabs.xyz/blog/feed.xml" rel="self" type="application/rss+xml" />
     <description>Guides and stories about PeerSky, the local-first P2P browser for desktop and mobile.</description>
     <language>en</language>
-    <lastBuildDate>Sun, 08 Nov 2026 17:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 16 Nov 2026 17:00:00 GMT</lastBuildDate>
     <!-- Newest first. A new post goes here too, with the title, date and summary it has on the blog page. -->
+    <item>
+      <title>Notes you write together in P2PMD, with no server in between</title>
+      <link>https://peersky.p2plabs.xyz/blog/notes-you-write-together/</link>
+      <guid isPermaLink="true">https://peersky.p2plabs.xyz/blog/notes-you-write-together/</guid>
+      <pubDate>Mon, 16 Nov 2026 17:00:00 GMT</pubDate>
+      <description>With P2PMD, many people write one Markdown note at once from their phones and computers. The note lives on the device that hosts it, not on a server.</description>
+      <content:encoded><![CDATA[<p><img src="https://peersky.p2plabs.xyz/blog/notes-you-write-together/banner.jpg" width="1600" height="840" alt="One P2PMD note open on a laptop and on a phone, with the name of whoever wrote each line next to it" /></p><p>With P2PMD, many people write one Markdown note at once from their phones and computers. The note lives on the device that hosts it, not on a server.</p><p><a href="https://peersky.p2plabs.xyz/blog/notes-you-write-together/">Read the post</a></p>]]></content:encoded>
+    </item>
     <item>
       <title>Use any spare device as your private cloud with PeerSky</title>
       <link>https://peersky.p2plabs.xyz/blog/spare-device-private-cloud/</link>
