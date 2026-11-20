@@ -6,8 +6,16 @@
     <atom:link href="https://peersky.p2plabs.xyz/blog/feed.xml" rel="self" type="application/rss+xml" />
     <description>Guides and stories about PeerSky, the local-first P2P browser for desktop and mobile.</description>
     <language>en</language>
-    <lastBuildDate>Mon, 16 Nov 2026 17:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 20 Nov 2026 17:00:00 GMT</lastBuildDate>
     <!-- Newest first. A new post goes here too, with the title, date and summary it has on the blog page. -->
+    <item>
+      <title>Replace your music streaming app with songs you own</title>
+      <link>https://peersky.p2plabs.xyz/blog/replace-music-streaming/</link>
+      <guid isPermaLink="true">https://peersky.p2plabs.xyz/blog/replace-music-streaming/</guid>
+      <pubDate>Fri, 20 Nov 2026 17:00:00 GMT</pubDate>
+      <description>PeerTunes plays songs you keep as files, on your computer and your phone. They move straight between your devices with no cloud in between, and play anywhere, even with no signal.</description>
+      <content:encoded><![CDATA[<p><img src="https://peersky.p2plabs.xyz/blog/replace-music-streaming/banner.jpg" width="1600" height="840" alt="PeerTunes in black on a laptop, with its tabs down the side, showing the album Heroes Tonight, and PeerTunes on a phone flipping through album covers with Feel Good by Syn Cole in front" /></p><p>PeerTunes plays songs you keep as files, on your computer and your phone. They move straight between your devices with no cloud in between, and play anywhere, even with no signal.</p><p><a href="https://peersky.p2plabs.xyz/blog/replace-music-streaming/">Read the post</a></p>]]></content:encoded>
+    </item>
     <item>
       <title>Notes you write together in P2PMD, with no server in between</title>
       <link>https://peersky.p2plabs.xyz/blog/notes-you-write-together/</link>

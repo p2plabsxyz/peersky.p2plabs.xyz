@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Akhilesh Thite" />
+  <meta name="description" content="How to replace a music streaming app with PeerTunes: keep your songs as files you own, move them from your laptop to your phone with no cloud in between, and play them anywhere, even with no signal." />
+  <meta property="og:title" content="Replace your music streaming app with songs you own" />
+  <meta property="og:description" content="How to replace a music streaming app with PeerTunes: keep your songs as files you own, move them from your laptop to your phone with no cloud in between, and play them anywhere, even with no signal." />
+  <meta property="og:url" content="https://peersky.p2plabs.xyz/blog/replace-music-streaming/" />
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2026-11-20" />
+  <meta property="og:image" content="https://peersky.p2plabs.xyz/blog/replace-music-streaming/banner.jpg" />
+  <meta property="og:image:width" content="1600" />
+  <meta property="og:image:height" content="840" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Replace your music streaming app with songs you own" />
+  <meta name="twitter:image" content="https://peersky.p2plabs.xyz/blog/replace-music-streaming/banner.jpg" />
+  <link rel="shortcut icon" type="image/png" href="../../images/favicon.ico" />
+  <script>
+    // The theme goes on before anything is drawn: light, unless dark was picked here before.
+    (function () { var t = null; try { t = localStorage.getItem('theme') } catch (e) {} document.documentElement.dataset.theme = t === 'dark' ? 'dark' : 'light' })()
+  </script>
+  <link href="../../lib/tailwind.min.css" rel="stylesheet" />
+  <link href="../../site.css" rel="stylesheet" />
+  <link rel="alternate" type="application/rss+xml" title="PeerSky Blog" href="../feed.xml" />
+  <title>Replace your music streaming app with songs you own</title>
+</head>
+
+<body>
+  <header>
+    <div class="max-w-3xl mx-auto px-5 sm:px-10">
+      <nav class="page-nav" aria-label="Site">
+        <a class="back-link" href="../">
+          <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          Blog
+        </a>
+        <theme-toggle></theme-toggle>
+      </nav>
+      <div class="post-header">
+        <time class="post-date" datetime="2026-11-20">November 20, 2026</time>
+        <h1>Replace your music streaming app with songs you own</h1>
+      </div>
+      <img class="post-banner" src="./banner.jpg" width="1600" height="840" alt="PeerTunes in black on a laptop, with its tabs down the side, showing the album Heroes Tonight, and PeerTunes on a phone flipping through album covers with Feel Good by Syn Cole in front" />
+    </div>
+  </header>
+
+  <main>
+    <article class="max-w-3xl mx-auto px-5 sm:px-10">
+      <div class="post-body">
+        <p>With a streaming app, you never really have your music. You pay every month to borrow it. Songs leave the catalog without warning, the price goes up, the app decides what plays next, and the moment you stop paying, your library is gone.</p>
+        <p>PeerTunes is the music player in PeerSky, on your computer and on your phone. It plays songs you keep as files. There's no account, no subscription and no server. Your library lives on your devices, it moves from your laptop to your phone straight between the two, and once a song is on your phone, it plays anywhere, even with no signal.</p>
+        <p>It's for anyone who wants their music to stay theirs: people with a folder of songs they bought years ago, people tired of paying for music streaming every month, or of constant ads when they don't pay, and anyone who spends time on a plane, on the subway, or somewhere the signal drops. Nothing about what you listen to leaves your devices, not even to us.</p>
+        <p>You need PeerSky on each device. Get it for your computer and your phone at <a href="../../#downloads">peersky.p2plabs.xyz</a>.</p>
+
+        <h2>1. Get your songs as files</h2>
+        <p>If you already have music files, from CDs you ripped or albums you bought, you can skip to the next step. If your music lives in a streaming playlist, start with Zipify Tunes. In PeerTunes, it's under <strong>Add Music</strong>, then <strong>Zipify Tunes</strong>.</p>
+        <p><a href="https://github.com/akhileshthite/zipify-tunes" target="_blank" rel="noopener noreferrer">Zipify Tunes</a> is a free, open source tool that runs on your own computer. You export your playlist as a CSV file, a plain list of songs. It takes lists from Spotify, Apple Music, YouTube Music or one you write yourself, and for a Spotify playlist, tools like chosic.com make the file for you. Pick the file and an MP3 quality, and it makes an <strong>MP3 for each song with its title, artist, album, year and a square cover built in, then hands you all of them in one ZIP.</strong> Everything happens on your computer. Setting it up takes Node.js and ffmpeg, and its GitHub page walks you through it.</p>
+        <p>Zipify Tunes is for your own personal use. Respect copyright and the terms of the services you use, and don't share music you don't have the rights to.</p>
+        <figure>
+          <img src="./zipify.jpg" width="1600" height="1060" loading="lazy" alt="Zipify Tunes in PeerSky with my-playlist.csv chosen, the MP3 quality set to Best, and the Download MP3s button" />
+          <figcaption>Zipify Tunes turns a playlist file into MP3s with their names and covers.</figcaption>
+        </figure>
+
+        <h2>2. Add them to PeerTunes</h2>
+        <p>Open PeerTunes from the PeerSky home screen and go to <strong>Add Music</strong>. Choose <strong>Upload Folder</strong> or <strong>Upload Files</strong>, or drop the songs anywhere on the page. PeerTunes reads the title, artist, album and cover from each file, so everything shows up properly named. It reads MP3, FLAC, M4A, OGG, Opus and WAV. A song with no cover gets a plain one, and a song with no album tag is filed under its folder's name.</p>
+        <p>You can also <strong>add songs from a hyper:// folder</strong>, from a web address, or by scanning a QR code with a link in it.</p>
+
+        <h2>3. Send them to your phone</h2>
+        <p>In <strong>Add Music</strong> on your laptop, choose <strong>Share Library</strong>. PeerTunes puts your songs in a hyper:// drive on your laptop and gives you a link. Open the link on your phone, and PeerTunes asks what to do with it. <strong>Import</strong> saves the songs into your library as a playlist. <strong>Play Only</strong> streams them once and leaves your library as it was.</p>
+        <p>The songs come straight from your laptop to your phone. They don't go up to anyone's cloud on the way. Share a playlist the same way with a friend, from your laptop or your phone, and their PeerTunes asks them the same question, so nothing lands in their library unless they want it.</p>
+        <figure>
+          <img src="./share.jpg" width="1600" height="880" loading="lazy" alt="The laptop's PeerTunes, in black, showing Share it with other peers! with a peersky:// link, and the phone asking Someone shared a playlist with Import, Play Only and Cancel" />
+          <figcaption>The laptop shares the library. The phone asks before adding anything.</figcaption>
+        </figure>
+
+        <h2>4. Spin the wheel</h2>
+        <p>PeerTunes is played with a wheel. Drag your finger around it to scroll, tap the middle to pick, and press the top to go back, the bottom to play or pause, and the sides to skip. Every step clicks, and on a phone you feel a small tap too. You can turn either one off in Settings.</p>
+        <p>Albums open as a row of covers that flip in 3D as you turn. Artists, Songs and Genres are plain lists. On the song screen, the wheel turns the volume. Press the middle once and it moves through the song instead, or touch and hold the bar under the song and slide.</p>
+        <figure>
+          <img src="./albums.gif" width="960" height="885" loading="lazy" alt="PeerTunes on a phone, with a finger turning the wheel and the album covers flipping past one by one, then back again" />
+          <figcaption>Turn the wheel, and the albums flip past.</figcaption>
+        </figure>
+
+        <h2>5. Make playlists</h2>
+        <p>Hold the middle of the wheel on any song, or long press it on the screen, and pick a playlist to drop it in, or make a new one right there. Inside a playlist, Add Songs lets you tick songs off a list, and holding a song takes it out. The songs always stay in your library.</p>
+        <figure>
+          <img src="./playlists.jpg" width="1200" height="1106" loading="lazy" alt="Add to Playlist with New Playlist, My Music and Road Trip, and Added to Road Trip after picking it for Dreamer" />
+          <figcaption>Hold the middle on a song and pick a playlist.</figcaption>
+        </figure>
+
+        <h2>6. Keep it offline</h2>
+        <p>An imported playlist plays straight from the device that shared it. Heading somewhere with no signal? Open the playlist on your phone and tap <strong>Keep On This Device</strong>. PeerTunes saves every song and counts them as they arrive. Each song gets a mark, blue once it's on the phone and gray until then. When it says All Saved, the playlist plays with the network off.</p>
+        <p>If the device that shared it goes offline halfway, PeerTunes saves the rest once it's back. If you turn on Download only on Wi-Fi in PeerSky, it waits for Wi-Fi instead of using your data.</p>
+        <figure>
+          <img src="./offline.jpg" width="1200" height="1106" loading="lazy" alt="The My Music playlist showing On This Device, All 8, with a blue mark on each song, and the All Saved screen saying All 8 songs are on this device and they play with the network off" />
+          <figcaption>Keep a playlist on your phone, and it plays with no signal.</figcaption>
+        </figure>
+
+        <h2>How it works</h2>
+        <p>A streaming app keeps every song on its company's servers and sends it to you each time you press play. PeerTunes plays files that are already on your device, and when songs need to move, they go straight from one of your devices to another.</p>
+        <div class="vs">
+          <div class="vs-row">
+            <h3>Where the songs live</h3>
+            <div class="vs-sides">
+              <p class="vs-side vs-server"><span>Streaming</span>On the company's servers. You get them only while you pay.</p>
+              <p class="vs-side vs-p2p"><span>In PeerTunes</span>On your devices, as files you keep.</p>
+            </div>
+          </div>
+          <div class="vs-row">
+            <h3>Your library</h3>
+            <div class="vs-sides">
+              <p class="vs-side vs-server"><span>Streaming</span>A list on your account, and songs can vanish from it when the company loses the rights.</p>
+              <p class="vs-side vs-p2p"><span>In PeerTunes</span>Kept in the app on your device. A song stays until you delete it.</p>
+            </div>
+          </div>
+          <div class="vs-row">
+            <h3>Getting songs to your phone</h3>
+            <div class="vs-sides">
+              <p class="vs-side vs-server"><span>Streaming</span>Each song comes down from the company's servers.</p>
+              <p class="vs-side vs-p2p"><span>In PeerTunes</span>Your laptop shares a hyper:// drive, and your phone gets the songs straight from it, encrypted on the way. On the same Wi-Fi, they find each other on the local network.</p>
+            </div>
+          </div>
+          <div class="vs-row">
+            <h3>What you listen to</h3>
+            <div class="vs-sides">
+              <p class="vs-side vs-server"><span>Streaming</span>Every play goes into your account's history.</p>
+              <p class="vs-side vs-p2p"><span>In PeerTunes</span>There's no account and no tracking. What you play stays on your device.</p>
+            </div>
+          </div>
+          <div class="vs-row">
+            <h3>No signal</h3>
+            <div class="vs-sides">
+              <p class="vs-side vs-server"><span>Streaming</span>Only songs you downloaded inside the app, and only while you keep paying.</p>
+              <p class="vs-side vs-p2p"><span>In PeerTunes</span>Every song you kept on the device, for as long as you like.</p>
+            </div>
+          </div>
+        </div>
+
+        <figure class="diagram" role="img" aria-label="Your laptop shares the songs and your phone gets them straight from it, encrypted, with no server in between. Only someone with the link can find the songs.">
+          <div class="dg-pair">
+            <div class="dg-node">
+              <svg aria-hidden="true" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="8" width="26" height="18" rx="2.5" /><path d="M3 31h34" /></svg>
+              <strong>Your laptop</strong>
+              <span>Shares the songs</span>
+            </div>
+            <div class="dg-arrow">
+              <svg aria-hidden="true" viewBox="0 0 80 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h72M12 2 4 8l8 6M68 2l8 6-8 6" /></svg>
+              <span>Every song, encrypted, device to device</span>
+            </div>
+            <div class="dg-node">
+              <svg aria-hidden="true" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="12" y="4" width="16" height="32" rx="4" /><path d="M18 31h4" /></svg>
+              <strong>Your phone</strong>
+              <span>Keeps them for offline</span>
+            </div>
+          </div>
+          <p class="dg-key">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4" /><path d="m11 12 9-9M17 6l3 3M14 9l2 2" /></svg>
+            The link only travels where you send it. No cloud in between.
+          </p>
+        </figure>
+
+        <p>A shared playlist loads from the device that shared it, so keep PeerSky open there until the other side has kept the songs. Anyone with the link can listen, so send it only to people you want to have it. Devices connect straight to each other, so they can see each other's IP address, as in any peer-to-peer app. If you'd rather they didn't, turn on a VPN that allows peer-to-peer connections.</p>
+        <p>Delete a song, a whole album or a playlist when you're done with it, or clear everything at once from Settings.</p>
+
+        <h2>The little things</h2>
+        <p>Lock your phone and the song keeps playing, with its cover and controls on the lock screen. The top of the player shows whether a song is playing or paused, and a Bluetooth mark when the sound goes to headphones or a car. Close the app and open it again, and it comes back to the same screen with your song paused where you left it. In Settings you can pick a silver or a black body, turn shuffle and repeat on, and turn the clicks off. PeerTunes also shows the language you picked in PeerSky, Arabic, Persian and Urdu included.</p>
+        <p>On iPhone, PeerTunes has home screen widgets too. The small one shows what's playing, cover and all. The medium one adds back, play or pause, and skip, so you can change songs without opening the app.</p>
+        <figure class="widget-pair">
+          <img src="./widget-small.png" width="340" height="340" loading="lazy" alt="The small PeerTunes widget showing the cover of Feel Good by Syn Cole, with the song's name over it" />
+          <img src="./widget-medium.png" width="723" height="340" loading="lazy" alt="The medium PeerTunes widget: Now Playing, Feel Good by Syn Cole with its cover, and back, pause and skip buttons" />
+          <figcaption>The two PeerTunes widgets, small and medium.</figcaption>
+        </figure>
+
+        <h2>What people use it for</h2>
+        <div class="use-cases">
+          <div class="use-case">
+            <svg aria-hidden="true" viewBox="0 0 48 48" fill="none" stroke="#2563eb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="17" /><circle cx="24" cy="24" r="5" /><path d="M24 7v6M24 35v6" /></svg>
+            <div>
+              <h3>A library you own</h3>
+              <p>Bring the songs you bought or ripped years ago back together, with their covers and names.</p>
+            </div>
+          </div>
+          <div class="use-case">
+            <svg aria-hidden="true" viewBox="0 0 48 48" fill="none" stroke="#2563eb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 30 42 14l-6 18-9-4-5 8v-11z" /></svg>
+            <div>
+              <h3>Trips and flights</h3>
+              <p>Keep a playlist on your phone before you go, and play it the whole way with no signal.</p>
+            </div>
+          </div>
+          <div class="use-case">
+            <svg aria-hidden="true" viewBox="0 0 48 48" fill="none" stroke="#2563eb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="17" r="6" /><circle cx="33" cy="19" r="5" /><path d="M5 40c1-7 5-11 11-11s10 4 11 11M27 32c1.5-3 3.5-4.5 6-4.5 4.5 0 8 3.5 9 9.5" /></svg>
+            <div>
+              <h3>Mixtapes for friends</h3>
+              <p>Share a playlist as a link. Your friend picks Play Only or Import, and nothing touches their library unless they want it.</p>
+            </div>
+          </div>
+          <div class="use-case">
+            <svg aria-hidden="true" viewBox="0 0 48 48" fill="none" stroke="#2563eb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="10" width="36" height="24" rx="3" /><path d="M16 40h16M24 34v6" /></svg>
+            <div>
+              <h3>Laptop to phone</h3>
+              <p>Keep the songs on your laptop, and send them to your phone whenever you add more.</p>
+            </div>
+          </div>
+        </div>
+
+        <h2>Music in this post</h2>
+        <p>The songs in the pictures and the video are free releases from NoCopyrightSounds: <a href="https://ncs.io/dreamer" target="_blank" rel="noopener noreferrer">Alan Walker, Dreamer</a>, <a href="https://ncs.io/Dreams" target="_blank" rel="noopener noreferrer">Lost Sky, Dreams</a>, <a href="https://ncs.io/feelgood" target="_blank" rel="noopener noreferrer">Syn Cole, Feel Good</a>, <a href="https://ncs.io/ht" target="_blank" rel="noopener noreferrer">Janji, Heroes Tonight (feat. Johnning)</a>, <a href="https://ncs.io/mortals" target="_blank" rel="noopener noreferrer">Warriyo, Mortals (feat. Laura Brehm)</a>, <a href="https://ncs.io/onandon" target="_blank" rel="noopener noreferrer">Cartoon and Jéja, On &amp; On (feat. Daniel Levi)</a>, <a href="https://ncs.io/toburoots" target="_blank" rel="noopener noreferrer">Tobu, Roots</a> and <a href="https://ncs.io/skyhigh" target="_blank" rel="noopener noreferrer">Elektronomia, Sky High</a>. Music provided by NoCopyrightSounds.</p>
+
+        <p>For the technical details, see <a href="https://github.com/p2plabsxyz/peertunes" target="_blank" rel="noopener noreferrer">PeerTunes</a>, <a href="https://github.com/p2plabsxyz/peersky-mobile/blob/main/docs/peertunes.md" target="_blank" rel="noopener noreferrer">PeerTunes on mobile</a> and <a href="https://github.com/akhileshthite/zipify-tunes" target="_blank" rel="noopener noreferrer">Zipify Tunes</a> on GitHub.</p>
+
+        <p class="post-end">Put your favorite playlist on your phone and leave the subscription behind. Get PeerSky at <a href="../../#downloads">peersky.p2plabs.xyz</a>.</p>
+        <post-author name="akhilesh"></post-author>
+      </div>
+
+      <peersky-footer></peersky-footer>
+    </article>
+  </main>
+
+  <script src="../../components/footer.js"></script>
+  <script src="../../components/theme-toggle.js"></script>
+  <script src="../../components/post-author.js"></script>
+</body>
+
+</html>
