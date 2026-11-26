@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Akhilesh Thite" />
+  <meta name="description" content="How to download and watch torrents right in PeerSky on your computer: magnet and torrent links open in a tab, videos play while they download, nothing seeds unless you choose to, and every file opens sealed off from the rest of your computer." />
+  <meta property="og:title" content="Torrents, right in your browser" />
+  <meta property="og:description" content="How to download and watch torrents right in PeerSky on your computer: magnet and torrent links open in a tab, videos play while they download, nothing seeds unless you choose to, and every file opens sealed off from the rest of your computer." />
+  <meta property="og:url" content="https://peersky.p2plabs.xyz/blog/torrents-in-your-browser/" />
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2026-11-25" />
+  <meta property="og:image" content="https://peersky.p2plabs.xyz/blog/torrents-in-your-browser/banner.jpg" />
+  <meta property="og:image:width" content="1600" />
+  <meta property="og:image:height" content="840" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Torrents, right in your browser" />
+  <meta name="twitter:image" content="https://peersky.p2plabs.xyz/blog/torrents-in-your-browser/banner.jpg" />
+  <link rel="shortcut icon" type="image/png" href="../../images/favicon.ico" />
+  <script>
+    // The theme goes on before anything is drawn: light, unless dark was picked here before.
+    (function () { var t = null; try { t = localStorage.getItem('theme') } catch (e) {} document.documentElement.dataset.theme = t === 'dark' ? 'dark' : 'light' })()
+  </script>
+  <link href="../../lib/tailwind.min.css" rel="stylesheet" />
+  <link href="../../site.css" rel="stylesheet" />
+  <link rel="alternate" type="application/rss+xml" title="PeerSky Blog" href="../feed.xml" />
+  <title>Torrents, right in your browser</title>
+</head>
+
+<body>
+  <header>
+    <div class="max-w-3xl mx-auto px-5 sm:px-10">
+      <nav class="page-nav" aria-label="Site">
+        <a class="back-link" href="../">
+          <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          Blog
+        </a>
+        <theme-toggle></theme-toggle>
+      </nav>
+      <div class="post-header">
+        <time class="post-date" datetime="2026-11-25">November 25, 2026</time>
+        <h1>Torrents, right in your browser</h1>
+      </div>
+      <img class="post-banner" src="./banner.jpg" width="1600" height="840" alt="PeerSky on a computer with a finished torrent of The Skeleton Dance from 1929, and the cartoon playing in its own tab, a skeleton dancing in a graveyard" />
+    </div>
+  </header>
+
+  <main>
+    <article class="max-w-3xl mx-auto px-5 sm:px-10">
+      <div class="post-body">
+        <p>Downloading a torrent usually means installing one more app, and a lot of the popular ones come with ads, bundled offers or a paid tier. We didn't want any of that. PeerSky on your computer does it by itself: open a 🧲 <strong>magnet link</strong> and it opens in a tab, like any other page. Press Start, and a film can begin playing while most of it is still on its way.</p>
+        <p>BitTorrent is a peer-to-peer way to share files. Instead of one server sending the whole file to everyone, everyone downloading it sends each other the pieces they already have. So the more people share a file, the better it holds up, and nobody has to pay to host it. That makes it great for big files: Linux installers, open data, and public domain films like the ones in this post, which come from the Internet Archive.</p>
+        <p>We put this post together right after Halloween, which is why every film in it has a ghost or a skeleton. Torrents are in PeerSky for your computer, on Mac, Windows and Linux. Get it at <a href="../../#downloads">peersky.p2plabs.xyz</a>.</p>
+
+        <h2>1. Open a torrent</h2>
+        <p>Paste a 🧲 <strong>magnet link</strong> (it starts with magnet:) into the address bar, or click one on a page. You can also type <strong>bt://</strong> followed by a torrent's info hash, or drop a <strong>.torrent file</strong> on the address bar.</p>
+        <p>The Internet Archive puts a torrent on almost everything it hosts, and that's how we got the films here. On a film's page, copy its <strong>Torrent</strong> link, then put <strong>webtorrent:</strong> in front of it in the address bar.</p>
+        <p>The torrent's page shows its name and its files. Nothing downloads until you press <strong>Start Torrent</strong>.</p>
+
+        <h2>2. Watch while it downloads</h2>
+        <p>Press <strong>Start Torrent</strong> and the page shows how it's going: how much has come in, how fast, from how many peers, and how long is left. Below that is the list of files. Press <strong>Play</strong> next to a video or a song and it opens in a new tab and starts playing, even if most of it hasn't downloaded yet. No staring at a progress bar.</p>
+        <p>PeerSky plays <strong>MP4 and WebM</strong> in the tab. Anything else, or a file whose picture or sound doesn't play, opens fine in your usual player from the folder.</p>
+        <figure>
+          <img src="./start.jpg" width="1600" height="1060" loading="lazy" alt="The torrent page for House on Haunted Hill, started, with 14 MB downloaded at 2.8 MB/s from 3 peers" />
+          <figcaption>House on Haunted Hill (1959), starting to download.</figcaption>
+        </figure>
+        <figure>
+          <img src="./watch.jpg" width="1600" height="1060" loading="lazy" alt="Vincent Price's floating head from the opening of House on Haunted Hill, playing in a PeerSky tab while the torrent downloads" />
+          <figcaption>The same film playing in a tab, while the rest is still on its way.</figcaption>
+        </figure>
+
+        <h2>3. It stops when it's done</h2>
+        <p>Many torrent apps keep uploading, or seeding, after a download finishes, and leave your connection busy until you remember to stop them. PeerSky <strong>stops a torrent on its own</strong> when it's done. Want to give back to the swarm? It's a kind thing to do for a film you love. Press <strong>Start Seeding</strong>, and <strong>Stop Seeding</strong> whenever you like.</p>
+        <p>Files are saved in your Downloads folder, under <strong>PeerskyTorrents</strong>.</p>
+        <figure>
+          <img src="./done.jpg" width="1600" height="1060" loading="lazy" alt="The Skeleton Dance torrent at 100%, saying Download complete! Files saved to Downloads/PeerskyTorrents. Torrent stopped automatically (no seeding)." />
+          <figcaption>Done, and stopped. Nothing keeps uploading unless you press Start Seeding.</figcaption>
+        </figure>
+
+        <h2>4. All your torrents in one place</h2>
+        <p>Every torrent you start is listed under <strong>Settings</strong>, then <strong>BitTorrent</strong> (or <strong>peersky://bt-manager</strong>). From there you can open a torrent's page, pause or resume it, start or stop seeding, copy its 🧲 magnet link to send to a friend, or remove it from the list.</p>
+
+        <h2>Why use it in PeerSky</h2>
+        <div class="vs">
+          <div class="vs-row">
+            <h3>Setting it up</h3>
+            <div class="vs-sides">
+              <p class="vs-side vs-server"><span>A torrent app</span>One more app to install and keep up to date, often with ads or upsells.</p>
+              <p class="vs-side vs-p2p"><span>In PeerSky</span>Already there. A torrent link opens in a tab, with no ads.</p>
+            </div>
+          </div>
+          <div class="vs-row">
+            <h3>After it finishes</h3>
+            <div class="vs-sides">
+              <p class="vs-side vs-server"><span>A torrent app</span>Many keep seeding until you stop them.</p>
+              <p class="vs-side vs-p2p"><span>In PeerSky</span>Stops on its own. Seeding is a button you press.</p>
+            </div>
+          </div>
+          <div class="vs-row">
+            <h3>Opening what you got</h3>
+            <div class="vs-sides">
+              <p class="vs-side vs-server"><span>A torrent app</span>Wait for the download, then find the file and open it in another app.</p>
+              <p class="vs-side vs-p2p"><span>In PeerSky</span>Press Play while it downloads. Every file opens in a tab of its own, sealed off from the rest of your computer.</p>
+            </div>
+          </div>
+          <div class="vs-row">
+            <h3>Your router</h3>
+            <div class="vs-sides">
+              <p class="vs-side vs-server"><span>A torrent app</span>Many open a port on your router for you (UPnP) so others can reach your computer.</p>
+              <p class="vs-side vs-p2p"><span>In PeerSky</span>Leaves your router alone and doesn't announce itself on your local network.</p>
+            </div>
+          </div>
+          <div class="vs-row">
+            <h3>When something goes wrong</h3>
+            <div class="vs-sides">
+              <p class="vs-side vs-server"><span>A torrent app</span>A crash takes the whole app down.</p>
+              <p class="vs-side vs-p2p"><span>In PeerSky</span>Torrents run in a process of their own, so a crash there never takes your tabs with it.</p>
+            </div>
+          </div>
+        </div>
+        <p>About that sealing. A torrent can hold anything, web pages included, and you don't always know who made it. In PeerSky, every file from a torrent opens at its own bt:// address, <strong>in a sandbox</strong>, so a page that came in a torrent can't read your other files, your other torrents or anything else on your computer. Only torrent pages can control your downloads.</p>
+
+        <h2>Use a VPN</h2>
+        <p>BitTorrent is peer-to-peer. While you download, and while you seed if you choose to, the people sharing the same file can see your <strong>IP address</strong>, and so can anyone watching that swarm. That's true of every torrent app, not just PeerSky.</p>
+        <p>If you'd rather they didn't, turn on a VPN. <strong>A VPN extension in PeerSky works</strong>: torrents go through it just like your tabs, so peers see the VPN's address instead of yours, and the torrent page says <strong>Through your VPN</strong>. We also made sure a VPN that drops doesn't give you away. If it turns off, running torrents pause instead of carrying on without it, and pick up again when it's back. A VPN app for your whole computer works too, as long as it allows peer-to-peer traffic.</p>
+        <p>Through a VPN extension, torrents find peers through trackers and web seeds, so a few torrents may find fewer peers. Most Internet Archive torrents download from web seeds anyway.</p>
+        <figure>
+          <img src="./vpn.jpg" width="1600" height="1060" loading="lazy" alt="The Skeleton Dance torrent page with a green Through your VPN badge next to its title, done and stopped automatically" />
+          <figcaption>With a VPN extension on, the torrent page says so.</figcaption>
+        </figure>
+        <figure>
+          <img src="./manager.jpg" width="1600" height="1060" loading="lazy" alt="peersky://bt-manager saying 3 torrents, through your VPN extension, listing one stopped at 59% and two done at 100%, with the privacy notice below" />
+          <figcaption>Every torrent in one list, and the list says when they go through your VPN.</figcaption>
+        </figure>
+
+        <h2>Films in this post</h2>
+        <p><a href="https://archive.org/details/The_House_On_Haunted_Hill" target="_blank" rel="noopener noreferrer">House on Haunted Hill</a> (1959), <a href="https://archive.org/details/the-skeleton-dance-1929" target="_blank" rel="noopener noreferrer">The Skeleton Dance</a> (1929) and <a href="https://archive.org/details/the-haunted-house-1929" target="_blank" rel="noopener noreferrer">The Haunted House</a> (1929). Happy haunting.</p>
+        <p>Download only what you're allowed to. You're responsible for what you download and share.</p>
+
+        <p>For the technical details, read <a href="https://github.com/p2plabsxyz/peersky-browser/blob/main/docs/BitTorrent.md" target="_blank" rel="noopener noreferrer">BitTorrent in PeerSky</a>.</p>
+
+        <p class="post-end">Open a public domain classic and press Play. Get PeerSky at <a href="../../#downloads">peersky.p2plabs.xyz</a>.</p>
+        <post-author name="akhilesh"></post-author>
+      </div>
+
+      <peersky-footer></peersky-footer>
+    </article>
+  </main>
+
+  <script src="../../components/footer.js"></script>
+  <script src="../../components/theme-toggle.js"></script>
+  <script src="../../components/post-author.js"></script>
+</body>
+
+</html>
