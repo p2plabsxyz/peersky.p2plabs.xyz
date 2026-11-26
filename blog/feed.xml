@@ -6,8 +6,16 @@
     <atom:link href="https://peersky.p2plabs.xyz/blog/feed.xml" rel="self" type="application/rss+xml" />
     <description>Guides and stories about PeerSky, the local-first P2P browser for desktop and mobile.</description>
     <language>en</language>
-    <lastBuildDate>Fri, 20 Nov 2026 17:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 25 Nov 2026 17:00:00 GMT</lastBuildDate>
     <!-- Newest first. A new post goes here too, with the title, date and summary it has on the blog page. -->
+    <item>
+      <title>Torrents, right in your browser</title>
+      <link>https://peersky.p2plabs.xyz/blog/torrents-in-your-browser/</link>
+      <guid isPermaLink="true">https://peersky.p2plabs.xyz/blog/torrents-in-your-browser/</guid>
+      <pubDate>Wed, 25 Nov 2026 17:00:00 GMT</pubDate>
+      <description>PeerSky on your computer opens magnet and torrent links in a tab. Watch a video while it downloads, and nothing keeps seeding unless you choose to.</description>
+      <content:encoded><![CDATA[<p><img src="https://peersky.p2plabs.xyz/blog/torrents-in-your-browser/banner.jpg" width="1600" height="840" alt="PeerSky on a computer with a finished torrent of The Skeleton Dance from 1929, and the cartoon playing in its own tab, a skeleton dancing in a graveyard" /></p><p>PeerSky on your computer opens magnet and torrent links in a tab. Watch a video while it downloads, and nothing keeps seeding unless you choose to.</p><p><a href="https://peersky.p2plabs.xyz/blog/torrents-in-your-browser/">Read the post</a></p>]]></content:encoded>
+    </item>
     <item>
       <title>Replace your music streaming app with songs you own</title>
       <link>https://peersky.p2plabs.xyz/blog/replace-music-streaming/</link>
